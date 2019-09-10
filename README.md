@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/EiEResearch/shineyoureye-javascript/badge.svg)](https://coveralls.io/github/EiEResearch/shineyoureye-javascript)
+
 # Shine Your Eye (JavaScript)
 
 This project is a lightweight parliamentary monitoring site for Nigeria. It
