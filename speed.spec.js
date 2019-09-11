@@ -1,5 +1,11 @@
+import { foo, bar } from './speed';
+
 describe('Speed Test', () => {
-  test('should output 1', () => {
-    expect(1).toBe(1);
+  test('should output foo', () => {
+    expect(foo).toBe('foo');
+  });
+
+  test('should output bar', () => {
+    expect(bar).toBe('bar');
   });
 });
