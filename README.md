@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/EiEResearch/shineyoureye-javascript.svg?branch=master)](https://travis-ci.org/EiEResearch/shineyoureye-javascript)
 [![Coverage Status](https://coveralls.io/repos/github/EiEResearch/shineyoureye-javascript/badge.svg)](https://coveralls.io/github/EiEResearch/shineyoureye-javascript)
 
 # Shine Your Eye (JavaScript)

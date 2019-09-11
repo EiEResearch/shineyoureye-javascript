@@ -36,4 +36,5 @@ module.exports = {
     '!**/(*.config|.eslintrc).js',
     '!src/(main|router|store).js',
   ],
+  coverageReporters: ['lcov', 'text-summary'],
 };
