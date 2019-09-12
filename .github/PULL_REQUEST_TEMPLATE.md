@@ -1,15 +1,6 @@
----
-name: Pull request
-about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
-
----
-
 * Explain why this pull request is needed
 * Remember to check if the README needs to be updated after this change.
-* Remember to check that all commits pass the tests with `git rebase -i --exec 'npm run test' master`
+* Remember to check that all commits pass the tests with `git rebase -i --exec 'npm run test:ceverage' master`
 
 ## Screenshots
 
