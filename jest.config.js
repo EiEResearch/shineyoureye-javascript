@@ -20,8 +20,8 @@ module.exports = {
     'jest-serializer-vue',
   ],
   testMatch: [
-    '**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/tests/unit/**/*.test.(js|jsx|ts|tsx)',
-    '**/*.spec.(js|jsx|ts|tsx)|**/*.test.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)',
+    '**/tests/**/*.(spec|test).(js|jsx|ts|tsx)|**/tests/*.(spec|test).(js|jsx|ts|tsx)',
+    '**/*.(spec|test).(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)',
   ],
   testURL: 'http://localhost/',
   watchPlugins: [
@@ -30,11 +30,14 @@ module.exports = {
   ],
   collectCoverage: false,
   collectCoverageFrom: [
-    '**/*.{js,vue}',
+    '**/*.{js,jsx}',
+    '**/src/app/**/*.{js,vue}',
     '!<rootDir>/node_modules/**',
     '!<rootDir>/coverage/**',
+    '!<rootDir>/src/plugins/**',
     '!**/(*.config|.eslintrc).js',
-    '!src/(main|router|store).js',
+    '!**/src/(main).js',
+    '!**/src/**/_*.js',
   ],
   coverageReporters: ['lcov', 'text-summary'],
 };
