@@ -20,7 +20,8 @@
     "mutationobserver-shim": "^0.3.3",
     "bootstrap": "^4.3.1",
     "axios": "^0.19.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
