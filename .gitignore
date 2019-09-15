@@ -2,6 +2,9 @@
 node_modules
 /dist
 coverage
+/prose
+/public/media
+/public/media_root
 
 # local env files
 .env.local
@@ -21,3 +24,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+*.keep

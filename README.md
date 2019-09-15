@@ -34,3 +34,30 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Running the app
+
+### Initialise the project
+
+```
+npm install
+```
+
+### Prepare data for the app
+
+```
+node bin/prepare-data
+```
+
+This will copy the user-editable contents of the site (the blog posts
+and static pages generated using [prose.io](http://prose.io/)) into a
+`prose` directory.
+
+### Run the app
+
+```
+npm run serve
+```
+
+And go to <http://localhost:8080/>
+
