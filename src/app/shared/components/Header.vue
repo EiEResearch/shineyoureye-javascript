@@ -1,7 +1,7 @@
 <template>
   <div class="site-header">
     <div class="container">
-      <form class="site-header__search js-multipurpose-search" action="<%= process.env.VUE_APP_SEARCH_ACTION %>" method="post">
+      <form class="site-header__search js-multipurpose-search" action="/" method="post">
         <label for="site-search">
           <strong>Find your representative</strong>
           <span class="js-multipurpose-search-label">Enter your Polling Unit (PU) number</span>

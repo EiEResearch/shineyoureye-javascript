@@ -29,4 +29,5 @@ module.exports = {
         return options;
       });
   },
+  productionSourceMap: false,
 };
