@@ -1,7 +1,12 @@
 <template>
-  <div id="app">
-    <NavComponent />
-    <HeaderComponent />
+  <div>
+    <keep-alive>
+      <nav-component />
+    </keep-alive>
+    <keep-alive>
+      <header-component />
+    </keep-alive>
+
 
     <div id="nav" class="text-center">
       <router-link to="/">

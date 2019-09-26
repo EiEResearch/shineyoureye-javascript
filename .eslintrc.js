@@ -13,6 +13,7 @@ module.exports = {
     'no-undef': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'max-len': [2, 180],
     'vue/singleline-html-element-content-newline': 'off',
+    'no-underscore-dangle': [2, { allowAfterThis: true }],
     'vue/max-attributes-per-line': [4,
       {
         singleline: 4,
