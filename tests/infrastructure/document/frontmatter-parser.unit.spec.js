@@ -6,7 +6,7 @@ const contentFull = `---
 published: false
 slug: local-government-elections
 eventdate: '2017-07-15'
-title: Local Government Elections
+title: 'Local Government Elections'
 featured: true
 layout: page
 ---
