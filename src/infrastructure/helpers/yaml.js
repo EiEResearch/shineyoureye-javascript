@@ -1,8 +1,8 @@
-import metadataParse from 'markdown-yaml-metadata-parser';
+import parseMD from 'parse-md';
 
 export default class YAML {
   static load(src) {
-    return metadataParse(src);
+    return parseMD(src);
   }
 
   static content(src) {
@@ -10,6 +10,6 @@ export default class YAML {
   }
 
   static meta(src) {
-    return YAML.load(src).metadata;
+    return YAML.load(src).metadata || {};
   }
 }

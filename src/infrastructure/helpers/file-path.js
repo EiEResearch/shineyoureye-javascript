@@ -1,6 +1,8 @@
+import * as env from '../../../env';
+
 export default class FilePathsHelper {
   constructor() {
-    this.contentDir = 'settings.content_dir';
+    this.contentDir = env.prose;
     this.dateGlob = '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]';
   }
 

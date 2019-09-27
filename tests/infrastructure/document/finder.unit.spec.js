@@ -3,7 +3,7 @@ import * as File from 'fs';
 import * as Path from 'path';
 import * as tmp from 'tmp';
 import Finder from '@/infrastructure/document/finder';
-import MarkdownWithFrontmatter from '../../../src/infrastructure/document/markdown-with-frontmatter';
+import MarkdownWithFrontmatter from '@/infrastructure/document/markdown-with-frontmatter';
 
 jest.mock('glob');
 
@@ -34,6 +34,16 @@ slug: a-slug
     Glob.sync.mockReturnValue([newTempfile(contents, filename)]);
     const expectedSlug = Path.basename(filename, '.*');
     expect(finder.findSingle.url).toEqual(expect.stringContaining(`/path/${expectedSlug}`));
+  });
+
+  test('should create a document with the right title', () => {
+    const contents = `---
+published: true
+slug: sye-week-in-review-august-30
+title: 'SYE Week in Review, August 30'
+---`;
+    Glob.sync.mockReturnValue([newTempfile(contents, filename)]);
+    expect(finder.findSingle.title).toEqual('SYE Week in Review, August 30');
   });
 
   test('should find several documents', () => {
