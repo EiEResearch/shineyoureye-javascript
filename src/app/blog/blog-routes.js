@@ -7,4 +7,9 @@ export default [
     // which is lazy-loaded when the route is visited.
     component: () => import('@/app/blog/Blog.vue'),
   },
+  {
+    path: '/blog/:slug',
+    name: 'single-blog',
+    component: () => import('@/app/blog/BlogSingle.vue'),
+  },
 ];

@@ -7,8 +7,8 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>Clean Blog</h1>
-              <span class="subheading">A Blog Theme by Start Bootstrap</span>
+              <h1>{{ title }}</h1>
+              <!-- <span class="subheading">A Blog Theme by Start Bootstrap</span> -->
             </div>
           </div>
         </div>
@@ -21,28 +21,29 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <div v-for="(item,index) in posts" :key="index">
             <div class="post-preview">
-              <a href="post.html">
+              <a :href="item.url">
                 <h2 class="post-title">
-                  Man must explore, and this is exploration at its greatest
+                  {{ item.title }}
                 </h2>
                 <h3 class="post-subtitle">
-                  Problems look mighty small from 150 miles up
+                  {{ item.excerpt }}
                 </h3>
               </a>
               <p class="post-meta">
                 Posted by
-                <a href="#">Start Bootstrap</a>
-                on September 24, 2019 {{ item }}
+                {{ item.author }}
+                on {{ item.date }}
               </p>
             </div>
             <hr>
           </div>
           <!-- Pager -->
           <div class="clearfix">
-            <a class="btn btn-primary float-left" href="/startbootstrap-clean-blog-jekyll/posts/">←
-              Newer<span class="d-none d-md-inline"> Posts</span></a>
+            <a class="btn btn-primary float-left" :href="`${url}${pagination.previousPage}`" v-if="pagination.previousPage > 0">
+              &larr; Newer<span class="d-none d-md-inline"> Posts</span></a>
 
-            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            <a class="btn btn-primary float-right" :href="`${url}${pagination.nextPage}`" v-if="pagination.nextPage > 0">
+              Older<span class="d-none d-md-inline"> Posts</span> &rarr;</a>
           </div>
         </div>
       </div>
@@ -51,22 +52,36 @@
 </template>
 
 <script>
+import PostService from '@/app/shared/services/post.service';
 
 export default {
-  name: 'About',
+  name: 'Blog',
   data() {
     return {
-      name: 'boy',
+      title: 'Blog',
+      url: '/blog?page=',
       posts: [],
+      pagination: {},
     };
   },
   created() {
-    this.featuredPosts();
+  },
+  beforeRouteEnter: async (to, from, next) => {
+    try {
+      const { data } = await PostService.all({ page: to.query.page, limit: to.query.limit, sort: to.query.sort }).then(res => res.data);
+      next((vue) => {
+        const vm = vue;
+        vm.posts = data.posts;
+        vm.pagination = data.pagination;
+      });
+    } catch (error) {
+      next((Vue) => {
+        const vm = Vue;
+        vm.$logger(error);
+      });
+    }
   },
   methods: {
-    async featuredPosts() {
-      this.posts = await [1, 2, 3];
-    },
   },
 };
 </script>

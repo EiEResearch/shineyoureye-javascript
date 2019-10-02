@@ -32,7 +32,7 @@
 
         <b-nav-item href="#">Events</b-nav-item>
 
-        <b-nav-item href="blog">Blog</b-nav-item>
+        <b-nav-item href="/blog">Blog</b-nav-item>
 
         <b-nav-item href="#">About</b-nav-item>
 

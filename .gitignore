@@ -5,6 +5,7 @@ coverage
 /prose
 /public/media
 /public/media_root
+/api/node_modules
 
 # local env files
 .env.local
