@@ -8,7 +8,7 @@
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
     "start": "nodemon server.js --exec babel-node --ignore=node_modules",
-    "eslint": "eslint --ext */*.js *.js -c ../.eslintrc.js --ignore-pattern '!.eslintrc.js' --fix",
+    "eslint": "eslint --ext */*.js *.js -c ../.eslintrc.js --ignore-pattern '.eslintrc.js' --fix",
     "lint": "npm run eslint"
   },
   "author": "EiENigeria",
