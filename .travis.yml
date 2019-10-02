@@ -5,11 +5,12 @@ cache:
   npm: true
   directories:
     - 'node_modules'
+    - '${TRAVIS_BUILD_DIR}/api/node_modules'
 before_install:
-  - cd ./api
-  - npm install
-  - cd ./
-  - npm install
+  - cd ${TRAVIS_BUILD_DIR}/api
+  - npm run reinstall
+  - cd ${TRAVIS_BUILD_DIR}
+  - npm run reinstall
 script:
   - npm run test
 after_success:
