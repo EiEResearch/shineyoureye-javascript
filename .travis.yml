@@ -6,9 +6,14 @@ cache:
   directories:
     - 'node_modules'
     - 'api/node_modules'
-before_Script:
-  - npm install && cd api && npm install && cd ../
+before_install:
+  - cd ./api
+  - npm install
+  - cd ./
+  - npm install
 script:
+  - npm run test
+after_success:
   - npm run test:coverage
   - npm run build
 after_script:
