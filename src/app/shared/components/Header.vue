@@ -8,7 +8,12 @@
         </label>
         <p>
           <span class="input-group">
-            <input name="pu-number" id="site-search" type="search" class="form-control" placeholder="e.g. 1:1:1">
+            <input name="pu-number"
+                   id="site-search"
+                   type="search"
+                   class="form-control"
+                   placeholder="e.g. 1:1:1"
+            >
             <span class="input-group-btn">
               <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search" aria-label="Search" /></button>
             </span>

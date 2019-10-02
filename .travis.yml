@@ -5,6 +5,9 @@ cache:
   npm: true
   directories:
     - 'node_modules'
+    - 'api/node_modules'
+before_Script:
+  - npm install && cd api && npm install && cd ../
 script:
   - npm run test:coverage
   - npm run build

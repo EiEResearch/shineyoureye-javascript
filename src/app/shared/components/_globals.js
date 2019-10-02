@@ -7,3 +7,4 @@ import HeaderComponent from './Header.vue';
 
 Vue.component('HeaderComponent', HeaderComponent);
 Vue.component('NavComponent', () => import('./Nav.vue'));
+Vue.component('NotFoundComponent', () => import('./NotFound.vue'));
