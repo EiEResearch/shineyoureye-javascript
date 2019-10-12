@@ -15,7 +15,7 @@
                    placeholder="e.g. 1:1:1"
             >
             <span class="input-group-btn">
-              <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search" aria-label="Search" /></button>
+              <button class="btn btn-primary" type="submit">Search</button>
             </span>
           </span>
         </p>

@@ -1,4 +1,4 @@
-export default class PostService {
+export default class InfoService {
   constructor(baseUrl, client) {
     this.baseUrl = baseUrl;
     this.client = client;

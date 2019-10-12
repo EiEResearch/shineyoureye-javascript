@@ -8,7 +8,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
               <h1>{{ title }}</h1>
-              <!-- <span class="subheading">A Blog Theme by Start Bootstrap</span> -->
+              <!-- <span class="subheading">{{ subHeading }}</span> -->
             </div>
           </div>
         </div>
@@ -52,13 +52,13 @@
 </template>
 
 <script>
-import PostService from '@/app/shared/services/post.service';
+import DocumentFactory from '@/app/shared/factory/document.factory';
 
 export default {
   name: 'Blog',
   data() {
     return {
-      title: 'Blog',
+      title: '@SYE Blog',
       url: '/blog?page=',
       posts: [],
       pagination: {},
@@ -68,7 +68,7 @@ export default {
   },
   beforeRouteEnter: async (to, from, next) => {
     try {
-      const { data } = await PostService.all({ page: to.query.page, limit: to.query.limit, sort: to.query.sort }).then(res => res.data);
+      const { data } = await new DocumentFactory('posts').all({ page: to.query.page, limit: to.query.limit, sort: to.query.sort }).then(res => res.data);
       next((vue) => {
         const vm = vue;
         vm.posts = data.posts;

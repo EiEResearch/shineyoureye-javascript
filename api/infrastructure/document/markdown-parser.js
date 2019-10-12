@@ -1,4 +1,4 @@
-import Pagedown from 'pagedown';
+import Showdown from 'showdown';
 import YAML from 'api/infrastructure/helpers/yaml';
 
 
@@ -42,6 +42,15 @@ export default class MarkdownParser {
   }
 
   static get parser() {
-    return new Pagedown.Converter();
+    return new Showdown.Converter({
+      omitExtraWLInCodeBlocks: true,
+      simplifiedAutoLink: true,
+      strikethrough: true,
+      tables: true,
+      smoothLivePreview: true,
+      simpleLineBreaks: true,
+      parseImgDimensions: true,
+      noHeaderId: true,
+    });
   }
 }
