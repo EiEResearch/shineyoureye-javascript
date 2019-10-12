@@ -14,4 +14,22 @@ export default class DocumentController {
   finder(pattern) {
     return new Finder(pattern, this.baseurl);
   }
+
+  get document() {
+    this.doc = {
+      title: '',
+      slug: '',
+      published: '',
+      featured: '',
+      eventDate: '',
+      date: '',
+      url: '',
+      excerpt: '',
+      author: '',
+      body: '',
+      type: '',
+    };
+
+    return this.doc;
+  }
 }

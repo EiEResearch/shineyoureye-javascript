@@ -3,12 +3,12 @@ import isInt from 'validator/lib/isInt';
 import isNumeric from 'validator/lib/isNumeric';
 import isIn from 'validator/lib/isIn';
 import {
-  truncate, dateLocalization, postType, paginate,
+  truncate, dateLocalization, postType, paginate, compareDateTime,
 } from 'api/helper';
 import DocumentController from 'api/controller/document.controller';
 
-class PostController extends DocumentController {
-  constructor(baseurl = '/blog/') {
+class EventController extends DocumentController {
+  constructor(baseurl = '/events/') {
     super(baseurl);
   }
 
@@ -18,7 +18,7 @@ class PostController extends DocumentController {
     const sort = req.query.sort || 'desc';
     let posts = [];
 
-    let postsAll = this.finder(this.filePath.postsPattern).findAll;
+    let postsAll = this.finder(this.filePath.eventsPattern).findAll;
     const pagination = paginate(postsAll.length, page, limit);
 
     if (!isInt(String(page), { min: 1, max: pagination.totalPages, allow_leading_zeroes: false })
@@ -45,13 +45,14 @@ class PostController extends DocumentController {
         p.slug = post.slug;
         p.published = post.published;
         p.featured = post.featured;
-        p.eventDate = dateLocalization(post.eventDate, 'DAFM');
+        p.eventDate = dateLocalization(post.eventDate, 'F');
         p.date = dateLocalization(post.date, 'DAFM');
         p.url = post.url;
         p.author = post.author;
         p.excerpt = truncate(post.body, 18);
         p.body = post.body;
         p.type = postType(p.excerpt);
+        p.isActive = compareDateTime(post.eventDate);
 
         return p;
       });
@@ -67,7 +68,7 @@ class PostController extends DocumentController {
   }
 
   find(req, res) {
-    const finder = this.finder(this.filePath.postPattern(req.params.slug.trim()));
+    const finder = this.finder(this.filePath.eventPattern(req.params.slug.trim()));
 
     if (finder && finder.none === false) {
       const post = { ...this.document };
@@ -75,13 +76,14 @@ class PostController extends DocumentController {
       post.slug = finder.findSingle.slug;
       post.published = finder.findSingle.published;
       post.featured = finder.findSingle.featured;
-      post.eventDate = dateLocalization(finder.findSingle.eventDate, 'DAFM');
+      post.eventDate = dateLocalization(finder.findSingle.eventDate, 'F');
       post.date = dateLocalization(finder.findSingle.date, 'DAFM');
       post.url = finder.findSingle.url;
       post.author = finder.findSingle.author;
       post.excerpt = truncate(finder.findSingle.body, 18);
       post.body = finder.findSingle.body;
       post.type = postType(post.excerpt);
+      post.isActive = compareDateTime(finder.findSingle.eventDate);
 
       res.status(200);
       return res.json({
@@ -100,4 +102,4 @@ class PostController extends DocumentController {
   }
 }
 
-export default new PostController();
+export default new EventController();

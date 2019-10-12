@@ -1,4 +1,4 @@
-import PostController from 'api/controller/post.controller';
+import EventController from 'api/controller/event.controller';
 
 const req = {
   query: {
@@ -25,30 +25,26 @@ const res = {
   status: code => code,
 };
 
-describe('PostController', () => {
-  req.params.slug = 'nigerian-senators-and-the-n5-5-billion-official-cars-matters-arising';
+describe('EventController', () => {
+  req.params.slug = 'ordinary-citizens-doing-extraordinary-things';
 
-  const finder = (PostController.find(req, res));
+  const finder = (EventController.find(req, res));
 
-  test('should find a single post', () => {
+  test('should find a single event', () => {
     expect(finder.success).toBe(true);
     expect(Object.keys(finder.data).length).toEqual(1);
   });
 
-  test('should find a post with the right url', () => {
-    expect(finder.data.post.url).toEqual('/blog/nigerian-senators-and-the-n5-5-billion-official-cars-matters-arising');
+  test('should find an event with the right url', () => {
+    expect(finder.data.post.url).toEqual('/events/ordinary-citizens-doing-extraordinary-things');
   });
 
-  test('should find a post with the right title', () => {
-    expect(finder.data.post.title).toEqual('Nigerian Senators and the N5.5 Billion Official Cars: Matters Arising!');
+  test('should find an event with the right title', () => {
+    expect(finder.data.post.title).toEqual('Ordinary Citizens Doing Extraordinary Things');
   });
 
-  test('should find a post with a published status ', () => {
+  test('should find an event with a published status ', () => {
     expect(finder.data.post.published).toBe(true);
-  });
-
-  test('should find a post with a null eventDate ', () => {
-    expect(finder.data.post.eventDate).toBeNull();
   });
 
   test('should find a post with a not featured status', () => {
@@ -56,9 +52,9 @@ describe('PostController', () => {
   });
 });
 
-describe('when it fails to find a post', () => {
+describe('when it fails to find an event', () => {
   req.params.slug = 'budget-tracking-and-citizens-engagement';
-  const finder = (PostController.find(req, res));
+  const finder = (EventController.find(req, res));
   test('should raise an error', () => {
     expect(finder.error.code).toBe(404);
     expect(finder.error.message).toEqual(`No post matched ${req.params.slug}`);
@@ -66,15 +62,15 @@ describe('when it fails to find a post', () => {
   });
 });
 
-describe('when finding all posts', () => {
-  const finder = (PostController.all(req, res));
+describe('when finding all events', () => {
+  const finder = (EventController.all(req, res));
 
-  test('should get valid response when quering all posts', () => {
+  test('should get valid response when quering all events', () => {
     expect(finder.success).toBe(true);
     expect(Object.keys(finder.data).length).toEqual(3);
   });
 
-  test('should find one or more post', () => {
+  test('should find one or more events', () => {
     expect(finder.data.posts).toBeDefined();
     expect(finder.data.posts.length).toBeGreaterThan(0);
   });
@@ -95,25 +91,25 @@ describe('when finding all posts', () => {
 describe('when query parameters are appended to the url', () => {
   test('should return sort value that matches sort query if it is vlaid', () => {
     req.query.sort = 'asc';
-    const finder = (PostController.all(req, res));
+    const finder = (EventController.all(req, res));
     expect(finder.data.sort).toBe('asc');
   });
 
   test('should return page number that matches page query if it is valid', () => {
-    req.query.page = 2;
-    const finder = (PostController.all(req, res));
-    expect(finder.data.pagination.currentPage).toBe(2);
+    req.query.page = 1;
+    const finder = (EventController.all(req, res));
+    expect(finder.data.pagination.currentPage).toBe(1);
   });
 
   test('should return limit number that matches limit query if it is valid', () => {
     req.query.limit = 20;
-    const finder = (PostController.all(req, res));
+    const finder = (EventController.all(req, res));
     expect(finder.data.pagination.perPage).toBe(20);
   });
 
   test('should return error when the page number is greater than number of available pages', () => {
     req.query.page = 200;
-    const finder = (PostController.all(req, res));
+    const finder = (EventController.all(req, res));
     expect(finder.data).toBeUndefined();
     expect(finder.error).toBeDefined();
   });
@@ -121,7 +117,7 @@ describe('when query parameters are appended to the url', () => {
   test('should return error object when a wrong sort query is given', () => {
     req.query.sort = 'foo';
     req.query.page = 1;
-    const finder = (PostController.all(req, res));
+    const finder = (EventController.all(req, res));
     expect(finder.data).toBeUndefined();
     expect(finder.error.message).toBe('Sorry, no content matched your criteria.');
   });
@@ -130,21 +126,22 @@ describe('when query parameters are appended to the url', () => {
 describe('post object definition', () => {
   test('should return a predefined post object', () => {
     req.query = { limit: '', page: '', sort: '' };
-    req.params.slug = 'nigerian-senators-and-the-n5-5-billion-official-cars-matters-arising';
-    const finder = (PostController.find(req, res));
+    req.params.slug = 'ordinary-citizens-doing-extraordinary-things';
+    const finder = (EventController.find(req, res));
 
     expect(finder.data.post).toEqual(expect.objectContaining({
       title: expect.any(String),
       slug: expect.any(String),
       published: expect.any(Boolean),
       featured: expect.any(Boolean),
-      eventDate: expect.any(Object),
+      eventDate: expect.any(String),
       date: expect.any(String),
       url: expect.any(String),
       excerpt: expect.any(String),
-      author: expect.any(String),
       body: expect.any(String),
+      author: expect.any(String),
       type: expect.any(String),
+      isActive: expect.any(Boolean),
     }));
   });
 });

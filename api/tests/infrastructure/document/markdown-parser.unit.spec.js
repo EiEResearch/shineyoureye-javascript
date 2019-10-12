@@ -50,7 +50,7 @@ foo: bar
     });
 
     test('should strip out any Prose/Jekyll {{site.baseurl}} markup', () => {
-      const expected = '<p><img src="/media/prose-images/infographic.png" alt="infographic.png" title="" /></p>';
+      const expected = '<p><img src="/media/prose-images/infographic.png" alt="infographic.png" /></p>';
       const contents = `---
 ---
 ![infographic.png]({{site.baseurl}}/media/prose-images/infographic.png)`;

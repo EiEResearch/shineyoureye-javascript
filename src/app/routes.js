@@ -1,10 +1,11 @@
 import AboutRoutes from '@/app/about/about-routes';
 import HomeRoutes from '@/app/home/home-routes';
-import BlogRoutes from '@/app/blog/blog-routes';
+import DocumentRoutes from '@/app/document/document-routes';
 
 export default [
   ...HomeRoutes,
   ...AboutRoutes,
-  ...BlogRoutes,
+  ...DocumentRoutes,
+  { path: '/feedback', redirect: { name: 'contact' } },
   { path: '*', component: () => import('@/app/shared/components/NotFound.vue') },
 ];

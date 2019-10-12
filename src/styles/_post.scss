@@ -46,3 +46,16 @@
     @extend .img-fluid, .rounded, .d-block, .text-center;
   }
 }
+
+.article-post{
+  table {
+    @extend .table, .table-striped;
+    thead {
+      @extend .thead-light;
+    }
+  }
+
+  img {
+    @extend .img-fluid, .rounded, .d-block, .text-center;
+  }
+}

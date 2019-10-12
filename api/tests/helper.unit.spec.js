@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import {
-  uuidv4, truncate, dateLocalization, postType, paginate,
+  uuidv4, truncate, dateLocalization, postType, paginate, compareDateTime,
 } from 'api/helper';
 
 describe('when utilities are loaded onto a file', () => {
@@ -70,31 +70,58 @@ each of them will get N50 million each.</p>`;
     test('should return empty string when empty string instead of date is passed', () => {
       expect(dateLocalization('')).toBe('');
     });
+
+    test('should return a full fate if F type and luxon date object is passed', () => {
+      const date = DateTime.fromISO('2019-06-27T16:30:00.000Z');
+      expect(dateLocalization(date, 'F')).toBe('Thursday, June 27, 2019, 6:30 PM South Africa Standard Time');
+    });
+  });
+
+  describe('whn compareDateTime is called', () => {
+    test('should return false if no dates are provided to be compared', () => {
+      expect(compareDateTime(undefined)).toBe(false);
+      expect(compareDateTime('', DateTime.local())).toBe(false);
+      expect(compareDateTime({}, DateTime.local())).toBe(false);
+      expect(compareDateTime(undefined, DateTime.local())).toBe(false);
+      expect(compareDateTime()).toBe(false);
+    });
+
+    test('should return false if date1 is less than date2', () => {
+      const date1 = DateTime.fromISO('2019-06-27T16:30:00.000Z');
+      const date2 = DateTime.local();
+      expect(compareDateTime(date1, date2)).toBe(false);
+    });
+
+    test('should return false if date1 is less than current date', () => {
+      const date1 = DateTime.fromISO('2019-06-27');
+      expect(compareDateTime(date1)).toBe(false);
+    });
+
+    test('should return true if date1 is greater than date2', () => {
+      const date1 = DateTime.local();
+      const date2 = DateTime.fromISO('2019-06-27T16:30:00.000Z');
+      expect(compareDateTime(date1, date2)).toBe(true);
+    });
+
+    test('should return true if date1 is in the future', () => {
+      const date1 = DateTime.local().plus({ months: 1 });
+      expect(compareDateTime(date1)).toBe(true);
+    });
+
+    test('should return true if date1 is in the future, and date2 is today', () => {
+      const date1 = DateTime.local().plus({ months: 1 });
+      const date2 = DateTime.local();
+      expect(compareDateTime(date1, date2)).toBe(true);
+    });
   });
 
   describe('when postType is called', () => {
-    test('should return article if no title and params are passed', () => {
-      expect(postType('', [])).toBe('article');
+    test('should return image if no content is passed', () => {
+      expect(postType('')).toBe('image');
     });
 
-    test('should return article type if title is passed but no params', () => {
-      expect(postType('SYE Week in Review', [])).toBe('article');
-    });
-
-    test('should return article type if title is passed and no matching words in params is passed', () => {
-      const params = ['nigeria', 'sale'];
-      expect(postType('SYE Week in Review', params)).toBe('article');
-    });
-
-    test('should return image type if params includes words from title', () => {
-      const params = ['week', 'review'];
-      expect(postType('SYE Week in Review', params)).toBe('image');
-    });
-
-    test('should return passed type if params includes words from title', () => {
-      const params = ['week', 'review'];
-      const output = 'blog';
-      expect(postType('SYE Week in Review', params, output)).toBe(output);
+    test('should return article type if content is passed', () => {
+      expect(postType('SYE Week in Review')).toBe('article');
     });
 
     test('should return article type if no args are passed', () => {
