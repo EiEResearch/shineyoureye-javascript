@@ -19,7 +19,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-
 // GO
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console

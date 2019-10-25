@@ -62,6 +62,11 @@ export default {
       });
     }
   },
+  metaInfo() {
+    return {
+      title: this.post.title,
+    };
+  },
   method: {
   },
 };

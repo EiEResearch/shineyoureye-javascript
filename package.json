@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "clean": "rm -rf node_modules", 
-    "reinstall": "npm run clean && npm install",    
+    "clean": "rm -rf node_modules",
+    "reinstall": "npm run clean && npm install",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint && cd api && npm run lint",
     "test:coverage": "vue-cli-service test:unit --coverage",
@@ -20,8 +20,10 @@
     "core-js": "^2.6.5",
     "lodash": "^4.17.15",
     "mutationobserver-shim": "^0.3.3",
+    "raven-js": "^3.27.2",
     "shelljs": "^0.8.3",
     "vue": "^2.6.10",
+    "vue-meta": "^2.3.1",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
   },

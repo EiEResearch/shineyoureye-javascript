@@ -1,4 +1,9 @@
 import axios from 'axios';
+import Raven from 'raven-js';
+
+Raven
+  .config(`https://${process.env.VUE_APP_SENTRY_KEY}@sentry.io/${process.env.VUE_APP_SENTRY_PROJECT}`)
+  .install();
 
 const httpClient = (baseUrl = null) => {
   const options = {
@@ -11,8 +16,9 @@ const httpClient = (baseUrl = null) => {
   client.interceptors.request.use(
     requestConfig => requestConfig,
     (requestError) => {
-      Raven.captureException(requestError);
-
+      if (process.env.NODE_ENV === 'production') {
+        Raven.captureException(requestError);
+      }
       return Promise.reject(requestError);
     },
   );
@@ -22,7 +28,9 @@ const httpClient = (baseUrl = null) => {
     response => response,
     (error) => {
       if (error.response.status >= 500) {
-        Raven.captureException(error);
+        if (process.env.NODE_ENV === 'production') {
+          Raven.captureException(error);
+        }
       }
 
       return Promise.reject(error);
