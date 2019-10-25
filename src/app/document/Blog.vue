@@ -81,6 +81,11 @@ export default {
       });
     }
   },
+  metaInfo() {
+    return {
+      title: this.title,
+    };
+  },
   methods: {
   },
 };
