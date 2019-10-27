@@ -40,7 +40,7 @@ class EventController extends DocumentController {
 
     posts = postsAll
       .map((post) => {
-        const p = { ...this.document };
+        const p = { ...JSON.stringify(DocumentController) };
         p.title = post.title;
         p.slug = post.slug;
         p.published = post.published;

@@ -15,8 +15,9 @@ export default class DocumentController {
     return new Finder(pattern, this.baseurl);
   }
 
-  get document() {
-    this.doc = {
+  // eslint-disable-next-line class-methods-use-this
+  toJSON() {
+    return {
       title: '',
       slug: '',
       published: '',
@@ -29,7 +30,5 @@ export default class DocumentController {
       body: '',
       type: '',
     };
-
-    return this.doc;
   }
 }
