@@ -40,7 +40,7 @@ class PostController extends DocumentController {
 
     posts = postsAll
       .map((post) => {
-        const p = { ...this.document };
+        const p = { ...JSON.stringify(DocumentController) };
         p.title = post.title;
         p.slug = post.slug;
         p.published = post.published;
@@ -70,7 +70,7 @@ class PostController extends DocumentController {
     const finder = this.finder(this.filePath.postPattern(req.params.slug.trim()));
 
     if (finder && finder.none === false) {
-      const post = { ...this.document };
+      const post = { ...JSON.stringify(DocumentController) };
       post.title = finder.findSingle.title;
       post.slug = finder.findSingle.slug;
       post.published = finder.findSingle.published;

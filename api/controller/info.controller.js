@@ -12,7 +12,7 @@ class InfoController extends DocumentController {
     const finder = this.finder(this.filePath.infoPattern(req.params.slug.trim()));
 
     if (finder && finder.none === false) {
-      const post = { ...this.document };
+      const post = { ...JSON.stringify(DocumentController) };
       post.title = finder.findSingle.title;
       post.slug = finder.findSingle.slug;
       post.published = finder.findSingle.published;
