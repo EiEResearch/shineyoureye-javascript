@@ -17,10 +17,10 @@
 
         <b-nav-item-dropdown text="Government Officials">
           <b-dropdown-item href="/info/government-officials">Government Officials</b-dropdown-item>
-          <b-dropdown-item href="#">Governors</b-dropdown-item>
-          <b-dropdown-item href="#">Senators</b-dropdown-item>
-          <b-dropdown-item href="#">Federal Representatives</b-dropdown-item>
-          <b-dropdown-item href="#">State Representatives</b-dropdown-item>
+          <b-dropdown-item href="/position/executive-governors">Governors</b-dropdown-item>
+          <b-dropdown-item href="/position/senators">Senators</b-dropdown-item>
+          <b-dropdown-item href="/position/federal-representatives">Federal Representatives</b-dropdown-item>
+          <b-dropdown-item href="/position/state-representatives">State Representatives</b-dropdown-item>
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown text="Places">

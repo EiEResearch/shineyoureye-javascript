@@ -22,6 +22,7 @@ module.exports = {
     }],
     'linebreak-style': [2, 'unix'],
     'vue/singleline-html-element-content-newline': 'off',
+    'consistent-return': 'off',
     'no-underscore-dangle': [2, { allowAfterThis: true }],
     'vue/max-attributes-per-line': [2,
       {
