@@ -3,7 +3,7 @@ import Raven from 'raven';
 require('dotenv').config({ path: '../.env.production.local' });
 
 Raven
-  .config(`https://${process.env.VUE_APP_API_SENTRY_KEY}@sentry.io/${process.env.VUE_APP_API_SENTRY_PROJECT}`)
+  .config(`https://${process.env.API_SENTRY_KEY}@sentry.io/${process.env.API_SENTRY_PROJECT}`)
   .install();
 
 export default (error) => {

@@ -22,7 +22,7 @@ export default class DocumentController {
       slug: '',
       published: '',
       featured: '',
-      eventDate: '',
+      event_date: '',
       date: '',
       url: '',
       excerpt: '',

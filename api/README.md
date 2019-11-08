@@ -82,7 +82,7 @@ Sample response
                 "slug": "sye-week-in-review-august-2",
                 "published": true,
                 "featured": false,
-                "eventDate": null,
+                "event_date": null,
                 "date": "August 6, 2019",
                 "url": "/blog/sye-week-in-review-august-2",
                 "excerpt": "",
@@ -95,7 +95,7 @@ Sample response
                 "slug": "buhari-s-ministerial-list-issues-and-matters-arising",
                 "published": true,
                 "featured": false,
-                "eventDate": null,
+                "event_date": null,
                 "date": "August 3, 2019",
                 "url": "/blog/buhari-s-ministerial-list-issues-and-matters-arising",
                 "excerpt": "52 days after he was sworn-in, President Muhammadu Buhari last week submitted the much-awaited ministerial nominees list to...",
@@ -135,7 +135,7 @@ Sample response
                 "slug": "sye-week-in-review-june-7-2019",
                 "published": true,
                 "featured": false,
-                "eventDate": null,
+                "event_date": null,
                 "date": "June 14, 2019",
                 "url": "/blog/sye-week-in-review-june-7-2019",
                 "excerpt": "",
@@ -148,7 +148,7 @@ Sample response
                 "slug": "the-9th-national-assembly-and-its-leadership-tussle-matters-arising",
                 "published": true,
                 "featured": false,
-                "eventDate": null,
+                "event_date": null,
                 "date": "June 14, 2019",
                 "url": "/blog/the-9th-national-assembly-and-its-leadership-tussle-matters-arising",
                 "excerpt": "The 9th National Assembly of the Federal Republic of Nigeria was inaugurated on June 11, 2019; the assembly...",
@@ -213,7 +213,7 @@ Sample response
             "slug": "sye-week-in-review-august-30",
             "published": true,
             "featured": false,
-            "eventDate": null,
+            "event_date": null,
             "date": "September 4, 2019",
             "url": "/blog/sye-week-in-review-august-30",
             "excerpt": "",
@@ -250,7 +250,7 @@ Retrieves a paginated list of events
 | Method | URL |
 |--|--|
 | GET | /events|
-| Optional Parameters | sort, limit, page |
+| Optional Parameters | sort, limit, page, status |
 
 Remember to URL encode your parameter strings.
 
@@ -267,34 +267,35 @@ Sample response
     "message": "data found",
     "data": {
         "sort": "desc",
+        "status": "all",
         "posts": [
             {
                 "title": "Ordinary Citizens Doing Extraordinary Things",
                 "slug": "ordinary-citizens-doing-extraordinary-things",
                 "published": true,
                 "featured": false,
-                "eventDate": "Thursday, June 27, 2019, 5:30 PM South Africa Standard Time",
+                "event_date": "Thursday, June 27, 2019, 5:30 PM South Africa Standard Time",
                 "date": "June 24, 2019",
                 "url": "/events/ordinary-citizens-doing-extraordinary-things",
                 "excerpt": "",
                 "author": "EiENigeria",
                 "body": "<p><img src=\"/media/prose-images/Ordinary%20Citizens%20Doing%20Extraordinary%20Things.jpg%20=800x\" alt=\"Ordinary Citizens Doing Extraordinary Things.jpg\" /></p>",
                 "type": "image",
-                "isActive": false
+                "is_active": false
             },
             {
                 "title": "Musical Concert for Active Citizens",
                 "slug": "musical-concert-for-active-citizens",
                 "published": true,
                 "featured": false,
-                "eventDate": "Friday, September 8, 2017, 9:57 PM South Africa Standard Time",
+                "event_date": "Friday, September 8, 2017, 9:57 PM South Africa Standard Time",
                 "date": "August 31, 2017",
                 "url": "/events/musical-concert-for-active-citizens",
                 "excerpt": "",
                 "author": "EiENigeria",
                 "body": "<p><img src=\"/media/prose-images/pic.jpeg\" alt=\"pic.jpeg\" /></p>",
                 "type": "image",
-                "isActive": false
+                "is_active": false
             }
         ],
         "pagination": {
@@ -311,7 +312,7 @@ Sample response
 Sample GET request
 ```
     - Events with parameters
-    /events?page=2&limit=2&sort=asc
+    /events?page=2&limit=2&sort=asc&sort=past
 ```
 Sample response
 ```json    
@@ -320,20 +321,21 @@ Sample response
     "message": "data found",
     "data": {
         "sort": "asc",
+        "status": "past",
         "posts": [
             {
                 "title": "Party Politics 101: The Good, Bad & Ugly",
                 "slug": "party-politics-101-the-good-bad-ugly",
                 "published": true,
                 "featured": false,
-                "eventDate": "Saturday, July 8, 2017, 12:00 PM South Africa Standard Time",
+                "event_date": "Saturday, July 8, 2017, 12:00 PM South Africa Standard Time",
                 "date": "June 21, 2017",
                 "url": "/events/party-politics-101-the-good-bad-ugly",
                 "excerpt": "",
                 "author": "EiENigeria",
                 "body": "<p><img src=\"/media/prose-images/PartyPolitics-The%20Good,Bad%20&%20Ugly.jpeg\" alt=\"Party Politics 101: The Good, Bad & Ugly\" /></p>",
                 "type": "image",
-                "isActive": false
+                "is_active": false
             }
         ],
         "pagination": {
@@ -391,14 +393,14 @@ Sample response
             "slug": "ordinary-citizens-doing-extraordinary-things",
             "published": true,
             "featured": false,
-            "eventDate": "Thursday, June 27, 2019, 5:30 PM South Africa Standard Time",
+            "event_date": "Thursday, June 27, 2019, 5:30 PM South Africa Standard Time",
             "date": "June 24, 2019",
             "url": "/events/ordinary-citizens-doing-extraordinary-things",
             "excerpt": "",
             "author": "EiENigeria",
             "body": "<p><img src=\"/media/prose-images/Ordinary%20Citizens%20Doing%20Extraordinary%20Things.jpg%20=800x\" alt=\"Ordinary Citizens Doing Extraordinary Things.jpg\" /></p>",
             "type": "image",
-            "isActive": false
+            "is_active": false
         }
       }
     }
@@ -447,7 +449,7 @@ Sample response
                 "slug": "about",
                 "published": true,
                 "featured": false,
-                "eventDate": null,
+                "event_date": null,
                 "date": null,
                 "url": "/info/about",
                 "excerpt": "Shine your Eye is an initiative...",
