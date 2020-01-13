@@ -11,7 +11,7 @@
               <div class="post-heading">
                 <h1>{{ post.title }}</h1>
                 <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
-                <span class="meta">Date and Time: {{ post.eventDate }} </span>
+                <span class="meta">Date and Time: {{ post.event_date }} </span>
               </div>
             </div>
           </div>
@@ -23,7 +23,7 @@
         <div class="container">
           <div class="row">
             <div :class="(post.type !== 'image') ? 'col-lg-8 col-md-10' : 'col-lg-11 col-md-12 image-post'"
-                 class="mx-auto d-flex article-post"
+                 class="mx-auto d-flex article-post justify-content-center"
             >
               <div v-html="post.body" />
             </div>
@@ -45,13 +45,18 @@ export default {
       post: {},
     };
   },
+  beforeRouteUpdate(to, from, next) {
+    this.$options.beforeRouteEnter(to, from, next);
+  },
   beforeRouteEnter: async (to, from, next) => {
     try {
       const { data } = await new DocumentFactory('events').find(to.params.slug).then(res => res.data);
       next((vue) => {
         const vm = vue;
-        vm.post = data.post;
-        vm.isMatched = true;
+        if (data.post) {
+          vm.post = data.post;
+          vm.isMatched = true;
+        }
       });
     } catch (error) {
       next((Vue) => {

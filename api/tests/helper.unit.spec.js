@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import {
-  uuidv4, truncate, dateLocalization, postType, paginate, compareDateTime,
+  uuidv4, truncate, dateLocalization, postType, paginate, compareDateTime, getSlug, first, last,
 } from 'api/helper';
 
 describe('when utilities are loaded onto a file', () => {
@@ -166,5 +166,43 @@ each of them will get N50 million each.</p>`;
       expect(content.previousPage).toBe(0);
       expect(content.nextPage).toBe(2);
     });
+  });
+
+  describe('when getSlug is called', () => {
+    test.each([['Okafor Nonso Peter', 'okafor-nonso-peter'],
+      ['Chukwuemeka Ihedioha', 'chukwuemeka-ihedioha'],
+      ['Biobarakuma Degi-Eremienyo', 'biobarakuma-degi-eremienyo'],
+      ['Beverly Ikpeazu-Nkemdiche', 'beverly-ikpeazu-nkemdiche'],
+      ['', ''],
+      ['%Name', 'name']])(
+      'should return valid slug for (%s)',
+      (input, expected) => {
+        expect(getSlug(input)).toBe(expected);
+      },
+    );
+  });
+
+  describe('when first() is called', () => {
+    test.each([['1,2,3,4,5,6,7', ',', '1'],
+      ['foo;bar;baz', ';', 'foo'],
+      ['1;2;3;4;5;6;7', undefined, '1'],
+      ['foo,bar,baz', undefined, 'foo,bar,baz']])(
+      'should return the first value before the seperator',
+      (input, seperator, expected) => {
+        expect(first(input, seperator)).toBe(expected);
+      },
+    );
+  });
+
+  describe('when last() is called', () => {
+    test.each([['1,2,3,4,5,6,7', ',', '7'],
+      ['foo;bar;baz', ';', 'baz'],
+      ['1;2;3;4;5;6;7', undefined, '7'],
+      ['foo,bar,baz', undefined, 'foo,bar,baz']])(
+      'should return the first value before the seperator',
+      (input, seperator, expected) => {
+        expect(last(input, seperator)).toBe(expected);
+      },
+    );
   });
 });

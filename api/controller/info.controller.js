@@ -11,7 +11,7 @@ class InfoController extends DocumentController {
 
   find(req, res) {
     try {
-      const finder = this.finder(this.filePath.infoPattern(req.params.slug.trim()));
+      const finder = this.finder(this.filePath.infoPattern((req.params.slug || '').toLowerCase().trim()));
 
       if (finder && finder.none === false) {
         const post = { ...JSON.stringify(DocumentController) };

@@ -66,6 +66,9 @@ export default {
   },
   created() {
   },
+  beforeRouteUpdate(to, from, next) {
+    this.$options.beforeRouteEnter(to, from, next);
+  },
   beforeRouteEnter: async (to, from, next) => {
     try {
       const { data } = await new DocumentFactory('posts').all({ page: to.query.page, limit: to.query.limit, sort: to.query.sort }).then(res => res.data);

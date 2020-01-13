@@ -10,6 +10,7 @@ const PORT = 3000;
 config(app);
 
 // UI
+app.use(express.static('public'));
 if (process.env.NODE_ENV === 'production') {
   const staticConf = { maxAge: '1y', etag: false };
   app.use(express.static(env.dist, staticConf));
