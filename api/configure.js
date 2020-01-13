@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import routes from 'api/routes';
+import logger from 'api/logger';
 
 // CORS Configuration
 const whitelist = ['http://example1.com', 'http://example2.com'];
@@ -23,20 +24,25 @@ export default (app) => {
   app.use(bodyParser.json());
 
   app.use((req, res, next) => {
+    try {
     // eslint-disable-next-line no-param-reassign
-    req.err = {
-      error: {
-        message: 'internal server error',
-        code: 500,
-        details: [],
-        target: req.path,
-      },
-    };
+      req.err = {
+        error: {
+          message: 'internal server error',
+          code: 500,
+          details: [],
+          target: req.path,
+        },
+      };
 
-    next();
+      next();
+    } catch (error) {
+      logger(error);
+    }
   });
 
   app.use('/api/posts', routes.post);
   app.use('/api/events', routes.event);
   app.use('/api/info', routes.info);
+  app.use('/api/people', routes.people);
 };

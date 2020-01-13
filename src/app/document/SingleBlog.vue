@@ -25,7 +25,7 @@
         <div class="container">
           <div class="row">
             <div :class="(post.type !== 'image') ? 'col-lg-8 col-md-10' : 'col-lg-11 col-md-12 image-post'"
-                 class="mx-auto d-flex article-post"
+                 class="mx-auto d-flex article-post justify-content-center"
             >
               <div class="table-responsive" v-html="post.body" />
             </div>
@@ -47,13 +47,18 @@ export default {
       post: {},
     };
   },
+  beforeRouteUpdate(to, from, next) {
+    this.$options.beforeRouteEnter(to, from, next);
+  },
   beforeRouteEnter: async (to, from, next) => {
     try {
       const { data } = await new DocumentFactory('posts').find(to.params.slug).then(res => res.data);
       next((vue) => {
         const vm = vue;
-        vm.post = data.post;
-        vm.isMatched = true;
+        if (data.post) {
+          vm.post = data.post;
+          vm.isMatched = true;
+        }
       });
     } catch (error) {
       next((Vue) => {

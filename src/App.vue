@@ -6,7 +6,8 @@
     <keep-alive>
       <header-component />
     </keep-alive>
-    <router-view />
+    <page-loader-component v-if="$store.state.loading" />
+    <router-view v-else />
   </div>
 </template>
 

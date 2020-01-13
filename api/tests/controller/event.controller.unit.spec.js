@@ -5,6 +5,7 @@ const req = {
     limit: '',
     page: '',
     sort: '',
+    status: '',
   },
   params: {
     slug: '',
@@ -67,7 +68,7 @@ describe('when finding all events', () => {
 
   test('should get valid response when quering all events', () => {
     expect(finder.success).toBe(true);
-    expect(Object.keys(finder.data).length).toEqual(3);
+    expect(Object.keys(finder.data).length).toEqual(4);
   });
 
   test('should find one or more events', () => {
@@ -134,14 +135,50 @@ describe('post object definition', () => {
       slug: expect.any(String),
       published: expect.any(Boolean),
       featured: expect.any(Boolean),
-      eventDate: expect.any(String),
+      event_date: expect.any(String),
       date: expect.any(String),
       url: expect.any(String),
       excerpt: expect.any(String),
       body: expect.any(String),
       author: expect.any(String),
       type: expect.any(String),
-      isActive: expect.any(Boolean),
+      is_active: expect.any(Boolean),
     }));
+  });
+});
+
+describe('events having a status parameter', () => {
+  test('should accept "past" parameter as valid input when searching for past events', () => {
+    req.query.status = 'past';
+    const finder = (EventController.all(req, res));
+
+    expect(finder.data.status).toBe('past');
+  });
+  test('should accept "future" parameter as valid input when searching for future events', () => {
+    // currently hitting prose directly to fetch future events, need to move this to interface level
+    // wont find results for future events if this passes.
+
+    req.query.status = 'future';
+    const finder = (EventController.all(req, res));
+
+    expect(finder.error.details.status).toEqual('future');
+    expect(finder.error.message).toEqual('Sorry, no content matched your criteria.');
+    expect(finder.error.code).toEqual(404);
+  });
+});
+
+describe('events methods should log error correctly', () => {
+  test('should log error to the log when all() is called', () => {
+    console.log = jest.fn();
+    EventController.all();
+    expect(console.log.mock.calls[0][0]).toBe('Error');
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'query' of undefined");
+  });
+
+  test('should log error to the log when find() is called', () => {
+    console.log = jest.fn();
+    EventController.find();
+    expect(console.log.mock.calls[0][0]).toBe('Error');
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'params' of undefined");
   });
 });

@@ -17,7 +17,7 @@ class PostController extends DocumentController {
     try {
       const limit = req.query.limit || 10;
       const page = req.query.page || 1;
-      const sort = req.query.sort || 'desc';
+      const sort = (req.query.sort || '').toLowerCase() || 'desc';
       let posts = [];
 
       let postsAll = this.finder(this.filePath.postsPattern).findAll;
@@ -73,7 +73,7 @@ class PostController extends DocumentController {
 
   find(req, res) {
     try {
-      const finder = this.finder(this.filePath.postPattern(req.params.slug.trim()));
+      const finder = this.finder(this.filePath.postPattern((req.params.slug || '').toLowerCase().trim()));
 
       if (finder && finder.none === false) {
         const post = { ...JSON.stringify(DocumentController) };

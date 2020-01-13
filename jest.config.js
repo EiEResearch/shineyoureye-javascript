@@ -18,6 +18,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^api/(.*)$': '<rootDir>/api/$1',
     '^home/(.*)$': '<rootDir>/$1',
+    raven: '<rootDir>/tests/.mocks/npm/raven.js',
   },
   snapshotSerializers: [
     'jest-serializer-vue',
@@ -40,6 +41,7 @@ module.exports = {
     '!<rootDir>/api/node_modules/**',
     '!<rootDir>/api/routes/**',
     '!<rootDir>/api/(server|configure).js',
+    '!<rootDir>/api/infrastructure/helpers/(sheets).js',
     '!<rootDir>/bin/**',
     '!<rootDir>/dist/**',
     '!<rootDir>/coverage/**',
