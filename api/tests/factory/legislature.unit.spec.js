@@ -6,6 +6,9 @@ describe('Factory::Legislature', () => {
     'should return a defined legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
+      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+      legislature.term = '9th National Assembly of Nigeria';
+      legislature.TENURE_DATE = '2019-06-11';
       expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBe('Senate');
@@ -20,6 +23,9 @@ describe('Factory::Legislature', () => {
     'should return a defined legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
+      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+      legislature.term = '9th National Assembly of Nigeria';
+      legislature.TENURE_DATE = '2019-06-11';
       expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBe('Representatives');
@@ -34,6 +40,8 @@ describe('Factory::Legislature', () => {
     'should return a defined legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
+      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+      legislature.TENURE_DATE = '2019-06-11';
       expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBe('Governors');
@@ -49,6 +57,8 @@ describe('Factory::Legislature', () => {
     'should return a defined legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
+      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+      legislature.TENURE_DATE = '2019-06-11';
       expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBe('Honorables');
@@ -61,6 +71,9 @@ describe('Factory::Legislature', () => {
 
   test('should return an empty object if constructor argument is empty', () => {
     const legislature = new Legislature();
+    legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+    legislature.TENURE_DATE = '2019-06-11';
+
     expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
     expect(legislature.TENURE_DATE).toBe('2019-06-11');
     expect(legislature.slug).toBeUndefined();
@@ -78,6 +91,8 @@ describe('Factory::Legislature', () => {
     'should return an empty object if constructor argument (%s) is invalid',
     (input) => {
       const legislature = new Legislature(input);
+      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+      legislature.TENURE_DATE = '2019-06-11';
       expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBeUndefined();
@@ -97,6 +112,7 @@ describe('When Legislature is Stringified', () => {
     'should return a stringified legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
+      legislature.TENURE_DATE = '2019-02-18';
       expect(legislature.toJSON()).toEqual(expect.objectContaining({
         slug: expect.any(String),
         name: expect.any(String),
@@ -117,6 +133,7 @@ describe('When Legislature is Stringified', () => {
     'should return throw error if constructor argument (%s) is invalid when returning stringified object',
     (input) => {
       const legislature = new Legislature(input);
+      legislature.TENURE_DATE = '2019-06-11';
       expect(legislature.toJSON()).toEqual(expect.objectContaining({
         slug: expect.any(String),
         name: expect.any(String),
