@@ -25,9 +25,10 @@
 
         <b-nav-item-dropdown text="Places">
           <b-dropdown-item href="/info/places-overview">Places</b-dropdown-item>
-          <b-dropdown-item href="/place/is/state">States</b-dropdown-item>
-          <b-dropdown-item href="/place/is/senatorial-district">Senatorial Districts</b-dropdown-item>
-          <b-dropdown-item href="/place/is/federal-constituency">Federal Constituenncies</b-dropdown-item>
+          <b-dropdown-item href="/places/state">States</b-dropdown-item>
+          <b-dropdown-item href="/places/senatorial-district">Senatorial Districts</b-dropdown-item>
+          <b-dropdown-item href="/places/federal-constituency">Federal Constituencies</b-dropdown-item>
+          <b-dropdown-item href="/places/state-constituency">State Constituencies</b-dropdown-item>
         </b-nav-item-dropdown>
 
         <b-nav-item href="/events">Events</b-nav-item>

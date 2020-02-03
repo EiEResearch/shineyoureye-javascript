@@ -9,3 +9,5 @@ Vue.component('HeaderComponent', HeaderComponent);
 Vue.component('NavComponent', () => import('./Nav.vue'));
 Vue.component('NotFoundComponent', () => import('./NotFound.vue'));
 Vue.component('PageLoaderComponent', () => import('./PageLoader.vue'));
+Vue.component('PositionLoaderComponent', () => import('./PositionLoader.vue'));
+Vue.component('PlacesLoaderComponent', () => import('./PlacesLoader.vue'));

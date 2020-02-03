@@ -45,4 +45,6 @@ export default (app) => {
   app.use('/api/events', routes.event);
   app.use('/api/info', routes.info);
   app.use('/api/people', routes.people);
+  app.use('/api/places', routes.places);
+  app.use('/api/test', routes.test);
 };

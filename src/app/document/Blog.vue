@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <!-- Page Header -->
     <header class="masthead">
       <div class="overlay" />
@@ -74,7 +74,7 @@ export default {
       const { data } = await new DocumentFactory('posts').all({ page: to.query.page, limit: to.query.limit, sort: to.query.sort }).then(res => res.data);
       next((vue) => {
         const vm = vue;
-        vm.posts = data.posts;
+        vm.posts = Object.freeze(data.posts);
         vm.pagination = data.pagination;
       });
     } catch (error) {

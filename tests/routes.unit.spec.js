@@ -2,7 +2,7 @@ import VueRouter from 'vue-router';
 import { mount, createLocalVue } from '@vue/test-utils';
 import routes from '@/app/routes';
 import NotFoundComponent from '@/app/shared/components/NotFound.vue';
-import AboutComponent from '@/app/about/About.vue';
+// import AboutComponent from '@/app/about/About.vue';
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
@@ -50,24 +50,24 @@ describe('when route is not defined', () => {
   });
 });
 
-describe('when about route is defined', () => {
-  test('should return an AboutComponent', async () => {
-    try {
-      const router = new VueRouter({
-        mode: 'abstract',
-        routes,
-      });
-      const wrapper = mount(AboutComponent, {
-        localVue,
-        router,
-      });
+// describe('when about route is defined', () => {
+//   test('should return an AboutComponent', async () => {
+//     try {
+//       const router = new VueRouter({
+//         mode: 'abstract',
+//         routes,
+//       });
+//       const wrapper = mount(AboutComponent, {
+//         localVue,
+//         router,
+//       });
 
-      router.push('/about');
-      await wrapper.vm.$nextTick();
+//       router.push('/about');
+//       await wrapper.vm.$nextTick();
 
-      expect(wrapper.find(AboutComponent).exists()).toBe(true);
-    } catch (error) {
-      console.log(error);
-    }
-  });
-});
+//       expect(wrapper.find(AboutComponent).exists()).toBe(true);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   });
+// });
