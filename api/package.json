@@ -7,6 +7,7 @@
     "test": "cd ../ && npm run test",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
+    "prose": "cd ../ && node bin/prepare-data.js",
     "start": "nodemon server.js --exec babel-node --ignore=node_modules",
     "eslint": "eslint --ext */*.*.js */*.js *.*.js *.js -c ../.eslintrc.js --ignore-pattern '!.eslintrc.js' --fix",
     "lint": "npm run eslint"
@@ -39,6 +40,7 @@
     "glob": "^7.1.4",
     "googleapis": "^39.2.0",
     "luxon": "^1.19.3",
+    "node-cache": "^5.1.0",
     "parse-md": "^2.0.2",
     "raven": "^2.6.4",
     "showdown": "^1.9.0",
