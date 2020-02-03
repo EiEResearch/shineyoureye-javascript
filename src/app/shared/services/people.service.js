@@ -4,7 +4,7 @@ export default class PeopleService {
   constructor(legislature) {
     this.legislature = legislature;
     this.baseUrl = '/people/';
-    this.client = ApiService;
+    this.client = new ApiService();
   }
 
   findAll() {

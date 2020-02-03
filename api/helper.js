@@ -97,10 +97,24 @@ export const getSlug = (text) => {
     .replace(/\s+/g, '-') // Replace spaces with -
     .replace(/&/g, '-and-') // Replace & with 'and'
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/[^\w\-]+/g, '-') // Replace all non-word chars with -
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, ''); // Trim - from end of text
+};
+
+export const findDuplicates = (arr) => {
+  const sortedArr = arr.slice().sort(); // You can define the comparing function here.
+  // JS by default uses a crappy string compare.
+  // (we use slice to clone the array so the
+  // original array won't be modified)
+  const results = [];
+  for (let i = 0; i < sortedArr.length - 1; i += 1) {
+    if (sortedArr[i + 1] === sortedArr[i]) {
+      results.push(sortedArr[i]);
+    }
+  }
+  return results;
 };
 
 export const env = {

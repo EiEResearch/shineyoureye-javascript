@@ -6,13 +6,20 @@
     <keep-alive>
       <header-component />
     </keep-alive>
-    <page-loader-component v-if="$store.state.loading" />
+    <position-loader-component v-if="$store.state.loading && (
+      $store.state.route.toLowerCase() === 'position')"
+    />
+    <places-loader-component v-else-if="$store.state.loading && (
+      $store.state.route.toLowerCase() === 'places')"
+    />
+    <page-loader-component v-else-if="$store.state.loading" />
     <router-view v-else />
   </div>
 </template>
 
 <script>
 export default {
+  name: 'App',
   metaInfo: {
     // if no subcomponents specify a metaInfo.title, this title will be used
     title: 'Home',

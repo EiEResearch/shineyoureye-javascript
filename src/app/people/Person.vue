@@ -27,6 +27,7 @@
 import PeopleService from '@/app/shared/services/people.service';
 
 export default {
+  name: 'Person',
   data() {
     return {
       person: [],
@@ -42,8 +43,8 @@ export default {
         organization: (this.person[0] || {}).organization || 'Politicans',
         position: (this.person[0] || {}).position || 'Politican',
         legislative_period: (this.person[0] || {}).legislative_period || 'Nigeria',
-        start_date: (this.person[0] || {}).start_date || '2019-02-28',
-        end_date: (this.person[0] || {}).end_date || 'current',
+        start_date: (this.person[0] || {}).start_date || process.env.VUE_APP_LEGISLATURE_START_DATE,
+        end_date: (this.person[0] || {}).end_date || process.env.VUE_APP_LEGISLATURE_END_DATE,
         profile: (this.person[0].persons[0]) || {},
       };
     },

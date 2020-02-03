@@ -6,13 +6,13 @@ import ApiService from '@/app/shared/services/api.service';
 export default class DocumentFactory {
   constructor(type) {
     if (type && type.toLowerCase() === 'posts') {
-      return new PostService('/posts', ApiService);
+      return new PostService('/posts', new ApiService());
     }
     if (type && type.toLowerCase() === 'info') {
-      return new InfoService('/info', ApiService);
+      return new InfoService('/info', new ApiService());
     }
     if (type && type.toLowerCase() === 'events') {
-      return new EventService('/events', ApiService);
+      return new EventService('/events', new ApiService());
     }
   }
 }

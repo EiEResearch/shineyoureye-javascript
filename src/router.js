@@ -16,7 +16,7 @@ router.beforeEach((to, from, next) => {
   // If this isn't an initial page load.
   if (to.name) {
     // Start the skeleton animation.
-    store.commit('setLoading', true);
+    store.commit('setLoading', { loading: true, path: to.path });
   }
   next();
 });
@@ -25,14 +25,14 @@ router.beforeResolve((to, from, next) => {
   // If this is an initial page load.
   if (to.name) {
     // Start the skeleton animation.
-    store.commit('setLoading', true);
+    store.commit('setLoading', { loading: true, path: to.path });
   }
   next();
 });
 
 router.afterEach((to, from) => {
   // Complete the animation of the skeleton.
-  store.commit('setLoading', false);
+  store.commit('setLoading', { loading: false, path: to.path });
 });
 
 export default router;

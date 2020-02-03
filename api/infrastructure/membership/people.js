@@ -16,7 +16,7 @@ export default class People {
       if (data.valueRanges === undefined) return response;
 
       data.valueRanges.map((res, index) => {
-        const range = res.range.substring(0, res.range.indexOf('_')).toLowerCase();
+        const range = res.range.substring(0, res.range.indexOf('_')).toLowerCase().trim();
         const legislature = new Legislature(range).toJSON();
 
         response.push({
@@ -137,7 +137,7 @@ export default class People {
       if (!data) return res;
       res = data.map((val) => {
         const people = val.persons
-          .filter(s => (s.state || {}).toLowerCase() === (state || '').toLowerCase())
+          .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
           .reduce((r, a) => {
           /**
            * r[a.state] = [...r[a.state]] || []
@@ -236,7 +236,7 @@ export default class People {
 
       for (let key = 0; key < data.length; key += 1) {
         const val = data[key];
-        const people = val.persons.filter(item => (item.slug || '').toLowerCase() === (slug || '').toLowerCase());
+        const people = val.persons.filter(item => (item.slug || '').toLowerCase().trim() === (slug || '').toLowerCase().trim());
         if (people && people.length) {
           val.persons = [...people];
           res.push(val);
