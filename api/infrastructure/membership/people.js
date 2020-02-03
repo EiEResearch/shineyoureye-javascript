@@ -1,4 +1,5 @@
-import Sheets from 'api/infrastructure/helpers/sheets';
+import Sheets from 'api/infrastructure/services/sheets';
+import CacheService from 'api/infrastructure/services/cache';
 import Person from 'api/infrastructure/membership/person';
 import Legislature from 'api/factory/legislature';
 import logger from 'api/logger';
@@ -6,11 +7,12 @@ import logger from 'api/logger';
 export default class People {
   constructor(legislature) {
     this.legislature = legislature;
+    this.cache = new CacheService();
   }
 
   async allPeople() {
     try {
-      const data = await Sheets.get(this.legislature);
+      const data = await this.cache.get(`${this.legislature}_allPeople`, () => Sheets.get(this.legislature));
       const response = [];
 
       if (data.valueRanges === undefined) return response;

@@ -41,7 +41,7 @@ module.exports = {
     '!<rootDir>/api/node_modules/**',
     '!<rootDir>/api/routes/**',
     '!<rootDir>/api/(server|configure).js',
-    '!<rootDir>/api/infrastructure/helpers/(sheets).js',
+    '!<rootDir>/api/infrastructure/services/*.js',
     '!<rootDir>/bin/**',
     '!<rootDir>/dist/**',
     '!<rootDir>/coverage/**',
