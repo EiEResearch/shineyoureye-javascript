@@ -5,7 +5,7 @@
   "scripts": {
     "prose": "node bin/prepare-data.js",
     "serve": "vue-cli-service serve",
-    "build": "npm run prose && vue-cli-service build && cd api && npm install && npm run start",
+    "build": "npm run prose && vue-cli-service build && cd api && node server.js",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
     "test": "vue-cli-service test:unit",
