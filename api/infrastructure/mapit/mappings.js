@@ -4,11 +4,11 @@ import { env, getSlug } from 'api/helper';
 import logger from 'api/logger';
 
 
-const lga = require(`${env.mapit}\\LGA.json`);
-const sta = require(`${env.mapit}\\STA.json`);
-const fed = require(`${env.mapit}\\FED.json`);
-const sen = require(`${env.mapit}\\SEN.json`);
-const mapitPlaces = require(`${env.mapit}\\mapit.json`);
+const lga = require(`${env.mapit}/LGA.json`);
+const sta = require(`${env.mapit}/STA.json`);
+const fed = require(`${env.mapit}/FED.json`);
+const sen = require(`${env.mapit}/SEN.json`);
+const mapitPlaces = require(`${env.mapit}/mapit.json`);
 
 export default class Mappings {
   constructor(place) {

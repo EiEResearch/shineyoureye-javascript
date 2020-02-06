@@ -44,8 +44,8 @@ export default class Place {
 
   thumbnailImage() {
     try {
-      const placeholder = `${env.localImageThumbnailUrl}\\${this.slug}.jpg`;
-      const placeholderAlt = `${env.localImageThumbnailUrl}\\${this.slug}-state.jpg`;
+      const placeholder = `${env.localImageThumbnailUrl}/${this.slug}.jpg`;
+      const placeholderAlt = `${env.localImageThumbnailUrl}/${this.slug}-state.jpg`;
       if (existsSync(placeholder)) {
         return `${env.appUrl}/images/thumbnails/${this.slug}.jpg`;
       } if (existsSync(placeholderAlt)) {

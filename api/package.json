@@ -25,7 +25,8 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
@@ -45,18 +46,6 @@
     "showdown": "^1.9.1",
     "tmp": "^0.1.0",
     "truncate-html": "^1.0.3",
-    "validator": "^11.1.0",
-    "nodemon": "^1.19.2",
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/node": "^7.6.2",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.6.2",
-    "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "eslint": "^6.4.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+    "validator": "^11.1.0"
   }
 }

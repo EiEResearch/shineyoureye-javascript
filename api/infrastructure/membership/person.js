@@ -35,7 +35,7 @@ export default class Person {
     proxyImageVariant(size) {
       try {
         if (!this.person.image_url) {
-          const placeholder = `${env.localImageUrl}\\person-250x250.png`;
+          const placeholder = `${env.localImageUrl}/person-250x250.png`;
           if (existsSync(placeholder)) {
             return `${env.appUrl}/images/person-250x250.png`;
           }
