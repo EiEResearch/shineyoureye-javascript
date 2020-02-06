@@ -83,14 +83,21 @@ class PlaceController {
 
           return key;
         });
+
+        res.status(200);
+        return res.json({
+          success: true,
+          message: 'data found',
+          data,
+        });
       }
 
-      res.status(200);
-      return res.json({
-        success: true,
-        message: 'data found',
-        data,
-      });
+      req.err.error.message = 'Sorry, no content matched your request.';
+      req.err.error.code = 404;
+      req.err.error.details = req.query;
+
+      res.status(404);
+      return res.json(req.err);
     } catch (error) {
       logger(error);
     }

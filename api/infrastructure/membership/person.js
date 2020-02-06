@@ -5,8 +5,11 @@ import { existsSync } from 'fs';
 import FilePathsHelper from 'api/infrastructure/helpers/file-path';
 import Finder from 'api/infrastructure/document/finder';
 import Place from 'api/infrastructure/mapit/place';
+import CacheService from 'api/infrastructure/services/cache';
 
 import logger from 'api/logger';
+
+const cache = new CacheService();
 
 export default class Person {
     SIZE = ['thumbnail', 'medium', 'original'];
@@ -71,7 +74,7 @@ export default class Person {
 
     mapit() {
       const place = { legislature: this.legislature_slug, id: this.person.mapit_id, name: this.person.state };
-      return new Place(place).toJSON();
+      return cache.get(`mapit_${place.id}_${place.legislature}`, new Place(place).toJSON());
     }
 
     // Person Attribute

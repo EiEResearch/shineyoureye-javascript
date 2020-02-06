@@ -6,16 +6,31 @@ class Cache {
     this.cache = new NodeCache({ stdTTL: ttlSeconds, checkperiod: ttlSeconds * 0.2, useClones: false });
   }
 
-  get(key, storeFunction) {
+  get(k, storeFunction) {
+    const key = k || '';
     const value = this.cache.get(key);
     if (value !== undefined) {
-      return Promise.resolve(value);
+      return value;
     }
 
-    return storeFunction().then((result) => {
+    switch (typeof storeFunction) {
+      case 'function':
+        return this.setFunction(key, storeFunction);
+      default:
+        return this.setObject(key, storeFunction);
+    }
+  }
+
+  setFunction(key, func) {
+    return func().then((result) => {
       this.cache.set(key, result);
       return result;
     });
+  }
+
+  setObject(key, obj) {
+    this.cache.set(key, obj);
+    return obj;
   }
 
   del(keys) {

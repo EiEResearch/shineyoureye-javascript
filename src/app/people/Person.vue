@@ -50,7 +50,14 @@ export default {
     },
   },
   beforeRouteUpdate(to, from, next) {
-    this.$options.beforeRouteEnter(to, from, next);
+    try {
+      this.$options.beforeRouteEnter(to, from, next);
+    } catch (error) {
+      next((Vue) => {
+        const vm = Vue;
+        vm.$logger(error);
+      });
+    }
   },
   beforeRouteEnter: async (to, from, next) => {
     try {
@@ -66,10 +73,7 @@ export default {
         next();
       });
     } catch (error) {
-      next((Vue) => {
-        const vm = Vue;
-        vm.$logger(error);
-      });
+      next({ name: 'error', params: [to.path], replace: true });
     }
   },
 };

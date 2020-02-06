@@ -9,5 +9,5 @@ export default [
   ...PeopleRoutes,
   ...PlacesRoutes,
   { path: '/feedback', redirect: { name: 'contact' } },
-  { path: '*', component: () => import('@/app/shared/components/NotFound.vue') },
+  { path: '*', name: 'error', component: () => import('@/app/shared/components/NotFound.vue') },
 ];

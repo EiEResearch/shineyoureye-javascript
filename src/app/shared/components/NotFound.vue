@@ -7,5 +7,10 @@
 <script>
 export default {
   name: 'NotFoundComponent',
+  metaInfo() {
+    return {
+      title: 'Page not found',
+    };
+  },
 };
 </script>
