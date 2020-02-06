@@ -1,0 +1,1 @@
+web: npm run build cd api npm run start
