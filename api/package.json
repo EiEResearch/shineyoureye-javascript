@@ -42,9 +42,8 @@
     "luxon": "^1.19.3",
     "node-cache": "^5.1.0",
     "parse-md": "^2.0.2",
-    "pm2": "^4.2.3",
     "raven": "^2.6.4",
-    "showdown": "^1.9.0",
+    "showdown": "^1.9.1",
     "tmp": "^0.1.0",
     "truncate-html": "^1.0.3",
     "validator": "^11.1.0"
