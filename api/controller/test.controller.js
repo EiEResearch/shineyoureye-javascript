@@ -3,7 +3,7 @@ import Mappings from 'api/infrastructure/mapit/mappings';
 import People from 'api/infrastructure/membership/people';
 import Legislature from '../factory/legislature';
 
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: '../.env.production' });
 
 class TestController {
   // eslint-disable-next-line class-methods-use-this
