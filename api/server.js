@@ -4,7 +4,7 @@ import config from 'api/configure';
 import env from 'home/env';
 
 const app = express();
-const PORT = 3000;
+const PORT = (process.env.NODE_ENV === 'production') ? 80 : 3000;
 
 // API
 config(app);

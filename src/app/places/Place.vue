@@ -176,7 +176,14 @@ export default {
     };
   },
   beforeRouteUpdate(to, from, next) {
-    this.$options.beforeRouteEnter(to, from, next);
+    try {
+      this.$options.beforeRouteEnter(to, from, next);
+    } catch (error) {
+      next((Vue) => {
+        const vm = Vue;
+        vm.$logger(error);
+      });
+    }
   },
   beforeRouteEnter: async (to, from, next) => {
     try {
@@ -201,9 +208,6 @@ export default {
         geojson = await new PlacesService().getGeometryGeoJson(result.place.id);
         geometry = await new PlacesService().getGeometry(result.place.id);
       }
-      console.log(result.place.id);
-      console.log(geojson);
-      console.log(geometry);
 
       next((vue) => {
         const vm = vue;
@@ -216,10 +220,7 @@ export default {
         next();
       });
     } catch (error) {
-      next((Vue) => {
-        const vm = Vue;
-        vm.$logger(error);
-      });
+      next({ name: 'error', params: [to.path], replace: true });
     }
   },
   methods: {

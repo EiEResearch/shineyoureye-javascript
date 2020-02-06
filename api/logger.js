@@ -1,6 +1,6 @@
 import Raven from 'raven';
 
-require('dotenv').config({ path: '../.env.production.local' });
+require('dotenv').config({ path: '../.env' });
 
 Raven
   .config(`https://${process.env.API_SENTRY_KEY}@sentry.io/${process.env.API_SENTRY_PROJECT}`)

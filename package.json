@@ -6,6 +6,7 @@
     "prose": "node bin/prepare-data.js",
     "serve": "vue-cli-service serve",
     "build": "npm run prose && vue-cli-service build",
+    "start": "HOST='0.0.0.0' PORT=80 npm run build",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
     "test": "vue-cli-service test:unit",
@@ -57,7 +58,6 @@
   },
   "lint-staged": {
     "*.{js,vue}": [
-      "npm run lint -- --fix",
       "git add"
     ]
   }

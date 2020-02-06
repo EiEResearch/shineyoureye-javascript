@@ -1,7 +1,6 @@
 <template>
   <div>
-    <not-found-component v-if="!isMatched" />
-    <div v-else id="single-blog">
+    <div id="single-blog">
       <!-- Page Header -->
       <header class="masthead">
         <div class="overlay" />
@@ -43,12 +42,18 @@ export default {
   name: 'SingleBlog',
   data() {
     return {
-      isMatched: false,
       post: {},
     };
   },
   beforeRouteUpdate(to, from, next) {
-    this.$options.beforeRouteEnter(to, from, next);
+    try {
+      this.$options.beforeRouteEnter(to, from, next);
+    } catch (error) {
+      next((Vue) => {
+        const vm = Vue;
+        vm.$logger(error);
+      });
+    }
   },
   beforeRouteEnter: async (to, from, next) => {
     try {
@@ -57,14 +62,10 @@ export default {
         const vm = vue;
         if (data.post) {
           vm.post = data.post;
-          vm.isMatched = true;
         }
       });
     } catch (error) {
-      next((Vue) => {
-        const vm = Vue;
-        vm.$logger(error);
-      });
+      next({ name: 'error', params: [to.path], replace: true });
     }
   },
   metaInfo() {
