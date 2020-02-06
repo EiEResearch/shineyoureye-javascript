@@ -1,1 +1,1 @@
-web: cd api npm run start
+web: node api/server.js --exec babel-node --ignore=node_modules
