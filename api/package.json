@@ -8,6 +8,7 @@
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
     "prose": "cd ../ && node bin/prepare-data.js",
+    "build": "npm run reinstall && npm run start",
     "start": "nodemon server.js --exec babel-node --ignore=node_modules",
     "eslint": "eslint --ext */*.*.js */*.js *.*.js *.js -c ../.eslintrc.js --ignore-pattern '!.eslintrc.js' --fix",
     "lint": "npm run eslint"

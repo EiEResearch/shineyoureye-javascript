@@ -1,9 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import Mappings from 'api/infrastructure/mapit/mappings';
 import People from 'api/infrastructure/membership/people';
-import Legislature from '../factory/legislature';
-
-require('dotenv').config({ path: '../.env.production' });
+import Legislature from 'api/factory/legislature';
 
 class TestController {
   // eslint-disable-next-line class-methods-use-this

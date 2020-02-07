@@ -6,7 +6,7 @@ import trunc from 'truncate-html';
 import { DateTime } from 'luxon';
 
 const path = require('path');
-require('dotenv').config({ path: '../.env.production' });
+require('dotenv').config({ path: (process.env.NODE_ENV === 'production') ? '../.env.production' : '../.env.development' });
 
 export const uuidv4 = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ crypto.pseudoRandomBytes(256)[0] & 15 >> c / 4).toString(16));
 
