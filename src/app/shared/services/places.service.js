@@ -4,7 +4,7 @@ export default class PlaceService {
   constructor() {
     this.baseUrl = '/places';
     this.client = new ApiService();
-    this.mapit = new ApiService('http://nigeria.mapit.mysociety.org/area/');
+    this.mapit = new ApiService(process.env.VUE_APP_MAPIT_URL);
   }
 
   findPlacesPeopleBySlug(slug) {
@@ -16,10 +16,10 @@ export default class PlaceService {
   }
 
   getGeometryGeoJson(id) {
-    return this.mapit.get(`${id}.geojson`);
+    return this.mapit.get(`/area/${id}.geojson`);
   }
 
   getGeometry(id) {
-    return this.mapit.get(`${id}/geometry`);
+    return this.mapit.get(`/area/${id}/geometry`);
   }
 }
