@@ -5,7 +5,7 @@
   "scripts": {
     "prose": "node bin/prepare-data.js",
     "serve": "vue-cli-service serve",
-    "build": "npm run prose && npm run reinstall && vue-cli-service build",
+    "build": "npm run prose && vue-cli-service build",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
     "test": "vue-cli-service test:unit",
@@ -57,6 +57,7 @@
   },
   "lint-staged": {
     "*.{js,vue}": [
+      "npm run lint -- --fix",
       "git add"
     ]
   }
