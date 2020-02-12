@@ -14,6 +14,9 @@
     />
     <page-loader-component v-else-if="$store.state.loading" />
     <router-view v-else />
+    <keep-alive>
+      <footer-component />
+    </keep-alive>
   </div>
 </template>
 
