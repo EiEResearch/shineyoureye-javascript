@@ -4,8 +4,10 @@
 
 import Vue from 'vue';
 import HeaderComponent from './Header.vue';
+import FooterComponent from './Footer.vue';
 
 Vue.component('HeaderComponent', HeaderComponent);
+Vue.component('FooterComponent', FooterComponent);
 Vue.component('NavComponent', () => import('./Nav.vue'));
 Vue.component('NotFoundComponent', () => import('./NotFound.vue'));
 Vue.component('PageLoaderComponent', () => import('./PageLoader.vue'));
