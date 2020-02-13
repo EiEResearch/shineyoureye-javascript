@@ -1,19 +1,19 @@
 <template>
-  <div>
+  <div id="page-container">
     <keep-alive>
       <nav-component />
     </keep-alive>
     <keep-alive>
       <header-component />
     </keep-alive>
-    <position-loader-component v-if="$store.state.loading && (
+    <position-loader-component class="mb-5" v-if="$store.state.loading && (
       $store.state.route.toLowerCase() === 'position')"
     />
-    <places-loader-component v-else-if="$store.state.loading && (
+    <places-loader-component class="mb-5" v-else-if="$store.state.loading && (
       $store.state.route.toLowerCase() === 'places')"
     />
-    <page-loader-component v-else-if="$store.state.loading" />
-    <router-view v-else />
+    <page-loader-component class="mb-5" v-else-if="$store.state.loading" />
+    <router-view v-else class="mb-5" />
     <keep-alive>
       <footer-component />
     </keep-alive>

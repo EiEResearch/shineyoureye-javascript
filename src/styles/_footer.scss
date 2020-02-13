@@ -1,45 +1,53 @@
 .bd-footer {
 	font-size: .875rem;
 	text-align: center;
-    background-color: #f7f7f7;
-    width: 100%;
-    bottom: 0;
+	background-color: $site-header-background-color;
+    clear: both;
+    margin-top:auto; 
+	width: 100%;
+
 	a {
-		font-weight: 600;
-		color: #495057;
-		&:focus,
-		&:hover {
-			color: #007bff
+		font-weight: 500;
+		color: mix($site-footer-background-color, $site-footer-text-color, 80%);
+		
+        &:focus,
+        &.focus,
+        &:hover,
+        &:active,
+        &.active {
+			color: $teal;
 		}
 		p {
-			margin-bottom: 0
+			margin-bottom: 0;
 		}
 	}
-	a[href^="mailto:"]:before {
-		background-image: url('../../public/images/email-icon.png');
-		background-image: url('../../public/images/email-icon.svg'), none;
+	a[href^="mailto:"] {
+		&:before {
+			@include high-dpi-background-image('../../public/images/email-icon');
+			margin-right: 0.3em;
+		}
 	}
-	a[href*="twitter.com"]:before {
-		background-image: url(../../public/images/twitter-icon.png);
-		background-image: url(../../public/images/twitter-icon.svg), none;
-		margin-right: 0.3em;
+	a[href*="twitter.com"] {
+		&:before {
+			@include high-dpi-background-image('../../public/images/twitter-icon');
+			margin-right: 0.3em;
+		}
 	}
-	a[href^="mailto:"]:before,
-	a[href*="twitter.com"]:before {
-		display: inline-block;
-		content: "";
-		margin-right: 0.5em;
-		vertical-align: -0.2em;
-		width: 20px;
-		height: 16px;
-		background-color: transparent;
-		background-size: 20px 16px;
+	a[href^="mailto:"],
+	a[href*="twitter.com"] {
+		&:before{
+            display: inline-block;
+            content: "";
+            margin-right: 0.5em;
+            vertical-align: -0.2em;
+            width: 20px;
+            height: 16px;
+            background-color: transparent;
+            background-size: 20px 16px;
+		}
 	}
 }
 
-// .bd-footer a:focus,.bd-footer a:hover {
-//     color: #007bff
-// }
 .bd-footer-links {
 	padding-left: 0;
 	margin-bottom: 1rem;
@@ -51,8 +59,8 @@
 	}
 }
 
-@include media-breakpoint-up(sm) {
-	.bd-footer {
-		text-align: left
-	}
-}
+// @include media-breakpoint-up(sm) {
+// 	.bd-footer {
+// 		text-align: left
+// 	}
+// }

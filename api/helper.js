@@ -118,8 +118,8 @@ export const findDuplicates = (arr) => {
 };
 
 export const env = {
-  localImageUrl: path.resolve(path.join(__dirname, 'public/images')),
-  localImageThumbnailUrl: path.resolve(path.join(__dirname, 'public/images/thumbnails')),
+  localImageUrl: path.resolve(path.join(__dirname, 'public/img')),
+  localImageThumbnailUrl: path.resolve(path.join(__dirname, 'public/img/thumbnails')),
   imageUrl: process.env.API_PROXY_IMAGE_URL,
   contactEmail: process.env.API_CONTACT_EMAIL,
   mapitUrl: process.env.API_MAPIT_URL,

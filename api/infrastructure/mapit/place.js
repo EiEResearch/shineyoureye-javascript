@@ -47,12 +47,12 @@ export default class Place {
       const placeholder = `${env.localImageThumbnailUrl}/${this.slug}.jpg`;
       const placeholderAlt = `${env.localImageThumbnailUrl}/${this.slug}-state.jpg`;
       if (existsSync(placeholder)) {
-        return `${env.appUrl}/images/thumbnails/${this.slug}.jpg`;
+        return `${env.appUrl}/img/thumbnails/${this.slug}.jpg`;
       } if (existsSync(placeholderAlt)) {
-        return `${env.appUrl}/images/thumbnails/${this.slug}-state.jpg`;
+        return `${env.appUrl}/img/thumbnails/${this.slug}-state.jpg`;
       }
 
-      return `${env.appUrl}/images/place-250x250.png`;
+      return `${env.appUrl}/img/place-250x250.png`;
     } catch (error) {
       logger(error);
     }

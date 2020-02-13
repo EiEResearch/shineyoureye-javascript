@@ -37,7 +37,7 @@ export default class Person {
         if (!this.person.image_url) {
           const placeholder = `${env.localImageUrl}/person-250x250.png`;
           if (existsSync(placeholder)) {
-            return `${env.appUrl}/images/person-250x250.png`;
+            return `${env.appUrl}/img/person-250x250.png`;
           }
 
           return String();
