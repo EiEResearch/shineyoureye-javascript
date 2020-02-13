@@ -1,4 +1,3 @@
-import { existsSync } from 'fs';
 import {
   getSlug, env,
 } from 'api/helper';
@@ -44,15 +43,11 @@ export default class Place {
 
   thumbnailImage() {
     try {
-      const placeholder = `${env.localImageThumbnailUrl}/${this.slug}.jpg`;
-      const placeholderAlt = `${env.localImageThumbnailUrl}/${this.slug}-state.jpg`;
-      if (existsSync(placeholder)) {
-        return `${env.appUrl}/img/thumbnails/${this.slug}.jpg`;
-      } if (existsSync(placeholderAlt)) {
-        return `${env.appUrl}/img/thumbnails/${this.slug}-state.jpg`;
+      if (['governor', 'governors'].includes((this.place.legislature || '').toLowerCase())) {
+        return `${env.imageUrl}/${env.localImageThumbnailUrl}/${this.slug}.jpg`;
       }
 
-      return `${env.appUrl}/img/place-250x250.png`;
+      return `${env.imageUrl}/${env.localImageUrl}/place-250x250.png`;
     } catch (error) {
       logger(error);
     }

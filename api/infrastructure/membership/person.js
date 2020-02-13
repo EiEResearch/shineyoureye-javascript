@@ -1,7 +1,6 @@
 import {
   getSlug, first, last, env,
 } from 'api/helper';
-import { existsSync } from 'fs';
 import FilePathsHelper from 'api/infrastructure/helpers/file-path';
 import Finder from 'api/infrastructure/document/finder';
 import Place from 'api/infrastructure/mapit/place';
@@ -35,12 +34,7 @@ export default class Person {
     proxyImageVariant(size) {
       try {
         if (!this.person.image_url) {
-          const placeholder = `${env.localImageUrl}/person-250x250.png`;
-          if (existsSync(placeholder)) {
-            return `${env.appUrl}/img/person-250x250.png`;
-          }
-
-          return String();
+          return `${env.imageUrl}/${env.localImageUrl}/person-250x250.png`;
         }
 
         this.raiseUnlessImageSizeAvailable(size);
