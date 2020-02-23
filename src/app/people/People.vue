@@ -47,7 +47,7 @@
                               class="align-self-start mr-3"
                               thumbnail fluid
                   />
-                  <div class="media-body text-truncate">
+                  <div class="media-body text-break">
                     <a :href="person.url">{{ person.official_name }}</a>
                     <span class="d-block">{{ person.identifiers.official_position.value }}</span>
                     <span class="d-block" v-if="person.area && person.area.place">
@@ -85,11 +85,11 @@
               <div class="col-md-12">
                 <div v-for="(item) in groupByState" :key="item.organization + '_peopleByState'">
                   <div class="no-border shadow-sm rounded">
-                    <div class="row no-gutters" v-for="(state, index) in item.persons" :key="index">
+                    <div class="row no-gutters expandableItem" v-for="(state, index) in item.persons" :key="index">
                       <div class="col-md-3">
-                        <h3 class="p-3 mb-3">{{ state[0] }}</h3>
+                        <h3 class="p-3 mb-3" data-accordion-element-trigger>{{ state[0] }}</h3>
                       </div>
-                      <div class="col-md-9">
+                      <div class="col-md-9" data-accordion-element-content>
                         <div class="card-body no-border">
                           <div class="shadow-sm p-2 mb-2 bg-white rounded" v-for="(person) in state[1]" :key="person.id">
                             <div class="media">
@@ -97,13 +97,13 @@
                                           class="align-self-start mr-3"
                                           thumbnail fluid
                               />
-                              <div class="media-body text-truncate">
+                              <div class="media-body text-break">
                                 <a :href="person.url">{{ person.official_name }}</a>
                                 <span class="d-block">{{ person.party }}</span>
                                 <span class="d-block" v-if="person.area && person.area.place">
                                   <a :href="person.area.url">
                                     {{ (person.address.district.value) ? `${person.address.district.value}` : '' }}
-                                    {{ (person.address.district.value) ? `(${person.area.place.name})` : person.area.place.name }}
+                                    {{ (person.address.district.value) ? `- ${person.area.place.name}` : person.area.place.name }}
                                   </a>
                                 </span>
                               </div>
@@ -131,6 +131,7 @@ export default {
   data() {
     return {
       people: [],
+      name: '',
       search: '',
       mainProps: {
         blank: true, width: 70, height: 70, blankColor: '#bbb', class: 'm1',
@@ -181,6 +182,7 @@ export default {
       next((vue) => {
         const vm = vue;
         vm.people = Object.freeze(data.people);
+        vm.name = to.name;
         next();
       });
     } catch (error) {
@@ -190,6 +192,7 @@ export default {
   methods: {
     groupBy(arr, key) {
       const res = [];
+      const n = this.name;
 
       arr.map((val) => {
         const result = {};
@@ -211,8 +214,19 @@ export default {
             unorderedPersons[item[key]].push(item);
           });
 
+        let unorderedPersonsKeys = [];
+        if (n === 'honorables' && key === 'state') {
+          /* eslint-disable */
+          const states = ['Anambra', 'Ekiti', 'Enugu', 'Kano', 'Kogi', 'Kwara', 'Lagos', 'Ondo'];
+          Object.keys(unorderedPersons).sort().map((x) => {
+            if (states.indexOf(x) < 0) { states.push(x); }
+          });
+          unorderedPersonsKeys = [...states];
+        } else {
+          unorderedPersonsKeys = Object.keys(unorderedPersons).sort();
+        }
 
-        Object.keys(unorderedPersons).sort().forEach((k) => {
+        unorderedPersonsKeys.forEach((k) => {
           unorderedPersons[k] = Object.values(unorderedPersons[k]).sort((a, b) => {
             const x = a.official_name.toLowerCase();
             const y = b.official_name.toLowerCase();
@@ -230,6 +244,16 @@ export default {
       });
       return res;
     },
+  },
+  mounted() {
+    this.$nextTick()
+      .then(() => {
+        // eslint-disable-next-line no-new
+        new GianniAccordion({
+          elements: '.expandableItem',
+          openAtLandingIndex: 0,
+        });
+      });
   },
 };
 </script>

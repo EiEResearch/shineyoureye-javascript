@@ -35,7 +35,7 @@
                               class="align-self-start mr-3"
                               thumbnail fluid
                   />
-                  <div class="media-body">
+                  <div class="media-body text-wrap">
                     <h5 class="d-block"><a :href="place.area.url">{{ (place.address.district.value) ? `${place.address.district.value}` : place.area.place.name }}</a></h5>
                     <span class="d-block" v-if="place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()">
                       Parent place: {{ (place.address.district.value) ? place.area.parent_place.name : place.area.state_place.name }}

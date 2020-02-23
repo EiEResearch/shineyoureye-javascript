@@ -38,6 +38,6 @@
 
 <script>
 export default {
-  name: 'PageLoaderComponent',
+  name: 'PlacesLoaderComponent',
 };
 </script>

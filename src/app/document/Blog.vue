@@ -5,10 +5,9 @@
       <div class="overlay" />
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
+          <div class="col-lg-8 col-md-10 mx-auto d-flex">
+            <div class="post-heading">
               <h1>{{ title }}</h1>
-              <!-- <span class="subheading">{{ subHeading }}</span> -->
             </div>
           </div>
         </div>
@@ -58,7 +57,7 @@ export default {
   name: 'Blog',
   data() {
     return {
-      title: '@SYE Blog',
+      title: 'Blog Posts',
       url: '/blog?page=',
       posts: [],
       pagination: {},

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <not-found-component v-if="!isMatched" />
-    <div v-else>
+    <div>
       <!-- Page Header -->
       <header class="masthead">
         <div class="overlay" />
@@ -31,7 +30,7 @@ export default {
   data() {
     return {
       person: [],
-      isMatched: false,
+      profile: {},
       mainProps: {
         blank: true, width: 70, height: 70, blankColor: '#bbb', class: 'm1',
       },
@@ -45,7 +44,7 @@ export default {
         legislative_period: (this.person[0] || {}).legislative_period || 'Nigeria',
         start_date: (this.person[0] || {}).start_date || process.env.VUE_APP_LEGISLATURE_START_DATE,
         end_date: (this.person[0] || {}).end_date || process.env.VUE_APP_LEGISLATURE_END_DATE,
-        profile: (this.person[0].persons[0]) || {},
+        profile: (this.profile) || {},
       };
     },
   },
@@ -67,8 +66,9 @@ export default {
         const vm = vue;
 
         if (data.people && data.people.length) {
-          vm.isMatched = true;
           vm.person = data.people;
+          // eslint-disable-next-line prefer-destructuring
+          vm.profile = data.people[0].persons[0];
         }
         next();
       });
