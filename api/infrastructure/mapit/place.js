@@ -22,7 +22,7 @@ export default class Place {
       return new Mappings({
         legislature: this.place.legislature,
         id: area.parent_area,
-      }).areaFromMapitParentId();
+      }).areaFromMapitParentId() || {};
     }
 
     return null;
@@ -33,7 +33,7 @@ export default class Place {
       legislature: 'Governors',
       name: this.place.name,
     }).areaFromMapitName();
-    return mappings;
+    return mappings || {};
   }
 
   get slug() {

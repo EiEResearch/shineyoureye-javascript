@@ -3,6 +3,7 @@
 /* eslint-disable class-methods-use-this */
 import Mappings from 'api/infrastructure/mapit/mappings';
 import People from 'api/infrastructure/membership/people';
+import Place from 'api/infrastructure/mapit/place';
 import logger from 'api/logger';
 import Legislature from 'api/factory/legislature';
 import ApiService from 'api/infrastructure/services/api.service';
@@ -13,7 +14,7 @@ class PlaceController {
     this.client = new ApiService(process.env.API_MAPIT_URL);
   }
 
-  getAllMapitAreasByLegistureOrArea(params) {
+  findAllMapitAreasByLegistureOrArea(params) {
     try {
       const { legislature, slug } = params;
       const mapit = new Mappings({ legislature });
@@ -23,7 +24,7 @@ class PlaceController {
     }
   }
 
-  getPeopleByAreaId(people, keys, legislature) {
+  findPeopleByAreaId(people, keys, legislature) {
     try {
       const obj = [];
 
@@ -42,7 +43,7 @@ class PlaceController {
     }
   }
 
-  async getPeopleFromAllMapitAreas(req, res) {
+  async getPeopleFromAllMapitAreas(mapit) {
     try {
       const self = this;
       const data = {
@@ -55,53 +56,86 @@ class PlaceController {
         },
       };
 
+      const { id, ...places } = mapit;
+      data.place = new Mappings({ id }).areaFromMapitId();
+      const politicians = await new People(this.GLOBAL_LEGISLATURE).allPeopleWithValidArea();
+      Object.keys(places).map((key) => {
+        switch ((key || '').toUpperCase()) {
+          case 'STA':
+            const govLegislature = new Legislature('governor').toJSON();
+            data.people.governor = self.findPeopleByAreaId(politicians, places[key], govLegislature);
+            break;
+          case 'SEN':
+            const senLegislature = new Legislature('senate').toJSON();
+            data.people.senate = self.findPeopleByAreaId(politicians, places[key], senLegislature);
+
+            break;
+          case 'FED':
+            const fedLegislature = new Legislature('representatives').toJSON();
+            data.people.representatives = self.findPeopleByAreaId(politicians, places[key], fedLegislature);
+
+            break;
+          case 'LGA':
+            const honLegislature = new Legislature('honorables').toJSON();
+            data.people.honorables = self.findPeopleByAreaId(politicians, places[key], honLegislature);
+
+            break;
+        }
+
+        return key;
+      });
+
+      return data;
+    } catch (error) {
+      logger(error);
+    }
+  }
+
+  async getPeopleFromMapitAreas(req, res) {
+    try {
       const { legislature, slug } = req.params;
-      const mapit = self.getAllMapitAreasByLegistureOrArea({ legislature, slug });
+      const mapit = this.findAllMapitAreasByLegistureOrArea({ legislature, slug });
 
-      if (mapit) {
-        const { id, ...places } = mapit;
-        data.place = new Mappings({ legislature, id }).areaFromMapitId();
-        const politicians = await new People(this.GLOBAL_LEGISLATURE).allPeopleWithValidArea();
-        Object.keys(places).map((key) => {
-          switch ((key || '').toUpperCase()) {
-            case 'STA':
-              const govLegislature = new Legislature('governor').toJSON();
-              data.people.governor = self.getPeopleByAreaId(politicians, places[key], govLegislature);
-              break;
-            case 'SEN':
-              const senLegislature = new Legislature('senate').toJSON();
-              data.people.senate = self.getPeopleByAreaId(politicians, places[key], senLegislature);
-
-              break;
-            case 'FED':
-              const fedLegislature = new Legislature('representatives').toJSON();
-              data.people.representatives = self.getPeopleByAreaId(politicians, places[key], fedLegislature);
-
-              break;
-            case 'LGA':
-              const honLegislature = new Legislature('honorables').toJSON();
-              data.people.honorables = self.getPeopleByAreaId(politicians, places[key], honLegislature);
-
-              break;
-          }
-
-          return key;
-        });
-
-        res.status(200);
-        return res.json({
-          success: true,
-          message: 'data found',
-          data,
-        });
+      if (!mapit) {
+        req.err.error.message = 'Sorry, no area matches the given query';
+        req.err.error.code = 404;
+        req.err.error.details = req.query;
+        res.status(404);
+        return res.json(req.err);
       }
 
-      req.err.error.message = 'Sorry, no content matched your request.';
-      req.err.error.code = 404;
-      req.err.error.details = req.query;
+      const data = await this.getPeopleFromAllMapitAreas(mapit, legislature) || {};
 
-      res.status(404);
-      return res.json(req.err);
+      res.status(200);
+      return res.json({
+        success: true,
+        message: 'data found',
+        data,
+      });
+    } catch (error) {
+      logger(error);
+    }
+  }
+
+  async getAreaFromMapitId(req, res) {
+    try {
+      const { pollingUnit } = req.params;
+      const data = new Place({ id: pollingUnit }).toJSON();
+
+      if (!data) {
+        req.err.error.message = 'Sorry, no area matches the given query';
+        req.err.error.code = 404;
+        req.err.error.details = req.query;
+        res.status(404);
+        return res.json(req.err);
+      }
+
+      res.status(200);
+      return res.json({
+        success: true,
+        message: 'data found',
+        data,
+      });
     } catch (error) {
       logger(error);
     }
@@ -120,7 +154,7 @@ class PlaceController {
       });
     } catch (error) {
       logger(error);
-      req.err.error.message = 'Sorry, No Area matches the given query..';
+      req.err.error.message = 'Sorry, no area matches the given query';
       req.err.error.code = 404;
       req.err.error.details = req.query;
 
@@ -142,7 +176,7 @@ class PlaceController {
       });
     } catch (error) {
       logger(error);
-      req.err.error.message = 'Sorry, No Area matches the given query..';
+      req.err.error.message = 'Sorry, no area matches the given query';
       req.err.error.code = 404;
       req.err.error.details = req.query;
 

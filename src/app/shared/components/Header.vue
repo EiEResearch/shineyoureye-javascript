@@ -1,7 +1,7 @@
 <template>
   <div class="site-header">
     <div class="container">
-      <form class="site-header__search js-multipurpose-search" action="/" method="post">
+      <div class="site-header__search js-multipurpose-search">
         <label for="site-search">
           <strong>Find your representative</strong>
           <span class="js-multipurpose-search-label">Enter your Polling Unit (PU) number</span>
@@ -19,7 +19,7 @@
             </span>
           </span>
         </p>
-      </form>
+      </div>
     </div>
   </div>
 </template>
