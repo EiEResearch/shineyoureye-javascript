@@ -59,3 +59,59 @@
     @extend .img-fluid, .rounded, .d-block, .text-center;
   }
 }
+
+#single-blog {
+  a {
+    display: inline-block;
+    position: relative;
+    color: #343434;
+    text-decoration: none;
+    padding: 0 6px;
+    &:before, &:after {
+      will-change: transform;
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+    }
+    &:before {
+      transition: 100ms ease-out 50ms;
+      transform-origin: 0 24px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: mix(#f1f1f1, #0077ff, 80%);
+    }
+    &:after {
+      transition: 50ms ease-out;
+      transform: scaleX(0);
+      transform-origin: left center;
+      bottom: 2px;
+      right: -12px;
+      border: 8px solid transparent;
+      border-left-color: mix(#f1f1f1, #0077ff, 60%);
+    }
+    &:hover {
+      &:before {
+        transition: 100ms ease-out;
+        transform: scaleY(.18);
+        background: mix(#f1f1f1, #0077ff, 60%);
+      }
+      // &:after {
+      //   transition: 50ms ease-out 100ms;
+      //   transform: none;
+      // }
+    }
+    &:active {
+      &:before {
+        transition: 100ms ease-in;
+        background: mix(#f1f1f1, #0077ff, 40%);
+      }
+      &:after {
+        transition: 100ms ease-in;
+        border-left-color: mix(#f1f1f1, #0077ff, 40%);
+      }
+    }
+  }
+}

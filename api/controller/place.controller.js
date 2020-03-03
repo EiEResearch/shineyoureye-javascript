@@ -5,9 +5,13 @@ import Mappings from 'api/infrastructure/mapit/mappings';
 import People from 'api/infrastructure/membership/people';
 import logger from 'api/logger';
 import Legislature from 'api/factory/legislature';
+import ApiService from 'api/infrastructure/services/api.service';
 
 class PlaceController {
-  GLOBAL_LEGISLATURE = 'all';
+  constructor() {
+    this.GLOBAL_LEGISLATURE = 'all';
+    this.client = new ApiService(process.env.API_MAPIT_URL);
+  }
 
   getAllMapitAreasByLegistureOrArea(params) {
     try {
@@ -100,6 +104,50 @@ class PlaceController {
       return res.json(req.err);
     } catch (error) {
       logger(error);
+    }
+  }
+
+  async getGeometryGeoJson(req, res) {
+    try {
+      const { placeId } = req.params;
+      const { data } = await this.client.get(`/area/${placeId}.geojson`);
+
+      res.status(200);
+      return res.json({
+        success: true,
+        message: 'data found',
+        data,
+      });
+    } catch (error) {
+      logger(error);
+      req.err.error.message = 'Sorry, No Area matches the given query..';
+      req.err.error.code = 404;
+      req.err.error.details = req.query;
+
+      res.status(404);
+      return res.json(req.err);
+    }
+  }
+
+  async getGeometryData(req, res) {
+    try {
+      const { placeId } = req.params;
+      const { data } = await this.client.get(`/area/${placeId}/geometry`);
+
+      res.status(200);
+      return res.json({
+        success: true,
+        message: 'data found',
+        data,
+      });
+    } catch (error) {
+      logger(error);
+      req.err.error.message = 'Sorry, No Area matches the given query..';
+      req.err.error.code = 404;
+      req.err.error.details = req.query;
+
+      res.status(404);
+      return res.json(req.err);
     }
   }
 }

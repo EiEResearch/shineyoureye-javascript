@@ -5,7 +5,9 @@ import People from 'api/infrastructure/membership/people';
 import logger from 'api/logger';
 
 class PeopleController {
-  GLOBAL_LEGISLATURE = 'all';
+  constructor() {
+    this.GLOBAL_LEGISLATURE = 'all';
+  }
 
   async getSingleLegislatureByState(req, res) {
     try {

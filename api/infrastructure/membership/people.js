@@ -13,7 +13,7 @@ export default class People {
   async allPeople() {
     try {
       return cache.get(`${this.legislature}_allPeople`, async () => {
-        const data = await cache.get(`${this.legislature}_allPeople_callback`, () => Sheets.get(this.legislature)); 
+        const data = await cache.get(`${this.legislature}_allPeople_callback`, () => Sheets.get(this.legislature));
         const response = [];
 
         if (data.valueRanges === undefined) return response;

@@ -214,8 +214,8 @@ export default {
         vm.place = Object.freeze(result.place);
         vm.title = `${result.place.name || vm.title}`;
         vm.people = Object.freeze(result.people);
-        vm.cordinate = Object.freeze([geometry.data.centre_lat, geometry.data.centre_lon]);
-        vm.geojson = Object.freeze({ ...geojson.data });
+        vm.cordinate = Object.freeze([geometry.data.data.centre_lat, geometry.data.data.centre_lon]);
+        vm.geojson = Object.freeze({ ...geojson.data.data });
         vm.initMap();
         next();
       });

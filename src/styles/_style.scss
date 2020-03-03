@@ -1,3 +1,8 @@
+*, *:before, *:after {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+*:focus { outline: none !important; }
+
 #page-container {
 	min-height: 100vh; 
 	margin:0;
