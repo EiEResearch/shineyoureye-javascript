@@ -49,7 +49,7 @@
 
 .article-post{
   table {
-    @extend .table, .table-striped;
+    @extend .table, .table-striped, .table-responsive;
     thead {
       @extend .thead-light;
     }

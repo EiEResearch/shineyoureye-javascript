@@ -51,7 +51,11 @@ class Cache {
   }
 
   flush() {
-    this.cache.flushAll();
+    return this.cache.flushAll();
+  }
+
+  flushStats() {
+    return this.cache.flushStats();
   }
 
   getStats() {
@@ -61,7 +65,11 @@ class Cache {
   listKeys() {
     return this.cache.keys();
   }
+
+  close() {
+    return this.cache.close();
+  }
 }
 
 
-export default Cache;
+export default new Cache();

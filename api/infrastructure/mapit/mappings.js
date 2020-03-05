@@ -131,6 +131,8 @@ export default class Mappings {
         case 'honorables':
         case 'honorable':
           return sen;
+        default:
+          return {};
       }
     } catch (error) {
       logger(error);

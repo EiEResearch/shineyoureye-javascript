@@ -21,4 +21,8 @@ export default class PlaceService {
   getGeometry(id) {
     return this.client.get(`${this.baseUrl}/${id}/geometry`);
   }
+
+  findAreaByPollingUnit(params) {
+    return this.client.get(`${this.baseUrl}/pu-lookup`, { params });
+  }
 }

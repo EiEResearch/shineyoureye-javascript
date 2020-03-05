@@ -46,5 +46,6 @@ export default (app) => {
   app.use('/api/info', routes.info);
   app.use('/api/people', routes.people);
   app.use('/api/places', routes.places);
+  app.use('/api/cache', routes.cache);
   app.use('/api/test', routes.test);
 };

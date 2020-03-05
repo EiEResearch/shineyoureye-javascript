@@ -12,6 +12,9 @@
     <places-loader-component class="mb-5" v-else-if="$store.state.loading && (
       $store.state.route.toLowerCase() === 'places')"
     />
+    <place-loader-component class="mb-5" v-else-if="$store.state.loading && (
+      $store.state.route.toLowerCase() === 'place')"
+    />
     <page-loader-component class="mb-5" v-else-if="$store.state.loading" />
     <router-view v-else class="mb-5" />
     <keep-alive>

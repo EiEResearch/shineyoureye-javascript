@@ -9,7 +9,7 @@ const router = Router();
  * places/24/geojson
  * places/24/geometry
 */
-router.get('/lookup/:pollingUnit', (req, res) => PlaceController.getAreaFromMapitId(req, res));
+router.get('/pu-lookup', (req, res) => PlaceController.getAreaFromMapitId(req, res));
 router.get('/:placeId/geojson', (req, res) => PlaceController.getGeometryGeoJson(req, res));
 router.get('/:placeId/geometry', (req, res) => PlaceController.getGeometryData(req, res));
 router.get('/:slug', (req, res) => PlaceController.getPeopleFromMapitAreas(req, res));

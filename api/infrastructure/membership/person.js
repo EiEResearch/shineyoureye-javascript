@@ -8,7 +8,7 @@ import CacheService from 'api/infrastructure/services/cache';
 
 import logger from 'api/logger';
 
-const cache = new CacheService();
+const cache = CacheService;
 
 export default class Person {
     SIZE = ['thumbnail', 'medium', 'original'];

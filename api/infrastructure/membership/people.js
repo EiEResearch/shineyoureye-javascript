@@ -4,7 +4,7 @@ import Person from 'api/infrastructure/membership/person';
 import Legislature from 'api/factory/legislature';
 import logger from 'api/logger';
 
-const cache = new CacheService();
+const cache = CacheService;
 export default class People {
   constructor(legislature) {
     this.legislature = legislature;

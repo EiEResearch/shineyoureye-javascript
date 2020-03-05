@@ -16,15 +16,30 @@
 
               <hr>
             </div>
-            <div class=" col-md-12">
-              <div v-for="(item, key) in [1,2,3,4,5]" :key="key">
-                <div class="media shadow-sm p-3 mb-3 bg-white rounded">
-                  <PuSkeleton height="70px" width="70px" class="mr-3" />
-                  <div class="media-body">
-                    <PuSkeleton width="46%" />
-                    <PuSkeleton width="55%" />
-                    <PuSkeleton width="47%" />
-                    <PuSkeleton width="65%" />
+            <div class="row mt-2">
+              <div class="col-md-12">
+                <div class="no-border shadow-sm rounded">
+                  <div class="row no-gutters" v-for="(item, key) in [1,2,3]" :key="key">
+                    <div class="col-md-3">
+                      <h3 class="p-3 mb-3">
+                        <PuSkeleton height="26px" width="60%" />
+                      </h3>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="card-body no-border">
+                        <div class="mb-12 shadow-sm p-2 mb-2 bg-white rounded" v-for="(skeleton, index) in [1,2]" :key="index">
+                          <div class="media">
+                            <PuSkeleton height="70px" width="70px" class="mr-3" />
+                            <div class="media-body">
+                              <PuSkeleton width="51%" />
+                              <PuSkeleton width="61%" />
+                              <PuSkeleton width="41%" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
                   </div>
                 </div>
               </div>

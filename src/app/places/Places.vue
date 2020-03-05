@@ -27,23 +27,34 @@
             </b-nav>
             <hr>
           </div>
-          <div v-for="(item) in groupByState" :key="item.organization + '_peopleByState'" class=" col-md-12">
-            <div v-for="(state, index) in item.places" :key="index">
-              <div v-for="(place) in state[1]" :key="place.id">
-                <div class="media shadow-sm p-3 mb-3 bg-white rounded">
-                  <b-img-lazy v-bind="mainProps" :src="place.area.image.url"
-                              class="align-self-start mr-3"
-                              thumbnail fluid
-                  />
-                  <div class="media-body text-wrap">
-                    <h5 class="d-block"><a :href="place.area.url">{{ (place.address.district.value) ? `${place.address.district.value}` : place.area.place.name }}</a></h5>
-                    <span class="d-block" v-if="place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()">
-                      Parent place: {{ (place.address.district.value) ? place.area.parent_place.name : place.area.state_place.name }}
-                    </span>
-                    <span class="d-block">{{ areaType }}</span>
-                    <span class="d-block" v-if="place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()">
-                      {{ item.organization }} {{ new Date(item.start_date).getFullYear() }}-{{ new Date(item.end_date).getFullYear() }}
-                    </span>
+          <div class="col-md-12">
+            <div v-for="(item) in groupByState" :key="item.organization + '_peopleByState'">
+              <div class="no-border shadow-sm rounded">
+                <div class="row no-gutters expandableItem" v-for="(state, index) in item.places" :key="index">
+                  <div class="col-md-3">
+                    <h3 class="p-3 mb-3" data-accordion-element-trigger>{{ state[0] }}</h3>
+                  </div>
+                  <div class="col-md-9" data-accordion-element-content>
+                    <div class="card-body no-border">
+                      <div class="shadow-sm p-2 mb-2 bg-white rounded" v-for="(place) in state[1]" :key="place.id">
+                        <div class="media">
+                          <b-img-lazy v-bind="mainProps" :src="place.area.image.url"
+                                      class="align-self-start mr-3"
+                                      thumbnail fluid
+                          />
+                          <div class="media-body text-wrap">
+                            <h5 class="d-block"><a :href="place.area.url">{{ (place.address.district.value) ? `${place.address.district.value}` : place.area.place.name }}</a></h5>
+                            <span class="d-block" v-if="place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()">
+                              Parent place: {{ (place.address.district.value) ? place.area.parent_place.name : place.area.state_place.name }}
+                            </span>
+                            <span class="d-block">{{ areaType }}</span>
+                            <span class="d-block" v-if="place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()">
+                              {{ item.organization }} {{ new Date(item.start_date).getFullYear() }}-{{ new Date(item.end_date).getFullYear() }}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -147,6 +158,16 @@ export default {
 
       return res;
     },
+  },
+  mounted() {
+    this.$nextTick()
+      .then(() => {
+        // eslint-disable-next-line no-new
+        new GianniAccordion({
+          elements: '.expandableItem',
+          openAtLandingIndex: 0,
+        });
+      });
   },
 };
 </script>

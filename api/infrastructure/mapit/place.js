@@ -12,28 +12,40 @@ export default class Place {
   }
 
   area() {
-    const mappings = new Mappings(this.place).areaFromMapitId();
-    return Object.freeze(mappings);
+    try {
+      const mappings = new Mappings(this.place).areaFromMapitId();
+      return Object.freeze(mappings);
+    } catch (error) {
+      logger(error);
+    }
   }
 
   parentArea() {
-    const area = this.area();
-    if (area && Object.keys(area).length) {
-      return new Mappings({
-        legislature: this.place.legislature,
-        id: area.parent_area,
-      }).areaFromMapitParentId() || {};
-    }
+    try {
+      const area = this.area();
+      if (area && Object.keys(area).length) {
+        return new Mappings({
+          legislature: this.place.legislature,
+          id: area.parent_area,
+        }).areaFromMapitParentId() || {};
+      }
 
-    return null;
+      return null;
+    } catch (error) {
+      logger(error);
+    }
   }
 
   stateArea() {
-    const mappings = new Mappings({
-      legislature: 'Governors',
-      name: this.place.name,
-    }).areaFromMapitName();
-    return mappings || {};
+    try {
+      const mappings = new Mappings({
+        legislature: 'Governors',
+        name: this.place.name,
+      }).areaFromMapitName();
+      return mappings || {};
+    } catch (error) {
+      logger(error);
+    }
   }
 
   get slug() {

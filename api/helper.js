@@ -123,6 +123,7 @@ export const env = {
   imageUrl: process.env.API_PROXY_IMAGE_URL,
   contactEmail: process.env.API_CONTACT_EMAIL,
   mapitUrl: process.env.API_MAPIT_URL,
+  pollingUnitUrl: process.env.API_POLLIN_UNIT_LOOKUP,
   twitterUser: process.env.API_TWITTER_USER,
   googleSheetKey: process.env.API_GSHEET_KEY,
   googleSheetId: process.env.API_GSHEET_SHEETID,

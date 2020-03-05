@@ -6,12 +6,14 @@ import People from 'api/infrastructure/membership/people';
 import Place from 'api/infrastructure/mapit/place';
 import logger from 'api/logger';
 import Legislature from 'api/factory/legislature';
+import CacheService from 'api/infrastructure/services/cache';
 import ApiService from 'api/infrastructure/services/api.service';
+import { env } from 'api/helper';
 
+const cache = CacheService;
 class PlaceController {
   constructor() {
     this.GLOBAL_LEGISLATURE = 'all';
-    this.client = new ApiService(process.env.API_MAPIT_URL);
   }
 
   findAllMapitAreasByLegistureOrArea(params) {
@@ -117,12 +119,29 @@ class PlaceController {
     }
   }
 
+  async getPollingUnitData(unit) {
+    try {
+      const result = await cache.get(`${unit}_getPollingUnitData`, async () => {
+        const client = new ApiService(env.pollingUnitUrl);
+        const { data } = await client.get(`?lookup=${unit}`);
+        return data;
+      });
+
+      return result;
+    } catch (error) {
+      logger(error);
+    }
+  }
+
   async getAreaFromMapitId(req, res) {
     try {
-      const { pollingUnit } = req.params;
-      const data = new Place({ id: pollingUnit }).toJSON();
+      let data;
+      const pollingUnit = req.query.lookup;
 
-      if (!data) {
+      const puLookup = await this.getPollingUnitData(pollingUnit);
+
+      if (puLookup) data = new Place({ id: puLookup.area.id }).toJSON();
+      if (!data || !puLookup) {
         req.err.error.message = 'Sorry, no area matches the given query';
         req.err.error.code = 404;
         req.err.error.details = req.query;
@@ -144,13 +163,18 @@ class PlaceController {
   async getGeometryGeoJson(req, res) {
     try {
       const { placeId } = req.params;
-      const { data } = await this.client.get(`/area/${placeId}.geojson`);
+
+      const result = await cache.get(`${placeId}_getGeometryGeoJson`, async () => {
+        const client = new ApiService(env.mapitUrl);
+        const { data } = await client.get(`/area/${placeId}.geojson`);
+        return data;
+      });
 
       res.status(200);
       return res.json({
         success: true,
         message: 'data found',
-        data,
+        data: result,
       });
     } catch (error) {
       logger(error);
@@ -166,13 +190,18 @@ class PlaceController {
   async getGeometryData(req, res) {
     try {
       const { placeId } = req.params;
-      const { data } = await this.client.get(`/area/${placeId}/geometry`);
+
+      const result = await cache.get(`${placeId}_getGeometryData`, async () => {
+        const client = new ApiService(env.mapitUrl);
+        const { data } = await client.get(`/area/${placeId}/geometry`);
+        return data;
+      });
 
       res.status(200);
       return res.json({
         success: true,
         message: 'data found',
-        data,
+        data: result,
       });
     } catch (error) {
       logger(error);

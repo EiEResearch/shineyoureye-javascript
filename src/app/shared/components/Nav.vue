@@ -1,6 +1,6 @@
 <template>
-  <b-navbar toggleable="lg" variant="default">
-    <b-navbar-brand href="#">@SYE</b-navbar-brand>
+  <b-navbar class="main-menu" toggleable="lg" variant="default">
+    <b-navbar-brand href="/">ShineYourEye</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse" />
     <!-- Right aligned nav items -->
