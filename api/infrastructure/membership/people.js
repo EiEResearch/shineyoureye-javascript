@@ -76,16 +76,19 @@ export default class People {
 
   async allPeopleWithValidArea() {
     try {
-      const data = await this.allPeople();
-      let res = [];
+      return cache.get(`${this.legislature}_allPeopleWithValidArea`, async () => {
+        const data = await this.allPeople();
+        let res = [];
 
-      if (!data) return res;
-      res = data.map((val) => {
-        val.persons = cache.get(`${val.position}_allPeopleWithValidArea`, val.persons.filter(item => item.area && item.state));
-        return val;
+        if (!data) return res;
+        res = data.map((val) => {
+          const filter = val.persons.filter(item => item.area && item.state);
+          val.persons = filter;
+          return val;
+        });
+
+        return res;
       });
-
-      return res;
     } catch (error) {
       logger(error);
     }
@@ -93,18 +96,20 @@ export default class People {
 
   async allPeopleWithValidImage(size) {
     try {
-      const data = await this.allPeopleWithValidArea();
-      let res = [];
+      return cache.get(`${this.legislature}_allPeopleWithValidImage_${size}`, async () => {
+        const data = await this.allPeopleWithValidArea();
+        let res = [];
 
-      if (!data) return res;
+        if (!data) return res;
 
-      res = data.map((val) => {
-        const l = (size) ? parseInt(size, 10) : (val.persons || {}).length;
-        val.persons = cache.get(`${val.position}_allPeopleWithValidImage_${l}`, val.persons.filter(item => item.images.image_url).slice(0, l));
-        return val;
+        res = data.map((val) => {
+          const l = (size) ? parseInt(size, 10) : (val.persons || {}).length;
+          val.persons = cache.get(`${val.position}_allPeopleWithValidImage_${l}`, val.persons.filter(item => item.images.image_url).slice(0, l));
+          return val;
+        });
+
+        return res;
       });
-
-      return res;
     } catch (error) {
       logger(error);
     }
@@ -112,25 +117,27 @@ export default class People {
 
   async allPeopleGroupedByState() {
     try {
-      const data = await this.allPeopleWithValidArea();
-      let res = [];
+      return cache.get(`${this.legislature}_allPeopleGroupedByState`, async () => {
+        const data = await this.allPeopleWithValidArea();
+        let res = [];
 
-      if (!data) return res;
-      res = data.map((val) => {
-        const people = val.persons.reduce((r, a) => {
-          r[a.state] = [...r[a.state] || [], a];
-          return r;
-        }, {});
-        val.persons = people;
-        // val.persons = cache.get(`${val.position}_allPeopleGroupedByState`, val.persons.reduce((r, a) => {
-        //   r[a.state] = [...r[a.state] || [], a];
-        //   return r;
-        // }, {}));
+        if (!data) return res;
+        res = data.map((val) => {
+          // const people = val.persons.reduce((r, a) => {
+          //   r[a.state] = [...r[a.state] || [], a];
+          //   return r;
+          // }, {});
+          // val.persons = people;
+          val.persons = cache.get(`${val.position}_allPeopleGroupedByState`, val.persons.reduce((r, a) => {
+            r[a.state] = [...r[a.state] || [], a];
+            return r;
+          }, {}));
 
-        return val;
+          return val;
+        });
+
+        return res;
       });
-
-      return res;
     } catch (error) {
       logger(error);
     }
@@ -138,38 +145,40 @@ export default class People {
 
   async allPeopleByState(state) {
     try {
-      const data = await this.allPeopleWithValidArea();
-      let res = [];
+      return cache.get(`${this.legislature}_allPeopleByState_${state}`, async () => {
+        const data = await this.allPeopleWithValidArea();
+        let res = [];
 
-      if (!data) return res;
-      res = data.map((val) => {
-        const people = val.persons
-          .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
-          .reduce((r, a) => {
-          /**
+        if (!data) return res;
+        res = data.map((val) => {
+          // const people = val.persons
+          //   .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
+          //   .reduce((r, a) => {
+          //   /**
+          //    * r[a.state] = [...r[a.state]] || []
+          //    * r[a.state].push(a)
+          //    */
+          //     r[a.state] = [...r[a.state] || [], a];
+          //     return r;
+          //   }, {});
+
+          // val.persons = people;
+          val.persons = cache.get(`${val.position}_allPeopleByState_${state}`, val.persons
+            .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
+            .reduce((r, a) => {
+              /**
            * r[a.state] = [...r[a.state]] || []
            * r[a.state].push(a)
            */
-            r[a.state] = [...r[a.state] || [], a];
-            return r;
-          }, {});
+              r[a.state] = [...r[a.state] || [], a];
+              return r;
+            }, {}));
 
-        val.persons = people;
-        // val.persons = cache.get(`${val.position}_allPeopleByState_${state}`, val.persons
-        //   .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
-        //   .reduce((r, a) => {
-        //     /**
-        //  * r[a.state] = [...r[a.state]] || []
-        //  * r[a.state].push(a)
-        //  */
-        //     r[a.state] = [...r[a.state] || [], a];
-        //     return r;
-        //   }, {}));
+          return val;
+        });
 
-        return val;
+        return res;
       });
-
-      return res;
     } catch (error) {
       logger(error);
     }
@@ -177,25 +186,27 @@ export default class People {
 
   async allPeopleGroupedByMapitArea() {
     try {
-      const data = await this.allPeopleWithValidArea();
-      let res = [];
+      return cache.get(`${this.legislature}_allPeopleGroupedByMapitArea`, async () => {
+        const data = await this.allPeopleWithValidArea();
+        let res = [];
 
-      if (!data) return res;
-      res = data.map((val) => {
-        const people = val.persons.reduce((r, a) => {
-          r[a.area] = [...r[a.area] || [], a];
-          return r;
-        }, {});
-        val.persons = people;
-        // val.persons = cache.get(`${val.position}_allPeopleGroupedByMapitArea`, val.persons.reduce((r, a) => {
-        //   r[a.area] = [...r[a.area] || [], a];
-        //   return r;
-        // }, {}));
+        if (!data) return res;
+        res = data.map((val) => {
+          // const people = val.persons.reduce((r, a) => {
+          //   r[a.area] = [...r[a.area] || [], a];
+          //   return r;
+          // }, {});
+          // val.persons = people;
+          val.persons = cache.get(`${val.position}_allPeopleGroupedByMapitArea`, val.persons.reduce((r, a) => {
+            r[a.area] = [...r[a.area] || [], a];
+            return r;
+          }, {}));
 
-        return val;
+          return val;
+        });
+
+        return res;
       });
-
-      return res;
     } catch (error) {
       logger(error);
     }
@@ -203,38 +214,40 @@ export default class People {
 
   async allPeopleByMapitArea(mapitId) {
     try {
-      const data = await this.allPeopleWithValidArea();
-      let res = [];
+      return cache.get(`${this.legislature}_allPeopleByMapitArea_${mapitId}`, async () => {
+        const data = await this.allPeopleWithValidArea();
+        let res = [];
 
-      if (!data) return res;
-      res = data.map((val) => {
-        const people = val.persons
-          .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
-          .reduce((r, a) => {
-          /**
+        if (!data) return res;
+        res = data.map((val) => {
+          // const people = val.persons
+          //   .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
+          //   .reduce((r, a) => {
+          //   /**
+          //    * r[a.area] = [...r[a.area]] || []
+          //    * r[a.area].push(a)
+          //    */
+          //     r[a.area] = [...r[a.area] || [], a];
+          //     return r;
+          //   }, {});
+
+          // val.persons = people;
+          val.persons = cache.get(`${val.position}_allPeopleByMapitArea_${mapitId}`, val.persons
+            .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
+            .reduce((r, a) => {
+              /**
            * r[a.area] = [...r[a.area]] || []
            * r[a.area].push(a)
            */
-            r[a.area] = [...r[a.area] || [], a];
-            return r;
-          }, {});
+              r[a.area] = [...r[a.area] || [], a];
+              return r;
+            }, {}));
 
-        val.persons = people;
-        // val.persons = cache.get(`${val.position}_allPeopleByMapitArea_${mapitId}`, val.persons
-        //   .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
-        //   .reduce((r, a) => {
-        //     /**
-        //  * r[a.area] = [...r[a.area]] || []
-        //  * r[a.area].push(a)
-        //  */
-        //     r[a.area] = [...r[a.area] || [], a];
-        //     return r;
-        //   }, {}));
+          return val;
+        });
 
-        return val;
+        return res;
       });
-
-      return res;
     } catch (error) {
       logger(error);
     }
@@ -242,25 +255,27 @@ export default class People {
 
   async allPeopleGroupedByParty() {
     try {
-      const data = await this.allPeopleWithValidArea();
-      let res = [];
+      return cache.get(`${this.legislature}_allPeopleGroupedByParty`, async () => {
+        const data = await this.allPeopleWithValidArea();
+        let res = [];
 
-      if (!data) return res;
-      res = data.map((val) => {
-        const people = val.persons.reduce((r, a) => {
-          r[a.party] = [...r[a.party] || [], a];
-          return r;
-        }, {});
-        val.persons = people;
-        // val.persons = cache.get(`${val.position}_allPeopleGroupedByParty`, val.persons.reduce((r, a) => {
-        //   r[a.party] = [...r[a.party] || [], a];
-        //   return r;
-        // }, {}));
+        if (!data) return res;
+        res = data.map((val) => {
+          // const people = val.persons.reduce((r, a) => {
+          //   r[a.party] = [...r[a.party] || [], a];
+          //   return r;
+          // }, {});
+          // val.persons = people;
+          val.persons = cache.get(`${val.position}_allPeopleGroupedByParty`, val.persons.reduce((r, a) => {
+            r[a.party] = [...r[a.party] || [], a];
+            return r;
+          }, {}));
 
-        return val;
+          return val;
+        });
+
+        return res;
       });
-
-      return res;
     } catch (error) {
       logger(error);
     }

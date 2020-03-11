@@ -68,7 +68,7 @@ export default class Person {
 
     mapit() {
       const place = { legislature: this.legislature_slug, id: this.person.mapit_id, name: this.person.state };
-      return cache.get(`mapit_${place.id}_${place.legislature}`, new Place(place).toJSON());
+      return cache.get(`mapit_${place.id}_${place.legislature}`, async () => new Place(place).toJSON());
     }
 
     // Person Attribute

@@ -4,12 +4,14 @@ import CacheController from 'api/controller/cache.controller';
 const router = Router();
 
 /**
+ * cache/get-key/:key
  * cache/list-keys
  * cache/list-stats
  * cache/flush-keys
  * cache/flush-stats
  * cache/close-cache
 */
+router.get('/get-key/:key', (req, res) => CacheController.getKey(req, res));
 router.get('/list-keys', (req, res) => CacheController.listAllKeys(req, res));
 router.get('/list-stats', (req, res) => CacheController.listAllStats(req, res));
 router.post('/flush-keys', (req, res) => CacheController.flushAllKeys(req, res));

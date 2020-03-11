@@ -121,13 +121,11 @@ class PlaceController {
 
   async getPollingUnitData(unit) {
     try {
-      const result = await cache.get(`${unit}_getPollingUnitData`, async () => {
+      return cache.get(`${unit}_getPollingUnitData`, async () => {
         const client = new ApiService(env.pollingUnitUrl);
         const { data } = await client.get(`?lookup=${unit}`);
         return data;
       });
-
-      return result;
     } catch (error) {
       logger(error);
     }

@@ -4,6 +4,19 @@ import logger from 'api/logger';
 
 const cache = CacheService;
 class CacheController {
+  getKey(req, res) {
+    try {
+      const data = cache.getKey(req.params.key);
+
+      res.status(200);
+      return res.json({
+        data,
+      });
+    } catch (error) {
+      logger(error);
+    }
+  }
+
   listAllKeys(req, res) {
     try {
       const data = cache.listKeys();

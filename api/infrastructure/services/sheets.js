@@ -46,8 +46,8 @@ class Sheets {
       const params = { ...this.params };
       params.ranges = this.sheetId(name);
 
-      const res = await this.sheets.spreadsheets.values.batchGet(params);
-      return res.data;
+      const { data } = await this.sheets.spreadsheets.values.batchGet(params);
+      return data;
     } catch (error) {
       logger(error);
     }
