@@ -117,15 +117,15 @@ export default class People {
 
       if (!data) return res;
       res = data.map((val) => {
-        // const people = val.persons.reduce((r, a) => {
-        //   r[a.state] = [...r[a.state] || [], a];
-        //   return r;
-        // }, {});
-        // val.persons = people;
-        val.persons = cache.get(`${val.position}_allPeopleGroupedByState`, val.persons.reduce((r, a) => {
+        const people = val.persons.reduce((r, a) => {
           r[a.state] = [...r[a.state] || [], a];
           return r;
-        }, {}));
+        }, {});
+        val.persons = people;
+        // val.persons = cache.get(`${val.position}_allPeopleGroupedByState`, val.persons.reduce((r, a) => {
+        //   r[a.state] = [...r[a.state] || [], a];
+        //   return r;
+        // }, {}));
 
         return val;
       });
@@ -143,28 +143,28 @@ export default class People {
 
       if (!data) return res;
       res = data.map((val) => {
-        // const people = val.persons
-        //   .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
-        //   .reduce((r, a) => {
-        //   /**
-        //    * r[a.state] = [...r[a.state]] || []
-        //    * r[a.state].push(a)
-        //    */
-        //     r[a.state] = [...r[a.state] || [], a];
-        //     return r;
-        //   }, {});
-
-        // val.persons = people;
-        val.persons = cache.get(`${val.position}_allPeopleByState_${state}`, val.persons
+        const people = val.persons
           .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
           .reduce((r, a) => {
-            /**
-         * r[a.state] = [...r[a.state]] || []
-         * r[a.state].push(a)
-         */
+          /**
+           * r[a.state] = [...r[a.state]] || []
+           * r[a.state].push(a)
+           */
             r[a.state] = [...r[a.state] || [], a];
             return r;
-          }, {}));
+          }, {});
+
+        val.persons = people;
+        // val.persons = cache.get(`${val.position}_allPeopleByState_${state}`, val.persons
+        //   .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
+        //   .reduce((r, a) => {
+        //     /**
+        //  * r[a.state] = [...r[a.state]] || []
+        //  * r[a.state].push(a)
+        //  */
+        //     r[a.state] = [...r[a.state] || [], a];
+        //     return r;
+        //   }, {}));
 
         return val;
       });
@@ -182,15 +182,15 @@ export default class People {
 
       if (!data) return res;
       res = data.map((val) => {
-        // const people = val.persons.reduce((r, a) => {
-        //   r[a.area] = [...r[a.area] || [], a];
-        //   return r;
-        // }, {});
-        // val.persons = people;
-        val.persons = cache.get(`${val.position}_allPeopleGroupedByMapitArea`, val.persons.reduce((r, a) => {
+        const people = val.persons.reduce((r, a) => {
           r[a.area] = [...r[a.area] || [], a];
           return r;
-        }, {}));
+        }, {});
+        val.persons = people;
+        // val.persons = cache.get(`${val.position}_allPeopleGroupedByMapitArea`, val.persons.reduce((r, a) => {
+        //   r[a.area] = [...r[a.area] || [], a];
+        //   return r;
+        // }, {}));
 
         return val;
       });
@@ -208,28 +208,28 @@ export default class People {
 
       if (!data) return res;
       res = data.map((val) => {
-        // const people = val.persons
-        //   .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
-        //   .reduce((r, a) => {
-        //   /**
-        //    * r[a.area] = [...r[a.area]] || []
-        //    * r[a.area].push(a)
-        //    */
-        //     r[a.area] = [...r[a.area] || [], a];
-        //     return r;
-        //   }, {});
-
-        // val.persons = people;
-        val.persons = cache.get(`${val.position}_allPeopleByMapitArea_${mapitId}`, val.persons
+        const people = val.persons
           .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
           .reduce((r, a) => {
-            /**
-         * r[a.area] = [...r[a.area]] || []
-         * r[a.area].push(a)
-         */
+          /**
+           * r[a.area] = [...r[a.area]] || []
+           * r[a.area].push(a)
+           */
             r[a.area] = [...r[a.area] || [], a];
             return r;
-          }, {}));
+          }, {});
+
+        val.persons = people;
+        // val.persons = cache.get(`${val.position}_allPeopleByMapitArea_${mapitId}`, val.persons
+        //   .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
+        //   .reduce((r, a) => {
+        //     /**
+        //  * r[a.area] = [...r[a.area]] || []
+        //  * r[a.area].push(a)
+        //  */
+        //     r[a.area] = [...r[a.area] || [], a];
+        //     return r;
+        //   }, {}));
 
         return val;
       });
@@ -247,15 +247,15 @@ export default class People {
 
       if (!data) return res;
       res = data.map((val) => {
-        // const people = val.persons.reduce((r, a) => {
-        //   r[a.party] = [...r[a.party] || [], a];
-        //   return r;
-        // }, {});
-        // val.persons = people;
-        val.persons = cache.get(`${val.position}_allPeopleGroupedByParty`, val.persons.reduce((r, a) => {
+        const people = val.persons.reduce((r, a) => {
           r[a.party] = [...r[a.party] || [], a];
           return r;
-        }, {}));
+        }, {});
+        val.persons = people;
+        // val.persons = cache.get(`${val.position}_allPeopleGroupedByParty`, val.persons.reduce((r, a) => {
+        //   r[a.party] = [...r[a.party] || [], a];
+        //   return r;
+        // }, {}));
 
         return val;
       });

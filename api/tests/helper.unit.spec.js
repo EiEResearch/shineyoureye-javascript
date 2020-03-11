@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import {
-  uuidv4, truncate, dateLocalization, postType, paginate, compareDateTime, getSlug, first, last,
+  uuidv4, truncate, dateLocalization, postType, paginate,
+  compareDateTime, getSlug, first, last, findDuplicates,
 } from 'api/helper';
 
 describe('when utilities are loaded onto a file', () => {
@@ -192,6 +193,15 @@ each of them will get N50 million each.</p>`;
         expect(first(input, seperator)).toBe(expected);
       },
     );
+    test.each([['', ',', '7'],
+      ['', ';', 'baz'],
+      ['', undefined, '7'],
+      ['', undefined, 'foo,bar,baz']])(
+      'should not return any value before the seperator',
+      (input, seperator, expected) => {
+        expect(first(input, seperator)).not.toBe(expected);
+      },
+    );
   });
 
   describe('when last() is called', () => {
@@ -199,10 +209,48 @@ each of them will get N50 million each.</p>`;
       ['foo;bar;baz', ';', 'baz'],
       ['1;2;3;4;5;6;7', undefined, '7'],
       ['foo,bar,baz', undefined, 'foo,bar,baz']])(
-      'should return the first value before the seperator',
+      'should return the last value before the seperator',
       (input, seperator, expected) => {
         expect(last(input, seperator)).toBe(expected);
       },
     );
+    test.each([['', ',', '7'],
+      ['', ';', 'baz'],
+      ['', undefined, '7'],
+      ['', undefined, 'foo,bar,baz']])(
+      'should not return any value before the seperator',
+      (input, seperator, expected) => {
+        expect(last(input, seperator)).not.toBe(expected);
+      },
+    );
+  });
+
+  describe('when findDuplicates() is called', () => {
+    test.each([[[1, 2, 3, 4, 5, 6, 2, 3], [2, 3]],
+      [[12, 14, 16, 18, 12, 20, 22, 14], [12, 14]],
+      [['Anambra', 'Lagos', 'Abia', 'Lagos'], ['Lagos']],
+      [['foo', 'bar', 'bar'], ['bar']]])(
+      'should return duplicate values if found',
+      (input, expected) => {
+        expect(findDuplicates(input)).toEqual(expected);
+      },
+    );
+  });
+
+  describe('when Environment is in production', () => {
+    const OLD_ENV = process.env;
+    beforeEach(() => {
+      jest.resetModules(); // this is important - it clears the cache
+      process.env = { ...OLD_ENV };
+      process.env.NODE_ENV = 'production';
+    });
+
+    afterEach(() => {
+      process.env = OLD_ENV;
+    });
+
+    test('should set NODE_ENV to production', () => {
+      expect(process.env.NODE_ENV).toBe('production');
+    });
   });
 });

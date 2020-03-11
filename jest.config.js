@@ -39,6 +39,7 @@ module.exports = {
     '!<rootDir>/node_modules/**',
     '!<rootDir>/api/node_modules/**',
     '!<rootDir>/api/routes/**',
+    '!<rootDir>/api/logger.js',
     '!<rootDir>/api/(server|configure).js',
     '!<rootDir>/api/infrastructure/services/*.js',
     '!<rootDir>/bin/**',

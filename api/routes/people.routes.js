@@ -37,6 +37,7 @@ router.get('/representatives', (req, res) => PeopleController.getSingleLegislatu
 // router.get('/representatives/:slug', (req, res) => PeopleController.all(req, res));
 
 router.get('/senate', (req, res) => PeopleController.getSingleLegislatures(req, res));
+router.get('/senators', (req, res) => PeopleController.getSingleLegislatures(req, res));
 // router.get('/senate/:slug', (req, res) => PeopleController.all(req, res));
 
 router.get('/governors', (req, res) => PeopleController.getSingleLegislatures(req, res));

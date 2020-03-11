@@ -136,7 +136,7 @@ describe('when query parameters are appended to the url', () => {
 });
 
 describe('post methods should log error correctly', () => {
-  test('should log error to the log when all() is called', () => {
+  test('should log error to the log when all() is called without parameters', () => {
     console.log = jest.fn();
     PostController.all();
     expect(console.log.mock.calls[0][0]).toBe('Error');
