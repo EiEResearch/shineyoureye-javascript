@@ -29,6 +29,7 @@
         </div>
       </article>
     </div>
+    <page-feedback-component />
   </div>
 </template>
 

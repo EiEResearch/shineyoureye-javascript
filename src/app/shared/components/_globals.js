@@ -14,3 +14,4 @@ Vue.component('PageLoaderComponent', () => import('./PageLoader.vue'));
 Vue.component('PositionLoaderComponent', () => import('./PositionLoader.vue'));
 Vue.component('PlacesLoaderComponent', () => import('./PlacesLoader.vue'));
 Vue.component('PlaceLoaderComponent', () => import('./PlaceLoader.vue'));
+Vue.component('PageFeedbackComponent', () => import('./PageFeedback.vue'));

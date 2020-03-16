@@ -120,6 +120,7 @@
         </div>
       </div>
     </section>
+    <page-feedback-component />
   </div>
 </template>
 

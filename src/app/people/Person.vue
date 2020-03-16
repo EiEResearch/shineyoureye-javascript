@@ -19,6 +19,7 @@
 
       <pre> {{ personData }} </pre>
     </div>
+    <page-feedback-component />
   </div>
 </template>
 

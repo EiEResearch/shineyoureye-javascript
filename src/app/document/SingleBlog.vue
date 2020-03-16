@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="single-blog">
+    <div>
       <!-- Page Header -->
       <header class="masthead">
         <div class="overlay" />
@@ -26,7 +26,32 @@
             <div :class="(post.type !== 'image') ? 'col-lg-8 col-md-10' : 'col-lg-11 col-md-12 image-post'"
                  class="mx-auto d-flex article-post justify-content-center"
             >
-              <div class="table-responsive" v-html="post.body" />
+              <div id="single-blog" class="table-responsive" v-html="post.body" />
+            </div>
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <hr>
+              <div class="clearfix">
+                <a v-if="post.prev && post.prev.slug"
+                   class="float-left"
+                   :href="post.prev.url"
+                >
+                  <span class="float-left">
+                    &larr; Previous<span class="d-none d-md-inline"> Post</span>
+                  </span>
+                  <br>
+                  {{ post.prev.title }}
+                </a>
+
+                <a v-if="post.next && post.next.slug"
+                   class="float-right"
+                   :href="post.next.url"
+                >
+                  <span class="float-right">
+                    Next<span class="d-none d-md-inline"> Post</span> &rarr;
+                  </span>
+                  <br>
+                  {{ post.next.title }} </a>
+              </div>
             </div>
           </div>
         </div>

@@ -38,7 +38,7 @@
 
         margin-left: 0 !important; // custom padding means we don't need to compensate for gutter
 
-        @include img-retina(
+        @include images-retina(
             '/static/images/mz-nigeria-logo-text-small.png',
             '/static/images/mz-nigeria-logo-text.png',
             150px,
@@ -51,7 +51,7 @@
             top: 0;
             padding: 117px 0 0 0;
 
-            @include img-retina(
+            @include images-retina(
                 '/static/images/mz-nigeria-logo-symbol-small.png',
                 '/static/images/mz-nigeria-logo-symbol.png',
                 150px,

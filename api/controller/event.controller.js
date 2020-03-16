@@ -38,7 +38,7 @@ class EventController extends DocumentController {
 
       // handle event order sorting here
       if (sort === 'desc') {
-        postsAll = [...postsAll.reverse()];
+        postsAll = [...postsAll.map((e, i, a) => a[(a.length - 1) - i])];
       }
 
       // handle event status filtering here

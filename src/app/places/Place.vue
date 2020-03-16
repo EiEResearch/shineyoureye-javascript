@@ -136,6 +136,7 @@
         </div>
       </div>
     </div>
+    <page-feedback-component />
   </div>
 </template>
 

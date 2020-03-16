@@ -6,17 +6,17 @@
     <keep-alive>
       <header-component />
     </keep-alive>
-    <position-loader-component class="mb-5" v-if="$store.state.loading && (
+    <position-loader-component class="mb-4" v-if="$store.state.loading && (
       $store.state.route.toLowerCase() === 'position')"
     />
-    <places-loader-component class="mb-5" v-else-if="$store.state.loading && (
+    <places-loader-component class="mb-4" v-else-if="$store.state.loading && (
       $store.state.route.toLowerCase() === 'places')"
     />
-    <place-loader-component class="mb-5" v-else-if="$store.state.loading && (
+    <place-loader-component class="mb-4" v-else-if="$store.state.loading && (
       $store.state.route.toLowerCase() === 'place')"
     />
-    <page-loader-component class="mb-5" v-else-if="$store.state.loading" />
-    <router-view v-else class="mb-5" />
+    <page-loader-component class="mb-4" v-else-if="$store.state.loading" />
+    <router-view v-else class="mb-4" />
     <keep-alive>
       <footer-component />
     </keep-alive>

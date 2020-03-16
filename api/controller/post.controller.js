@@ -35,7 +35,7 @@ class PostController extends DocumentController {
       }
 
       if (sort === 'desc') {
-        postsAll = [...postsAll.reverse()];
+        postsAll = [...postsAll.map((e, i, a) => a[(a.length - 1) - i])];
       }
 
       postsAll = [...postsAll.slice((page - 1) * limit, (page * limit))];
@@ -73,6 +73,7 @@ class PostController extends DocumentController {
 
   find(req, res) {
     try {
+      const postsAll = (this.finder(this.filePath.postsPattern).findAll).map((e, i, a) => a[(a.length - 1) - i]);
       const finder = this.finder(this.filePath.postPattern((req.params.slug || '').toLowerCase().trim()));
 
       if (finder && finder.none === false) {
@@ -88,6 +89,21 @@ class PostController extends DocumentController {
         post.excerpt = truncate(finder.findSingle.body, 18);
         post.body = finder.findSingle.body;
         post.type = postType(post.excerpt);
+
+        const postIndex = postsAll.findIndex(x => x.title === post.title);
+
+        if (postIndex >= 0) {
+          post.next = {
+            title: postsAll[postIndex + 1] ? postsAll[postIndex + 1].title : '',
+            slug: postsAll[postIndex + 1] ? postsAll[postIndex + 1].slug : '',
+            url: postsAll[postIndex + 1] ? postsAll[postIndex + 1].url : '',
+          };
+          post.prev = {
+            title: postsAll[postIndex - 1] ? postsAll[postIndex - 1].title : '',
+            slug: postsAll[postIndex - 1] ? postsAll[postIndex - 1].slug : '',
+            url: postsAll[postIndex - 1] ? postsAll[postIndex - 1].url : '',
+          };
+        }
 
         res.status(200);
         return res.json({
