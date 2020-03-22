@@ -35,7 +35,7 @@ class PostController extends DocumentController {
       }
 
       if (sort === 'desc') {
-        postsAll = [...postsAll.map((e, i, a) => a[(a.length - 1) - i])];
+        postsAll = [...postsAll.reverse()];
       }
 
       postsAll = [...postsAll.slice((page - 1) * limit, (page * limit))];
@@ -73,7 +73,7 @@ class PostController extends DocumentController {
 
   find(req, res) {
     try {
-      const postsAll = (this.finder(this.filePath.postsPattern).findAll).map((e, i, a) => a[(a.length - 1) - i]);
+      const postsAll = (this.finder(this.filePath.postsPattern).findAll).reverse();
       const finder = this.finder(this.filePath.postPattern((req.params.slug || '').toLowerCase().trim()));
 
       if (finder && finder.none === false) {
