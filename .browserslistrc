@@ -1,5 +1,7 @@
-> 1%
-last 2 versions
+# https://github.com/browserslist/browserslist#readme
+
+>= 1%
+last 1 major version
 not dead
 Chrome >= 45
 Firefox >= 38

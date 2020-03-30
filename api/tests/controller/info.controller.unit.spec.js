@@ -57,7 +57,7 @@ describe('when it fails to find an info', () => {
   test('should raise an error when slug is invalid', () => {
     req.params.slug = 'about-nigeria';
     const finder = (InfoController.find(req, res));
-    expect(finder.error.code).toBe(404);
+    expect(finder.error.code).toBe(400);
     expect(finder.error.message).toEqual(`No document matched ${req.params.slug}`);
     expect(finder.data).not.toBeDefined();
   });
@@ -65,7 +65,7 @@ describe('when it fails to find an info', () => {
   test('should raise an error when slug is undefined', () => {
     req.params.slug = undefined;
     const finder = (InfoController.find(req, res));
-    expect(finder.error.code).toBe(404);
+    expect(finder.error.code).toBe(400);
     expect(finder.error.message).toEqual(`No document matched ${req.params.slug}`);
     expect(finder.data).not.toBeDefined();
   });

@@ -15,10 +15,10 @@ class PeopleController {
 
       if (!isIn(String(legislature).toLowerCase(), ['honorables', 'representatives', 'senate', 'governors'])) {
         req.err.error.message = 'Sorry, no content matched your legislature type.';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
 
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
@@ -70,10 +70,10 @@ class PeopleController {
 
       if (!isIn(String(legislature).toLowerCase(), ['honorables', 'representatives', 'senate', 'governors'])) {
         req.err.error.message = 'Sorry, no content matched your legislature type.';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
 
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
@@ -125,10 +125,10 @@ class PeopleController {
 
       if (!isIn(String(legislature).toLowerCase(), ['honorables', 'representatives', 'senate', 'governors'])) {
         req.err.error.message = 'Sorry, no content matched your legislature type.';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
 
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
@@ -181,10 +181,10 @@ class PeopleController {
 
       if (!isIn(String(legislature).toLowerCase(), ['honorables', 'representatives', 'senate', 'governors'])) {
         req.err.error.message = 'Sorry, no content matched your legislature type.';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
 
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
@@ -207,14 +207,23 @@ class PeopleController {
 
       if (isEmpty(String(slug || '').toLowerCase())) {
         req.err.error.message = 'Sorry, no content matched your politician type.';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
 
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
       const people = await new People(this.GLOBAL_LEGISLATURE).singlePersonBySlug(slug);
+
+      if (!people.length) {
+        req.err.error.message = 'Sorry, no content matched your request';
+        req.err.error.code = 400;
+        req.err.error.details = req.query;
+
+        res.status(400);
+        return res.json(req.err);
+      }
 
       res.status(200);
       return res.json({

@@ -178,7 +178,7 @@ Sample Error Response
     {
     "error": {
         "message": "Sorry, no content matched your criteria.",
-        "code": 404,
+        "code": 400,
         "details": {
             "page": "190",
             "limit": "2",
@@ -234,7 +234,7 @@ Sample error response
     {
     "error": {
         "message": "No post matched sye-week-in-review-august-301",
-        "code": 404,
+        "code": 400,
         "details": {
             "slug": "sye-week-in-review-august-301"
         },
@@ -359,7 +359,7 @@ Sample error response
     {
     "error": {
         "message": "Sorry, no content matched your criteria.",
-        "code": 404,
+        "code": 400,
         "details": {
             "page": "20",
             "limit": "2",
@@ -416,7 +416,7 @@ Sample error response
     {
     "error": {
         "message": "No post matched sye-week-in-review-august-301",
-        "code": 404,
+        "code": 400,
         "details": {
             "slug": "sye-week-in-review-august-301"
         },
@@ -471,7 +471,7 @@ Sample error response
     {
         "error": {
             "message": "No document matched about-us",
-            "code": 404,
+            "code": 400,
             "details": {
                 "slug": "about-us"
             },

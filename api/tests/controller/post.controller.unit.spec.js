@@ -60,7 +60,7 @@ describe('when it fails to find a post', () => {
   test('should raise an error when slug is invalid', () => {
     req.params.slug = 'budget-tracking-and-citizens-engagement';
     const finder = (PostController.find(req, res));
-    expect(finder.error.code).toBe(404);
+    expect(finder.error.code).toBe(400);
     expect(finder.error.message).toEqual(`No post matched ${req.params.slug}`);
     expect(finder.data).not.toBeDefined();
   });
@@ -68,7 +68,7 @@ describe('when it fails to find a post', () => {
   test('should raise an error when slug is undefined', () => {
     req.params.slug = undefined;
     const finder = (PostController.find(req, res));
-    expect(finder.error.code).toBe(404);
+    expect(finder.error.code).toBe(400);
     expect(finder.error.message).toEqual(`No post matched ${req.params.slug}`);
     expect(finder.data).not.toBeDefined();
   });

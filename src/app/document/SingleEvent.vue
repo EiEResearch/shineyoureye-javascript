@@ -30,6 +30,7 @@
         </div>
       </article>
     </div>
+    <page-sharing-component />
   </div>
 </template>
 
@@ -69,6 +70,10 @@ export default {
   metaInfo() {
     return {
       title: this.post.title,
+      meta: [{
+        name: 'description',
+        content: this.post.excerpt || '',
+      }],
     };
   },
   method: {

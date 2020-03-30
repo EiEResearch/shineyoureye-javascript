@@ -36,10 +36,10 @@ class InfoController extends DocumentController {
       }
 
       req.err.error.message = `No document matched ${req.params.slug}`;
-      req.err.error.code = 404;
+      req.err.error.code = 400;
       req.err.error.details = req.params;
 
-      res.status(404);
+      res.status(400);
       return res.json(req.err);
     } catch (error) {
       logger(error);

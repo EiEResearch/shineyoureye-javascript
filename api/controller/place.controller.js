@@ -100,9 +100,9 @@ class PlaceController {
 
       if (!mapit) {
         req.err.error.message = 'Sorry, no area matches the given query';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
@@ -141,9 +141,9 @@ class PlaceController {
       if (puLookup) data = new Place({ id: puLookup.area.id }).toJSON();
       if (!data || !puLookup) {
         req.err.error.message = 'Sorry, no area matches the given query';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
@@ -177,10 +177,10 @@ class PlaceController {
     } catch (error) {
       logger(error);
       req.err.error.message = 'Sorry, no area matches the given query';
-      req.err.error.code = 404;
+      req.err.error.code = 400;
       req.err.error.details = req.query;
 
-      res.status(404);
+      res.status(400);
       return res.json(req.err);
     }
   }
@@ -204,10 +204,10 @@ class PlaceController {
     } catch (error) {
       logger(error);
       req.err.error.message = 'Sorry, no area matches the given query';
-      req.err.error.code = 404;
+      req.err.error.code = 400;
       req.err.error.details = req.query;
 
-      res.status(404);
+      res.status(400);
       return res.json(req.err);
     }
   }

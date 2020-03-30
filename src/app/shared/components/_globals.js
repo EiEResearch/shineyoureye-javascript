@@ -15,3 +15,5 @@ Vue.component('PositionLoaderComponent', () => import('./PositionLoader.vue'));
 Vue.component('PlacesLoaderComponent', () => import('./PlacesLoader.vue'));
 Vue.component('PlaceLoaderComponent', () => import('./PlaceLoader.vue'));
 Vue.component('PageFeedbackComponent', () => import('./PageFeedback.vue'));
+Vue.component('PageCommentsComponent', () => import('./PageComments.vue'));
+Vue.component('PageSharingComponent', () => import('./PageSharing.vue'));

@@ -57,7 +57,7 @@ describe('when it fails to find an event', () => {
   req.params.slug = 'budget-tracking-and-citizens-engagement';
   const finder = (EventController.find(req, res));
   test('should raise an error', () => {
-    expect(finder.error.code).toBe(404);
+    expect(finder.error.code).toBe(400);
     expect(finder.error.message).toEqual(`No post matched ${req.params.slug}`);
     expect(finder.data).not.toBeDefined();
   });
@@ -163,7 +163,7 @@ describe('events having a status parameter', () => {
 
     expect(finder.error.details.status).toEqual('future');
     expect(finder.error.message).toEqual('Sorry, no content matched your criteria.');
-    expect(finder.error.code).toEqual(404);
+    expect(finder.error.code).toEqual(400);
   });
 });
 

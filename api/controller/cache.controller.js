@@ -17,6 +17,19 @@ class CacheController {
     }
   }
 
+  takeKey(req, res) {
+    try {
+      const data = cache.takeKey(req.params.key);
+
+      res.status(200);
+      return res.json({
+        data,
+      });
+    } catch (error) {
+      logger(error);
+    }
+  }
+
   listAllKeys(req, res) {
     try {
       const data = cache.listKeys();

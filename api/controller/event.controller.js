@@ -29,10 +29,10 @@ class EventController extends DocumentController {
       || !isIn(String(sort).toLowerCase(), ['asc', 'desc'])
       || !isIn(String(status).toLowerCase(), ['future', 'past', 'all'])) {
         req.err.error.message = 'Sorry, no content matched your criteria.';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
 
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
@@ -50,10 +50,10 @@ class EventController extends DocumentController {
 
       if (postsAll.length < 1) {
         req.err.error.message = 'Sorry, no content matched your criteria.';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
 
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
       postsAll = [...postsAll.slice((page - 1) * limit, (page * limit))];
@@ -118,10 +118,10 @@ class EventController extends DocumentController {
       }
 
       req.err.error.message = `No post matched ${req.params.slug}`;
-      req.err.error.code = 404;
+      req.err.error.code = 400;
       req.err.error.details = req.params;
 
-      res.status(404);
+      res.status(400);
       return res.json(req.err);
     } catch (error) {
       logger(error);

@@ -17,6 +17,17 @@ class Cache {
     return undefined;
   }
 
+  takeKey(k) {
+    const key = k || '';
+    const value = this.cache.take(key);
+
+    if (value !== undefined) {
+      return value;
+    }
+
+    return undefined;
+  }
+
   get(key, storeFunction) {
     const value = this.getKey(key);
     if (value === undefined) {

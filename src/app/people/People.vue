@@ -53,7 +53,7 @@
                     <span class="d-block" v-if="person.area && person.area.place">
                       {{ person.party }} -
                       {{ (person.address.district.value) ? `${person.address.district.value}` : '' }}
-                      {{ (person.address.district.value) ? `(${person.area.place.name})` : person.area.place.name }}
+                      <a :href="person.area.url"> {{ (person.address.district.value) ? `(${person.area.place.name})` : person.area.place.name }} </a>
                     </span>
                   </div>
                 </div>
@@ -121,6 +121,7 @@
       </div>
     </section>
     <page-feedback-component />
+    <page-sharing-component />
   </div>
 </template>
 
@@ -132,7 +133,7 @@ export default {
   data() {
     return {
       people: [],
-      name: '',
+      name: 'Politicans',
       search: '',
       mainProps: {
         blank: true, width: 70, height: 70, blankColor: '#bbb', class: 'm1',
@@ -256,5 +257,10 @@ export default {
         });
       });
   },
+  metaInfo() {
+    return {
+      title: this.name.charAt(0).toUpperCase() + this.name.slice(1),
+    };
+  },  
 };
 </script>

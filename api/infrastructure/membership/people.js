@@ -290,7 +290,7 @@ export default class People {
         if (!data) return res;
 
         for (let key = 0; key < data.length; key += 1) {
-          const val = data[key];
+          const val = Object.assign({}, data[key]);
           const people = val.persons.filter(item => (item.slug || '').toLowerCase().trim() === (slug || '').toLowerCase().trim());
           if (people && people.length) {
             val.persons = [...people];

@@ -64,6 +64,7 @@
       </div>
     </div>
     <page-feedback-component />
+    <page-sharing-component />
   </div>
 </template>
 <script>

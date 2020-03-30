@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div id="single-blog">
       <!-- Page Header -->
       <header class="masthead">
         <div class="overlay" />
@@ -10,16 +10,119 @@
               <div class="post-heading">
                 <h1>{{ personData.profile.name }}</h1>
                 <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
-                <span class="meta">{{ personData.position }} at {{ personData.legislative_period }}</span>
+                <!-- <span class="meta">{{ personData.position }} at {{ personData.legislative_period }}</span> -->
+                <span class="meta">{{ personData.position }}</span>
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      <pre> {{ personData }} </pre>
+      <!-- <pre> {{ personData }} </pre> -->
+      <section v-if="profile.name && personData.position">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="d-flex flex-wrap align-content-start p-3" style="background-color: #ece8e5;">
+                <div class="col-xs-3 order-0">
+                  <b-img-lazy v-bind="profileImage" :src="profile.images.original.url"
+                              :alt="person.name"
+                              class="align-self-start mr-4"
+                              rounded fluid
+                  />
+                </div>
+                <div class="col-sm col-md col-lg px-md-2 pr-md-4 order-1">
+                  <h3 class="py-4">{{ (profile.title) ? profile.title+ ' ' : '' }}{{ profile.official_name }}</h3>
+                  <div>
+                    <p class="lead">
+                      {{ profile.official_name }} is a Nigerian politician at the <b>{{ personData.organization }}</b> level.
+                      {{ profile.official_name }} from {{ profile.state }} State currently serves as
+                      the <b>{{ personData.position }}</b> representing the
+                      <mark><a :href="profile.area.url">{{ (profile.address.district.value) ? `${profile.address.district.value}` : profile.area.place.name }}</a></mark>
+                      district at the <b>{{ personData.legislative_period }}</b>.
+                    </p>
+                    <p v-if="profile.party" class="lead">
+                      {{ profile.official_name }} is a member of the
+                      <b>{{ profile.party || '' }}</b>.
+                    </p>
+                    <p class="lead" v-if="profile.identifiers.official_position.value">
+                      {{ profile.official_name }} currently holds the position as the <b>{{ (profile.identifiers.official_position.value) }}</b>
+                      of the {{ personData.organization }}.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix hidden-xs mt-4">
+                <h4 class="mb-3">Personal Data</h4>
+                <div class="px-2">
+                  <div class="row mb-2" v-if="profile.birth_date">
+                    <div class="col-md-3"><strong>Born</strong></div>
+                    <div class="col-md-9">{{ profile.birth_date }}</div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.state">
+                    <div class="col-md-3"><strong>Place of origin</strong></div>
+                    <div class="col-md-9">{{ profile.state }}</div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.title">
+                    <div class="col-md-3"><strong>Title</strong></div>
+                    <div class="col-md-9">{{ profile.title }}</div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.gender">
+                    <div class="col-md-3"><strong>Gender</strong></div>
+                    <div class="col-md-9">{{ profile.gender }}</div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.address.postal_address.value">
+                    <div class="col-md-3"><strong>Postal Address</strong></div>
+                    <div class="col-md-9">{{ profile.address.postal_address.value }}</div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.contact.email.value">
+                    <div class="col-md-3"><strong>E-Mail</strong></div>
+                    <div class="col-md-9">{{ profile.contact.email.value }}</div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.contact.phone.value">
+                    <div class="col-md-3"><strong>Phone</strong></div>
+                    <div class="col-md-9">{{ profile.contact.phone.value }}</div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.links.website.url">
+                    <div class="col-md-3"><strong>Webpage</strong></div>
+                    <div class="col-md-9"><a :href="profile.links.website.note" target="_blank">{{ profile.links.website.url }}</a></div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.links.wikipedia.url">
+                    <div class="col-md-3"><strong>Wikipedia</strong></div>
+                    <div class="col-md-9 text-truncate"><a :href="profile.links.wikipedia.note" target="_blank">{{ profile.links.wikipedia.url }}</a></div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.contact.facebook.value || profile.contact.twitter.value">
+                    <div class="col-md-3"><strong>Social Media</strong></div>
+                    <div class="col-md-9">
+                      <a v-if="profile.contact.facebook.value"
+                         :href="profile.contact.facebook.note"
+                         target="_blank"
+                      >{{ (profile.contact.facebook.value) ? 'Facebook' : '' }}</a>
+                      <span v-if="profile.contact.facebook.value">&nbsp;|&nbsp;</span>
+                      <a v-if="profile.contact.twitter.value"
+                         :href="profile.contact.twitter.note"
+                         target="_blank"
+                      >{{ (profile.contact.twitter.value) ? 'Twitter' : '' }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix  mt-4" v-if="profile.summary_doc.published && profile.summary_doc.body">
+                <h4 class="mb-3">
+                  Education, Career and Political Office
+                  <!-- <a :href="'http://prose.io/#theyworkforyou/shineyoureye-prose/edit/gh-pages/summaries/'+ profile.summary_doc.url +'.md'" class="as-close small float-right">
+                    Edit
+                  </a> -->
+                </h4>
+                <div class="table-responsive px-2" v-html="profile.summary_doc.body" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
     <page-feedback-component />
+    <page-sharing-component />
   </div>
 </template>
 
@@ -32,9 +135,18 @@ export default {
     return {
       person: [],
       profile: {},
+      title: '',
       mainProps: {
-        blank: true, width: 70, height: 70, blankColor: '#bbb', class: 'm1',
+        blank: true, width: 20, height: 20, blankColor: '#bbb', class: 'm1',
       },
+      profileImage: {
+        blank: true, width: 250, height: 250, blankColor: '#bbb', class: 'm1',
+      },
+    };
+  },
+  metaInfo() {
+    return {
+      title: this.title,
     };
   },
   computed: {
@@ -69,7 +181,8 @@ export default {
         if (data.people && data.people.length) {
           vm.person = data.people;
           // eslint-disable-next-line prefer-destructuring
-          vm.profile = data.people[0].persons[0];
+          vm.profile = data.people[0].persons[0] || {};
+          vm.title = vm.profile.official_name || '';
         }
         next();
       });

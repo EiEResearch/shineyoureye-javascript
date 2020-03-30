@@ -20,7 +20,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="content shadow p-3 mb-2 bg-white rounded">
             <div id="map-canvas" class="mb-3" />
-            <div class="your-honorables mb-4" v-if="people.honorables">
+            <div class="your-honorables mb-4" v-if="people.honorables && people.honorables.length">
               <h5 class="pb-3 mb-2 border-bottom">Your Honorables</h5>
               <div class="row">
                 <div class="col-sm-4">
@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-            <div class="your-representatives mb-4" v-if="people.representatives">
+            <div class="your-representatives mb-4" v-if="people.representatives && people.representatives.length">
               <h5 class="pb-3 mb-2 border-bottom">Your Representatives</h5>
               <div class="row">
                 <div class="col-sm-4">
@@ -76,7 +76,7 @@
                 </div>
               </div>
             </div>
-            <div class="your-senators mb-4" v-if="people.senate">
+            <div class="your-senators mb-4" v-if="people.senate && people.senate.length">
               <h5 class="pb-3 mb-2 border-bottom">Your Senators</h5>
               <div class="row">
                 <div class="col-sm-4">
@@ -104,7 +104,7 @@
                 </div>
               </div>
             </div>
-            <div class="your-governor mb-4" v-if="people.governor">
+            <div class="your-governor mb-4" v-if="people.governor && people.governor.length">
               <h5 class="pb-3 mb-2 border-bottom">Your Governor</h5>
               <div class="row">
                 <div class="col-sm-4">
@@ -137,6 +137,7 @@
       </div>
     </div>
     <page-feedback-component />
+    <page-sharing-component />
   </div>
 </template>
 
@@ -174,6 +175,11 @@ export default {
       },
       geojson: {},
       cordinate: [],
+    };
+  },
+  metaInfo() {
+    return {
+      title: this.title,
     };
   },
   beforeRouteUpdate(to, from, next) {

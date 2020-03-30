@@ -36,10 +36,10 @@
                    :href="post.prev.url"
                 >
                   <span class="float-left">
-                    &larr; Previous<span class="d-none d-md-inline"> Post</span>
+                    <span class="float-left">&larr; Previous<span class="d-none d-md-inline"> Post</span></span>
+                    <br>
+                    <span class="d-none d-xl-block">{{ post.prev.title }}</span>
                   </span>
-                  <br>
-                  {{ post.prev.title }}
                 </a>
 
                 <a v-if="post.next && post.next.slug"
@@ -47,16 +47,18 @@
                    :href="post.next.url"
                 >
                   <span class="float-right">
-                    Next<span class="d-none d-md-inline"> Post</span> &rarr;
-                  </span>
-                  <br>
-                  {{ post.next.title }} </a>
+                    <span class="float-right">Next<span class="d-none d-md-inline"> Post</span> &rarr;</span>
+                    <br>
+                    <span class="d-none d-xl-block">{{ post.next.title }}</span>
+                  </span> </a>
               </div>
             </div>
           </div>
         </div>
       </article>
     </div>
+    <page-comments-component />
+    <page-sharing-component />
   </div>
 </template>
 
@@ -96,6 +98,10 @@ export default {
   metaInfo() {
     return {
       title: this.post.title,
+      meta: [{
+        name: 'description',
+        content: this.post.excerpt || '',
+      }],
     };
   },
   method: {

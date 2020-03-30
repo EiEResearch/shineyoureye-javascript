@@ -27,10 +27,10 @@ class PostController extends DocumentController {
       || !isNumeric(String(limit), { no_symbols: true })
       || !isIn(String(sort).toLowerCase(), ['asc', 'desc'])) {
         req.err.error.message = 'Sorry, no content matched your criteria.';
-        req.err.error.code = 404;
+        req.err.error.code = 400;
         req.err.error.details = req.query;
 
-        res.status(404);
+        res.status(400);
         return res.json(req.err);
       }
 
@@ -114,10 +114,10 @@ class PostController extends DocumentController {
       }
 
       req.err.error.message = `No post matched ${req.params.slug}`;
-      req.err.error.code = 404;
+      req.err.error.code = 400;
       req.err.error.details = req.params;
 
-      res.status(404);
+      res.status(400);
       return res.json(req.err);
     } catch (error) {
       logger(error);
