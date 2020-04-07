@@ -10,8 +10,8 @@
               <div class="post-heading">
                 <h1>{{ personData.profile.name }}</h1>
                 <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
-                <!-- <span class="meta">{{ personData.position }} at {{ personData.legislative_period }}</span> -->
-                <span class="meta">{{ personData.position }}</span>
+                <span class="meta">{{ personData.position }} at {{ personData.legislative_period }}</span>
+                <!-- <span class="meta">{{ personData.position }}</span> -->
               </div>
             </div>
           </div>
