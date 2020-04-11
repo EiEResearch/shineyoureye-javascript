@@ -27,7 +27,7 @@ const httpClient = (baseUrl = null) => {
   client.interceptors.response.use(
     response => response,
     (error) => {
-      if (error.response.status >= 500) {
+      if (error.response && error.response.status >= 500) {
         if (process.env.NODE_ENV === 'production') {
           Raven.captureException(error);
         }

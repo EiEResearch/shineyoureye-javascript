@@ -32,9 +32,8 @@ export default {
       if (d.getElementById(id)) return;
       // eslint-disable-next-line prefer-const
       js = d.createElement(s); js.id = id;
-      js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=647627356057438&autoLogAppEvents=1';
       js.async = true;
-      js.defer = true;
+      js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=647627356057438&autoLogAppEvents=1';
       js.crossorigin = 'anonymous';
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));

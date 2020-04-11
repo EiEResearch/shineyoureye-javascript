@@ -14,6 +14,8 @@ class CacheController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 
@@ -27,6 +29,8 @@ class CacheController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 
@@ -41,6 +45,8 @@ class CacheController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 
@@ -54,6 +60,8 @@ class CacheController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 
@@ -67,6 +75,8 @@ class CacheController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 
@@ -80,6 +90,8 @@ class CacheController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 
@@ -93,6 +105,8 @@ class CacheController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 }

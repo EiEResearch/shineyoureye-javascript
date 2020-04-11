@@ -8,6 +8,7 @@ export default [
   ...DocumentRoutes,
   ...PeopleRoutes,
   ...PlacesRoutes,
+  { path: '/search', name: 'search', component: () => import('@/app/shared/components/SearchPage.vue') },
   { path: '/feedback', redirect: { name: 'contact' } },
   { path: '*', name: 'error', component: () => import('@/app/shared/components/NotFound.vue') },
 ];

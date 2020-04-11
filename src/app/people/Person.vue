@@ -107,7 +107,7 @@
                   </div>
                 </div>
               </div>
-              <div class="clearfix  mt-4" v-if="profile.summary_doc.published && profile.summary_doc.body">
+              <div class="clearfix  mt-4" v-if="profile.summary_doc.url && profile.summary_doc.body">
                 <h4 class="mb-3">
                   Education, Career and Political Office
                   <!-- <a :href="'http://prose.io/#theyworkforyou/shineyoureye-prose/edit/gh-pages/summaries/'+ profile.summary_doc.url +'.md'" class="as-close small float-right">

@@ -87,6 +87,8 @@ class EventController extends DocumentController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 
@@ -125,6 +127,8 @@ class EventController extends DocumentController {
       return res.json(req.err);
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 }

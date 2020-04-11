@@ -68,6 +68,8 @@ class PostController extends DocumentController {
       });
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 
@@ -121,6 +123,8 @@ class PostController extends DocumentController {
       return res.json(req.err);
     } catch (error) {
       logger(error);
+      res.status(500);
+      return res.json(req.err);
     }
   }
 }
