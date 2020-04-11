@@ -138,16 +138,16 @@ describe('when query parameters are appended to the url', () => {
 describe('post methods should log error correctly', () => {
   test('should log error to the log when all() is called without parameters', () => {
     console.log = jest.fn();
-    PostController.all();
+    PostController.all(req.err, res);
     expect(console.log.mock.calls[0][0]).toBe('Error');
-    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'query' of undefined");
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'limit' of undefined");
   });
 
   test('should log error to the log when find() is called', () => {
     console.log = jest.fn();
-    PostController.find();
+    PostController.find(req.err, res);
     expect(console.log.mock.calls[0][0]).toBe('Error');
-    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'params' of undefined");
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'slug' of undefined");
   });
 });
 

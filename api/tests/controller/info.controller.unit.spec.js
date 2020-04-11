@@ -112,8 +112,8 @@ describe('post object definition', () => {
 describe('info methods should log error correctly', () => {
   test('should log error to the log when find() is called', () => {
     console.log = jest.fn();
-    InfoController.find();
+    InfoController.find(req.err, res);
     expect(console.log.mock.calls[0][0]).toBe('Error');
-    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'params' of undefined");
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'slug' of undefined");
   });
 });
