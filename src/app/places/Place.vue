@@ -212,8 +212,10 @@ export default {
       }
 
       if (result.place) {
-        geojson = await new PlacesService().getGeometryGeoJson(result.place.id);
-        geometry = await new PlacesService().getGeometry(result.place.id);
+        [geojson, geometry] = await Promise.all([
+          new PlacesService().getGeometryGeoJson(result.place.id),
+          new PlacesService().getGeometry(result.place.id),
+        ]);
       }
 
       next((vue) => {

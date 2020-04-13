@@ -37,7 +37,7 @@
 
         <b-nav-item href="/info/about">About</b-nav-item>
 
-        <b-nav-item href="#">Contact</b-nav-item>
+        <b-nav-item href="/contact">Contact</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>

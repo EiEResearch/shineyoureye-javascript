@@ -62,19 +62,23 @@ export default {
       this.step = step;
     },
     async postFeedback($event) {
-      $event.stopPropagation();
-      this.onSubmit = true;
+      try {
+        $event.stopPropagation();
+        this.onSubmit = true;
 
-      const { id } = await createSiteFeedBack({
-        message: this.message,
-        vendor: window.navigator.vendor,
-        user_agent: window.navigator.userAgent,
-        page_href: window.location.href,
-        is_processed: 0,
-      });
+        const { id } = await createSiteFeedBack({
+          message: this.message,
+          vendor: window.navigator.vendor,
+          user_agent: window.navigator.userAgent,
+          page_href: window.location.href,
+          is_processed: 0,
+        });
 
-      if (id) {
-        this.goNextStep(3);
+        if (id) {
+          this.goNextStep(3);
+        }
+      } catch (error) {
+        this.$logger(error);
       }
     },
   },

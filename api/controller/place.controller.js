@@ -60,7 +60,9 @@ class PlaceController {
 
       const { id, ...places } = mapit;
       data.place = new Mappings({ id }).areaFromMapitId();
+
       const politicians = await new People(this.GLOBAL_LEGISLATURE).allPeopleWithValidArea();
+
       Object.keys(places).map((key) => {
         switch ((key || '').toUpperCase()) {
           case 'STA':

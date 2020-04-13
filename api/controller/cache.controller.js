@@ -92,7 +92,7 @@ class CacheController {
         data,
       });
     } catch (error) {
-      logger(error);
+      this.logger(error);
     }
   }
 }

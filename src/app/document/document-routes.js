@@ -28,4 +28,9 @@ export default [
     name: 'single-info',
     component: () => import('@/app/document/SingleInfo.vue'),
   },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('@/app/document/Contact.vue'),
+  },
 ];
