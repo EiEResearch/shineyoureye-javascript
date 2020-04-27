@@ -31,7 +31,11 @@
                     <h3 class="mb-0">{{ item.title }}</h3>
                     <!-- <div class="mb-1 text-muted"> {{ item.date }}</div> -->
                     <p class="card-text mb-auto">{{ item.excerpt }}</p>
-                    <a :href="item.url" class="stretched-link">Go to Event</a>
+                    <a :href="item.url" class="stretched-link">
+                      <img src="/images/icons/arrow-right.svg" alt=""
+                           width="30"
+                           height="20" title="Go to Event"
+                      >Go to Event</a>
                   </div>
                 </div>
               </div>

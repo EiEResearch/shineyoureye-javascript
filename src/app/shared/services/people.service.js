@@ -26,4 +26,9 @@ export default class PeopleService {
     const path = `${`${this.baseUrl}politicians`}/${slug}`;
     return this.client.get(path);
   }
+
+  findPeopleWithValidImage(params = {}) {
+    const path = `${this.baseUrl}/images`;
+    return this.client.get(path, { params });
+  }
 }

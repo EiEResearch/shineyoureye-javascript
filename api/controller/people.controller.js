@@ -253,6 +253,34 @@ class PeopleController {
       return res.json(req.err);
     }
   }
+
+  async getAllPeopleWithValidImage(req, res) {
+    try {
+      const { size } = req.query;
+
+      const people = await new People(this.GLOBAL_LEGISLATURE).allPeopleWithValidImage(size);
+
+      if (!people.length) {
+        req.err.error.message = 'Sorry, no content matched your request';
+        req.err.error.code = 400;
+        req.err.error.details = req.query;
+
+        res.status(400);
+        return res.json(req.err);
+      }
+
+      res.status(200);
+      return res.json({
+        success: true,
+        message: 'data found',
+        data: { people },
+      });
+    } catch (error) {
+      logger(error);
+      res.status(500);
+      return res.json(req.err);
+    }
+  }
 }
 
 export default new PeopleController();

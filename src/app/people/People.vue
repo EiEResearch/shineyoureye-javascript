@@ -25,9 +25,13 @@
             <hr>
             <div v-for="(person) in groupByParty" :key="person.organization + '_peopleByParty'" class=" col-md-12">
               <div>
-                <ul>
-                  <li v-for="(party, index) in person.persons" :key="index">
-                    {{ party[0] && party[0].length ? party[0] : 'Nonpartisanism' }}
+                <ul style="list-style-type:none;">
+                  <li v-for="(party, index) in person.persons" :key="index" class="mb-2">
+                    <img src="/images/icons/people-fill.svg" alt=""
+                         width="20"
+                         height="20"
+                    >
+                    <span class="pl-2">{{ party[0] && party[0].length ? party[0] : 'Nonpartisanism' }},</span>
                     <span class="pull-right">{{ party[1].length }} seat(s)</span>
                   </li>
                 </ul>

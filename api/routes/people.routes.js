@@ -43,4 +43,5 @@ router.get('/senators', (req, res) => PeopleController.getSingleLegislatures(req
 router.get('/governors', (req, res) => PeopleController.getSingleLegislatures(req, res));
 // router.get('/governors/:slug', (req, res) => PeopleController.all(req, res));
 
+router.get('/images', (req, res) => PeopleController.getAllPeopleWithValidImage(req, res));
 export default router;

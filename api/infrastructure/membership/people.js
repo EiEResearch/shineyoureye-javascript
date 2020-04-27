@@ -98,15 +98,17 @@ export default class People {
     try {
       return cache.get(`${this.legislature}_allPeopleWithValidImage_${size}`, async () => {
         const data = await this.allPeopleWithValidArea();
-        let res = [];
+        const res = [];
 
         if (!data) return res;
 
-        res = data.map((val) => {
+        for (let key = 0; key < data.length; key += 1) {
+          const val = Object.assign({}, data[key]);
           const l = (size) ? parseInt(size, 10) : (val.persons || {}).length;
-          val.persons = cache.get(`${val.position}_allPeopleWithValidImage_${l}`, val.persons.filter(item => item.images.image_url).slice(0, l));
-          return val;
-        });
+          const people = val.persons.filter(item => item.images.url && item.party).slice(0, l);
+          val.persons = [...cache.get(`${val.position}_allPeopleWithValidImage_${l}`, people)];
+          res.push(val);
+        }
 
         return res;
       });

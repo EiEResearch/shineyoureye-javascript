@@ -142,6 +142,7 @@ export default class Person {
           original: {
             url: this.proxyImageVariant(this.SIZE[2]),
           },
+          url: this.person.image_url,
         },
         // Section deals with a Person's external links
         links: {

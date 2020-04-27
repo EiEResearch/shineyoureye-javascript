@@ -6,20 +6,6 @@
           <strong>Find your representative</strong>
           <span class="js-multipurpose-search-label">Enter a name, location, or Polling Unit (PU) number</span>
         </label>
-        <!-- <p>
-          <span class="input-group">
-            <input name="pu-number"
-                   id="site-search"
-                   type="search"
-                   class="form-control"
-                   placeholder="e.g. 1:1:1"
-                   v-model="searchInput"
-            >
-            <span class="input-group-btn">
-              <button class="btn btn-primary" type="submit" @click="searchSite">Search</button>
-            </span>
-          </span>
-        </p> -->
         <div>
           <form class="input-group form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search"
