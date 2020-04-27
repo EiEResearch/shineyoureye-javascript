@@ -236,5 +236,19 @@ export default {
       next({ name: 'error', params: [to.path], replace: true });
     }
   },
+  mounted() {
+    // eslint-disable-next-line func-names
+    (function (d, s, id) {
+      let js; const
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      // eslint-disable-next-line prefer-const
+      js = d.createElement(s); js.id = id;
+      js.async = true;
+      js.src = '//platform.twitter.com/widgets.js';
+      js.crossorigin = 'anonymous';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'twitter-widget'));
+  },
 };
 </script>
