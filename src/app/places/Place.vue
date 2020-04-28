@@ -20,8 +20,36 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="content shadow p-3 mb-2 bg-white rounded">
             <div id="map-canvas" class="mb-3" />
+            <div class="your-governor mb-4" v-if="people.governor && people.governor.length">
+              <h5 class="pb-3 mb-2 border-bottom">Your Governor</h5>
+              <div class="row">
+                <div class="col-sm-4">
+                  <p class="text-wrap small">
+                    Your Governor, whom you popularly elected, serve as the chief executive officer of {{ people.governor[0].area.place.name }} State.
+                    As a state manager, your governor is responsible for implementing state laws and overseeing the operation of the state executive branch
+                  </p>
+                </div>
+                <div class="col-sm-8">
+                  <div class="mb-2" v-for="(person, index) in people.governor" :key="'governor_' + index">
+                    <div class="media">
+                      <b-img-lazy v-bind="mainProps" :src="person.images.thumbnail.url"
+                                  class="align-self-start mr-3"
+                                  thumbnail fluid
+                      />
+                      <div class="media-body text-truncate">
+                        <a :href="person.url">{{ person.name }}</a>
+                        <span class="d-block text-wrap" v-if="person.area && person.area.place">
+                          {{ (person.party) ? person.party + ' - ': '' }}
+                          <a :href="person.area.url">{{ person.area.place.name }}</a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="your-honorables mb-4" v-if="people.honorables && people.honorables.length">
-              <h5 class="pb-3 mb-2 border-bottom">Your Honorables</h5>
+              <h5 class="pb-3 mb-2 border-bottom">Your State Assembly Members</h5>
               <div class="row">
                 <div class="col-sm-4">
                   <p class="text-wrap small">
@@ -41,34 +69,6 @@
                         <span class="d-block text-wrap" v-if="person.area && person.area.place">
                           {{ (person.party) ? person.party + ' - ': '' }}
                           {{ (person.address.district.value) ? `${person.address.district.value}` : '' }}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="your-representatives mb-4" v-if="people.representatives && people.representatives.length">
-              <h5 class="pb-3 mb-2 border-bottom">Your Representatives</h5>
-              <div class="row">
-                <div class="col-sm-4">
-                  <p class="text-wrap small">
-                    Your {{ people.representatives.length }} Representative(s) represents {{ place.name }} in the Federal House of Representatives (Lower House).
-                    The House of Representatives is responsible for making laws in the country and for overall scrutiny of all aspects of government.
-                  </p>
-                </div>
-                <div class="col-sm-8">
-                  <div class="mb-2" v-for="(person, index) in people.representatives" :key="'representative_' + index">
-                    <div class="media">
-                      <b-img-lazy v-bind="mainProps" :src="person.images.thumbnail.url"
-                                  class="align-self-start mr-3"
-                                  thumbnail fluid
-                      />
-                      <div class="media-body text-truncate">
-                        <a :href="person.url">{{ person.name }}</a>
-                        <span class="d-block text-wrap" v-if="person.area && person.area.place">
-                          {{ (person.party) ? person.party + ' - ': '' }}
-                          <a :href="person.area.url">{{ person.area.place.name }}</a>
                         </span>
                       </div>
                     </div>
@@ -104,17 +104,17 @@
                 </div>
               </div>
             </div>
-            <div class="your-governor mb-4" v-if="people.governor && people.governor.length">
-              <h5 class="pb-3 mb-2 border-bottom">Your Governor</h5>
+            <div class="your-representatives mb-4" v-if="people.representatives && people.representatives.length">
+              <h5 class="pb-3 mb-2 border-bottom">Your Federal House of Reps. Members</h5>
               <div class="row">
                 <div class="col-sm-4">
                   <p class="text-wrap small">
-                    Your Governor, whom you popularly elected, serve as the chief executive officer of {{ people.governor[0].area.place.name }} State.
-                    As a state manager, your governor is responsible for implementing state laws and overseeing the operation of the state executive branch
+                    Your {{ people.representatives.length }} Representative(s) represents {{ place.name }} in the Federal House of Representatives (Lower House).
+                    The House of Representatives is responsible for making laws in the country and for overall scrutiny of all aspects of government.
                   </p>
                 </div>
                 <div class="col-sm-8">
-                  <div class="mb-2" v-for="(person, index) in people.governor" :key="'governor_' + index">
+                  <div class="mb-2" v-for="(person, index) in people.representatives" :key="'representative_' + index">
                     <div class="media">
                       <b-img-lazy v-bind="mainProps" :src="person.images.thumbnail.url"
                                   class="align-self-start mr-3"
@@ -222,7 +222,7 @@ export default {
         const vm = vue;
         vm.place = Object.freeze(result.place);
         vm.title = `${result.place.name || vm.title}`;
-        vm.people = Object.freeze(result.people);
+        vm.people = Object.freeze(vm.groupBy(result.people));
         vm.cordinate = Object.freeze([geometry.data.data.centre_lat, geometry.data.data.centre_lon]);
         vm.geojson = Object.freeze({ ...geojson.data.data });
         vm.initMap();
@@ -241,6 +241,21 @@ export default {
       const map = L.map(this.map.id).setView(this.cordinate, this.map.initialZoom);
       L.tileLayer(this.map.tile, this.map.options).addTo(map);
       this.initMarkers(map, this.geojson);
+    },
+    groupBy(obj) {
+      const res = Object.assign({}, obj);
+      const keys = Object.keys(res);
+
+      keys.forEach((item) => {
+        res[item] = Object.values(res[item]).sort((a, b) => {
+          const x = a.official_name.toLowerCase();
+          const y = b.official_name.toLowerCase();
+          /* eslint-disable no-nested-ternary */
+          return x < y ? -1 : x > y ? 1 : 0;
+        });
+      });
+
+      return res;
     },
   },
 };

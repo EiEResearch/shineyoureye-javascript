@@ -9,7 +9,7 @@
             <div class="post-heading">
               <h1>{{ positionData.organization }}</h1>
               <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
-              <span class="meta">Parliament: {{ positionData.legislative_period }},
+              <span class="meta" v-if="!['governors','honorables'].includes(name)">{{ positionData.legislative_period }},
                 Tenure:  {{ positionData.start_date }} -to- {{ positionData.end_date }}</span>
             </div>
           </div>

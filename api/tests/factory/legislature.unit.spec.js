@@ -6,10 +6,10 @@ describe('Factory::Legislature', () => {
     'should return a defined legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
-      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
-      legislature.term = '9th National Assembly of Nigeria';
+      legislature.TENURE_TERM = '9th National Assembly';
+      legislature.term = '9th National Assembly';
       legislature.TENURE_DATE = '2019-06-11';
-      expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
+      expect(legislature.TENURE_TERM).toBe('9th National Assembly');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBe('Senate');
       expect(legislature.name).toBe('Senate');
@@ -23,10 +23,10 @@ describe('Factory::Legislature', () => {
     'should return a defined legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
-      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
-      legislature.term = '9th National Assembly of Nigeria';
+      legislature.TENURE_TERM = '9th National Assembly';
+      legislature.term = '9th National Assembly';
       legislature.TENURE_DATE = '2019-06-11';
-      expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
+      expect(legislature.TENURE_TERM).toBe('9th National Assembly');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBe('Representatives');
       expect(legislature.name).toBe('House of Representatives');
@@ -40,9 +40,9 @@ describe('Factory::Legislature', () => {
     'should return a defined legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
-      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+      legislature.TENURE_TERM = '9th National Assembly';
       legislature.TENURE_DATE = '2019-06-11';
-      expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
+      expect(legislature.TENURE_TERM).toBe('9th National Assembly');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBe('Governors');
       expect(legislature.name).toBe('Governors');
@@ -57,9 +57,9 @@ describe('Factory::Legislature', () => {
     'should return a defined legislature object for %s ',
     (input) => {
       const legislature = new Legislature(input);
-      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+      legislature.TENURE_TERM = '9th National Assembly';
       legislature.TENURE_DATE = '2019-06-11';
-      expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
+      expect(legislature.TENURE_TERM).toBe('9th National Assembly');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBe('Honorables');
       expect(legislature.name).toBe('State Houses of Assembly');
@@ -71,10 +71,10 @@ describe('Factory::Legislature', () => {
 
   test('should return an empty object if constructor argument is empty', () => {
     const legislature = new Legislature();
-    legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+    legislature.TENURE_TERM = '9th National Assembly';
     legislature.TENURE_DATE = '2019-06-11';
 
-    expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
+    expect(legislature.TENURE_TERM).toBe('9th National Assembly');
     expect(legislature.TENURE_DATE).toBe('2019-06-11');
     expect(legislature.slug).toBeUndefined();
     expect(legislature.name).toBeUndefined();
@@ -91,9 +91,9 @@ describe('Factory::Legislature', () => {
     'should return an empty object if constructor argument (%s) is invalid',
     (input) => {
       const legislature = new Legislature(input);
-      legislature.TENURE_TERM = '9th National Assembly of Nigeria';
+      legislature.TENURE_TERM = '9th National Assembly';
       legislature.TENURE_DATE = '2019-06-11';
-      expect(legislature.TENURE_TERM).toBe('9th National Assembly of Nigeria');
+      expect(legislature.TENURE_TERM).toBe('9th National Assembly');
       expect(legislature.TENURE_DATE).toBe('2019-06-11');
       expect(legislature.slug).toBeUndefined();
       expect(legislature.name).toBeUndefined();
