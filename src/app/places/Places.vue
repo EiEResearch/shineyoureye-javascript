@@ -83,6 +83,11 @@ export default {
       },
     };
   },
+  metaInfo() {
+    return {
+      title: this.areaType || this.title,
+    };
+  },
   beforeRouteUpdate(to, from, next) {
     try {
       this.$options.beforeRouteEnter(to, from, next);

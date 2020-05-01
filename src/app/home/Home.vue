@@ -218,7 +218,7 @@ export default {
     try {
       const [blog, reps] = await Promise.all([
         new DocumentFactory('posts').all().then(res => res.data),
-        new PeopleService().findPeopleWithValidImage({ size: 10 }).then(res => res.data),
+        new PeopleService().findPeopleWithValidImage({ size: 20 }).then(res => res.data),
       ]);
 
       next((vue) => {

@@ -9,7 +9,7 @@
             <div class="post-heading">
               <h1>{{ positionData.organization }}</h1>
               <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
-              <span class="meta" v-if="!['governors'].includes(name)">{{ positionData.legislative_period }},
+              <span class="meta" v-if="!['honorables'].includes(name)">{{ positionData.legislative_period }},
                 Tenure:  {{ positionData.start_date }} -to- {{ positionData.end_date }}</span>
             </div>
           </div>
@@ -40,32 +40,6 @@
           </div>
         </div>
 
-        <div class="row mb-4" v-if="principalOfficers[0] && principalOfficers[0].length">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <h2> Principal Officers </h2>
-            <hr>
-            <div v-for="(item, index) in principalOfficers" :key="index + '_principalOfficers'" class="col-md-12">
-              <div class="shadow-sm p-2 mb-2 bg-white rounded" v-for="(person) in item" :key="person.id">
-                <div class="media">
-                  <b-img-lazy v-bind="mainProps" :src="person.images.thumbnail.url"
-                              class="align-self-start mr-3"
-                              thumbnail fluid
-                  />
-                  <div class="media-body text-break">
-                    <a :href="person.url">{{ person.official_name }}</a>
-                    <span class="d-block">{{ person.identifiers.official_position.value }}</span>
-                    <span class="d-block" v-if="person.area && person.area.place">
-                      {{ person.party }} -
-                      {{ (person.address.district.value) ? `${person.address.district.value}` : '' }}
-                      <a :href="person.area.url"> {{ (person.address.district.value) ? `(${person.area.place.name})` : person.area.place.name }} </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <h2>People</h2>
@@ -87,7 +61,42 @@
 
             <div class="row mt-2">
               <div class="col-md-12">
-                <div v-for="(item) in groupByState" :key="item.organization + '_peopleByState'">
+                <div v-for="(item) in groupByUpdatedState" :key="item.organization + '_peopleByUpdatedState'">
+                  <div class="no-border shadow-sm rounded">
+                    <div class="row no-gutters expandableItem" v-for="(state, index) in item.persons" :key="index">
+                      <div class="col-md-3">
+                        <h3 class="p-3 mb-3" data-accordion-element-trigger>{{ state[0] }}</h3>
+                      </div>
+                      <div class="col-md-9" data-accordion-element-content>
+                        <div class="card-body no-border">
+                          <div class="shadow-sm p-2 mb-2 bg-white rounded" v-for="(person) in state[1]" :key="person.id">
+                            <div class="media">
+                              <b-img-lazy v-bind="mainProps" :src="person.images.thumbnail.url"
+                                          class="align-self-start mr-3"
+                                          thumbnail fluid
+                              />
+                              <div class="media-body text-break">
+                                <a :href="person.url">{{ person.official_name }}</a>
+                                <span class="d-block">{{ person.party }}</span>
+                                <span class="d-block" v-if="person.area && person.area.place">
+                                  <a :href="person.area.url">
+                                    {{ (person.address.district.value) ? `${person.address.district.value}` : '' }}
+                                    {{ (person.address.district.value) ? `- ${person.area.place.name}` : person.area.place.name }}
+                                  </a>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <h3 class="mt-4">Other Members</h3>
+                <p class="mb-4">We only have names of the state representatives in the states listed below, we do not have the contact details.</p>
+                <div v-for="(item) in groupByOtherState" :key="item.organization + '_peopleByOtherState'">
                   <div class="no-border shadow-sm rounded">
                     <div class="row no-gutters expandableItem" v-for="(state, index) in item.persons" :key="index">
                       <div class="col-md-3">
@@ -133,7 +142,7 @@
 import PeopleService from '@/app/shared/services/people.service';
 
 export default {
-  name: 'People',
+  name: 'StateRepresentatives',
   data() {
     return {
       people: [],
@@ -142,6 +151,7 @@ export default {
       mainProps: {
         blank: true, width: 70, height: 70, blankColor: '#bbb', class: 'm1',
       },
+      honorablesState: ['Anambra', 'Ekiti', 'Enugu', 'Kano', 'Kogi', 'Kwara', 'Lagos', 'Ondo'],
     };
   },
   computed: {
@@ -160,15 +170,11 @@ export default {
     groupByParty() {
       return this.groupBy(this.people, 'party');
     },
-    principalOfficers() {
-      const arr = this.people.map(val => val.persons.filter(i => i.identifiers.official_position_order.value).sort((a, b) => {
-        const x = parseInt(a.identifiers.official_position_order.value, 10);
-        const y = parseInt(b.identifiers.official_position_order.value, 10);
-        /* eslint-disable no-nested-ternary */
-        return x < y ? -1 : x > y ? 1 : 0;
-      }));
-
-      return arr;
+    groupByUpdatedState() {
+      return this.groupBy(this.people, 'state', 'complete');
+    },
+    groupByOtherState() {
+      return this.groupBy(this.people, 'state', 'other');
     },
   },
   beforeRouteUpdate(to, from, next) {
@@ -196,9 +202,9 @@ export default {
     }
   },
   methods: {
-    groupBy(arr, key) {
+    groupBy(arr, key, flag) {
       const res = [];
-      // const n = this.name;
+      const n = this.name;
 
       arr.map((val) => {
         const result = {};
@@ -221,17 +227,15 @@ export default {
           });
 
         let unorderedPersonsKeys = [];
-        unorderedPersonsKeys = Object.keys(unorderedPersons).sort();
-        // if (n === 'honorables' && key === 'state') {
-        //   /* eslint-disable */
-        //   const states = ['Anambra', 'Ekiti', 'Enugu', 'Kano', 'Kogi', 'Kwara', 'Lagos', 'Ondo'];
-        //   Object.keys(unorderedPersons).sort().map((x) => {
-        //     if (states.indexOf(x) < 0) { states.push(x); }
-        //   });
-        //   unorderedPersonsKeys = [...states];
-        // } else {
-        //   unorderedPersonsKeys = Object.keys(unorderedPersons).sort();
-        // }
+        if (n === 'honorables' && flag === 'complete' && key === 'state') {
+          const states = Object.assign([], this.honorablesState);
+          unorderedPersonsKeys = Object.keys(unorderedPersons).filter(x => states.indexOf(x) >= 0).sort();
+        } else if (n === 'honorables' && flag === 'other' && key === 'state') {
+          const states = Object.assign([], this.honorablesState);
+          unorderedPersonsKeys = Object.keys(unorderedPersons).filter(x => states.indexOf(x) < 0).sort();
+        } else {
+          unorderedPersonsKeys = Object.keys(unorderedPersons).sort();
+        }
 
         unorderedPersonsKeys.forEach((k) => {
           unorderedPersons[k] = Object.values(unorderedPersons[k]).sort((a, b) => {

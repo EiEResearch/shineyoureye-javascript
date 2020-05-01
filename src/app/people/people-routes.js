@@ -28,13 +28,13 @@ export default [
     path: '/position/state-representatives',
     name: 'honorables',
     meta: { position: 'honorables' },
-    component: () => import('@/app/people/People.vue'),
+    component: () => import('@/app/people/StateRepresentatives.vue'),
   },
   {
     path: '/position/state-representatives/:state',
     name: 'state-assembly',
     meta: { position: 'honorables' },
-    component: () => import('@/app/people/People.vue'),
+    component: () => import('@/app/people/StateRepresentatives.vue'),
   },
   {
     path: '/person/:slug',
