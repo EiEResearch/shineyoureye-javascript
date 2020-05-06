@@ -2,7 +2,8 @@
   <footer class="bd-footer text-black-50">
     <div class="container-fluid px-3 pt-4">
       <ul class="bd-footer-links">
-        <li><a href="https://twitter.com/NGShineYourEye">@NGShineYourEye</a></li>
+        <li><a :href="`mailto:${emailAddress}`">{{ emailAddress }}</a></li>
+        <li><a :href="`https://twitter.com/${twitterUser}`">@{{ twitterUser }}</a></li>
       </ul>
       <ul class="bd-footer-links">
         <li><a href="/search">Find Your Representative</a></li>
@@ -20,3 +21,14 @@
     </div>
   </footer>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      twitterUser: process.env.VUE_APP_TWITTER_USER,
+      emailAddress: process.env.VUE_APP_CONTACT_EMAIL,
+    };
+  },
+};
+</script>
