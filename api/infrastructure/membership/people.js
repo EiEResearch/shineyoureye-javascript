@@ -80,7 +80,7 @@ export default class People {
         const data = await this.allPeople();
         let res = [];
 
-        if (!data) return res;
+        if (Array.isArray(data) && data.length < 1) return res;
         res = data.map((val) => {
           const filter = val.persons.filter(item => item.area && item.state);
           val.persons = filter;
@@ -100,11 +100,11 @@ export default class People {
         const data = await this.allPeopleWithValidArea();
         const res = [];
 
-        if (!data) return res;
+        if (Array.isArray(data) && data.length < 1) return res;
 
         for (let key = 0; key < data.length; key += 1) {
           const val = Object.assign({}, data[key]);
-          const l = (size) ? parseInt(size, 10) : (val.persons || {}).length;
+          const l = (size) ? parseInt(size, 10) : (val.persons).length;
           const people = val.persons.filter(item => item.images.url && item.party).slice(0, l);
           val.persons = [...cache.get(`${val.position}_allPeopleWithValidImage_${l}`, people)];
           res.push(val);
@@ -121,22 +121,24 @@ export default class People {
     try {
       return cache.get(`${this.legislature}_allPeopleGroupedByState`, async () => {
         const data = await this.allPeopleWithValidArea();
-        let res = [];
+        const res = [];
 
-        if (!data) return res;
-        res = data.map((val) => {
+        if (Array.isArray(data) && data.length < 1) return res;
+
+        for (let key = 0; key < data.length; key += 1) {
+          const val = Object.assign({}, data[key]);
           // const people = val.persons.reduce((r, a) => {
           //   r[a.state] = [...r[a.state] || [], a];
           //   return r;
           // }, {});
           // val.persons = people;
-          val.persons = cache.get(`${val.position}_allPeopleGroupedByState`, val.persons.reduce((r, a) => {
+          val.persons = cache.get(`${val.position}__allPeopleGroupedByState`, val.persons.reduce((r, a) => {
             r[a.state] = [...r[a.state] || [], a];
             return r;
           }, {}));
 
-          return val;
-        });
+          res.push(val);
+        }
 
         return res;
       });
@@ -149,10 +151,12 @@ export default class People {
     try {
       return cache.get(`${this.legislature}_allPeopleByState_${state}`, async () => {
         const data = await this.allPeopleWithValidArea();
-        let res = [];
+        const res = [];
 
-        if (!data) return res;
-        res = data.map((val) => {
+        if (Array.isArray(data) && data.length < 1) return res;
+
+        for (let key = 0; key < data.length; key += 1) {
+          const val = Object.assign({}, data[key]);
           // const people = val.persons
           //   .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
           //   .reduce((r, a) => {
@@ -165,8 +169,8 @@ export default class People {
           //   }, {});
 
           // val.persons = people;
-          val.persons = cache.get(`${val.position}_allPeopleByState_${state}`, val.persons
-            .filter(s => (s.state || {}).toLowerCase().trim() === (state || '').toLowerCase().trim())
+          val.persons = cache.get(`${val.position}__allPeopleByState_${state}`, val.persons
+            .filter(s => (s.state).toLowerCase().trim() === (state || '').toLowerCase().trim())
             .reduce((r, a) => {
               /**
            * r[a.state] = [...r[a.state]] || []
@@ -176,8 +180,8 @@ export default class People {
               return r;
             }, {}));
 
-          return val;
-        });
+          res.push(val);
+        }
 
         return res;
       });
@@ -190,22 +194,24 @@ export default class People {
     try {
       return cache.get(`${this.legislature}_allPeopleGroupedByMapitArea`, async () => {
         const data = await this.allPeopleWithValidArea();
-        let res = [];
+        const res = [];
 
-        if (!data) return res;
-        res = data.map((val) => {
+        if (Array.isArray(data) && data.length < 1) return res;
+
+        for (let key = 0; key < data.length; key += 1) {
+          const val = Object.assign({}, data[key]);
           // const people = val.persons.reduce((r, a) => {
-          //   r[a.area] = [...r[a.area] || [], a];
+          //   r[a.area.place.id] = [...r[a.area.place.id] || [], a];
           //   return r;
           // }, {});
           // val.persons = people;
-          val.persons = cache.get(`${val.position}_allPeopleGroupedByMapitArea`, val.persons.reduce((r, a) => {
-            r[a.area] = [...r[a.area] || [], a];
+          val.persons = cache.get(`${val.position}__allPeopleGroupedByMapitArea`, val.persons.reduce((r, a) => {
+            r[a.area.place.id] = [...r[a.area.place.id] || [], a];
             return r;
           }, {}));
 
-          return val;
-        });
+          res.push(val);
+        }
 
         return res;
       });
@@ -218,35 +224,37 @@ export default class People {
     try {
       return cache.get(`${this.legislature}_allPeopleByMapitArea_${mapitId}`, async () => {
         const data = await this.allPeopleWithValidArea();
-        let res = [];
+        const res = [];
 
-        if (!data) return res;
-        res = data.map((val) => {
+        if (Array.isArray(data) && data.length < 1) return res;
+
+        for (let key = 0; key < data.length; key += 1) {
+          const val = Object.assign({}, data[key]);
           // const people = val.persons
-          //   .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
+          //   .filter(s => (s.area.place.id.toString() || 0) === (mapitId.toString() || 0))
           //   .reduce((r, a) => {
           //   /**
-          //    * r[a.area] = [...r[a.area]] || []
-          //    * r[a.area].push(a)
+          //    * r[a.area.place.id] = [...r[a.area.place.id]] || []
+          //    * r[a.area.place.id].push(a)
           //    */
-          //     r[a.area] = [...r[a.area] || [], a];
+          //     r[a.area.place.id] = [...r[a.area.place.id] || [], a];
           //     return r;
           //   }, {});
 
           // val.persons = people;
-          val.persons = cache.get(`${val.position}_allPeopleByMapitArea_${mapitId}`, val.persons
-            .filter(s => (s.area.toString() || 0) === (mapitId.toString() || 0))
+          val.persons = cache.get(`${val.position}__allPeopleByMapitArea_${mapitId}`, val.persons
+            .filter(s => (s.area.place.id) === (mapitId || 0))
             .reduce((r, a) => {
               /**
            * r[a.area] = [...r[a.area]] || []
            * r[a.area].push(a)
            */
-              r[a.area] = [...r[a.area] || [], a];
+              r[a.area.place.id] = [...r[a.area.place.id] || [], a];
               return r;
             }, {}));
 
-          return val;
-        });
+          res.push(val);
+        }
 
         return res;
       });
@@ -259,22 +267,24 @@ export default class People {
     try {
       return cache.get(`${this.legislature}_allPeopleGroupedByParty`, async () => {
         const data = await this.allPeopleWithValidArea();
-        let res = [];
+        const res = [];
 
-        if (!data) return res;
-        res = data.map((val) => {
+        if (Array.isArray(data) && data.length < 1) return res;
+
+        for (let key = 0; key < data.length; key += 1) {
+          const val = Object.assign({}, data[key]);
           // const people = val.persons.reduce((r, a) => {
           //   r[a.party] = [...r[a.party] || [], a];
           //   return r;
           // }, {});
           // val.persons = people;
-          val.persons = cache.get(`${val.position}_allPeopleGroupedByParty`, val.persons.reduce((r, a) => {
+          val.persons = cache.get(`${val.position}__allPeopleGroupedByParty`, val.persons.reduce((r, a) => {
             r[a.party] = [...r[a.party] || [], a];
             return r;
           }, {}));
 
-          return val;
-        });
+          res.push(val);
+        }
 
         return res;
       });
@@ -289,11 +299,11 @@ export default class People {
         const data = await this.allPeopleWithValidArea();
         const res = [];
 
-        if (!data) return res;
+        if (Array.isArray(data) && data.length < 1) return res;
 
         for (let key = 0; key < data.length; key += 1) {
           const val = Object.assign({}, data[key]);
-          const people = val.persons.filter(item => (item.slug || '').toLowerCase().trim() === (slug || '').toLowerCase().trim());
+          const people = val.persons.filter(item => (item.slug).toLowerCase().trim() === (slug || '').toLowerCase().trim());
           if (people && people.length) {
             val.persons = [...people];
             res.push(val);

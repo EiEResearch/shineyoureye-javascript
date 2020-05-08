@@ -6,6 +6,12 @@ jest.mock('api/infrastructure/services/cache', () => ({
   listKeys: jest.fn(() => (['governors_allPeople_callback', 'mapit_2_Governors',
     'mapit_3_Governors', 'mapit_4_Governors', 'mapit_5_Governors',
     'mapit_6_Governors', 'mapit_7_Governors', 'mapit_8_Governors'])),
+  takeKey: jest.fn(() => (['governors_allPeople_callback', 'mapit_2_Governors',
+    'mapit_3_Governors', 'mapit_4_Governors', 'mapit_5_Governors',
+    'mapit_6_Governors', 'mapit_7_Governors', 'mapit_8_Governors'])),
+  getKey: jest.fn(() => (['governors_allPeople_callback', 'mapit_2_Governors',
+    'mapit_3_Governors', 'mapit_4_Governors', 'mapit_5_Governors',
+    'mapit_6_Governors', 'mapit_7_Governors', 'mapit_8_Governors'])),
   getStats: jest.fn(() => ({
     hits: 2, misses: 12, keys: 12, ksize: 26, vsize: 65,
   })),
@@ -19,6 +25,7 @@ jest.mock('api/infrastructure/services/cache', () => ({
 const req = {
   params: {
     slug: '',
+    key: 'mapit_3_Governors',
   },
   err: {
     error: {
@@ -37,6 +44,22 @@ const res = {
 };
 
 describe('CacheController', () => {
+  test('should check for a valid cache key', () => {
+    CacheService.getKey;
+    const d = CacheController.getKey(req, res);
+    expect(CacheService.getKey).toHaveBeenCalled;
+    expect(d.data).toContain('mapit_3_Governors');
+    expect(d.size).toBeUndefined();
+  });
+
+  test('should check for valid cache keys', () => {
+    CacheService.takeKey;
+    const d = CacheController.takeKey(req, res);
+    expect(CacheService.takeKey).toHaveBeenCalled;
+    expect(d.data).toContain('mapit_3_Governors');
+    expect(d.size).toBeUndefined();
+  });
+
   test('should check for valid cache keys', () => {
     CacheService.listKeys;
     const d = CacheController.listAllKeys(req, res);
@@ -91,6 +114,20 @@ describe('CacheController', () => {
 });
 
 describe('CacheController::Logger', () => {
+  test('should log error when getKey method encounters an error', () => {
+    console.log = jest.fn();
+    CacheController.getKey();
+    expect(console.log.mock.calls[0][0]).toBe('Error');
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'params' of undefined");
+  });
+
+  test('should log error when takeKey method encounters an error', () => {
+    console.log = jest.fn();
+    CacheController.takeKey();
+    expect(console.log.mock.calls[0][0]).toBe('Error');
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'params' of undefined");
+  });
+
   test('should log error when listAllKeys method encounters an error', () => {
     console.log = jest.fn();
     CacheController.listAllKeys();

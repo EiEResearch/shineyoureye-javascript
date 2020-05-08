@@ -40,6 +40,8 @@ module.exports = {
   overrides: [
     {
       files: [
+        'public/**/*.{j,t}s?(x)',
+        'dist/**/*.{j,t}s?(x)',
         '**/__tests__/*.{j,t}s?(x)',
       ],
       env: {

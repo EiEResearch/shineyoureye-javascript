@@ -38,4 +38,14 @@ module.exports = {
       },
     },
   },
+  configureWebpack: (config) => {
+    if (process.env.NODE_ENV === 'production') {
+      // mutate config for production...
+      config.optimization.splitChunks = Object.assign(config.optimization.splitChunks, {
+        minSize: 60000,
+        chunks: 'all',
+      });
+      config.optimization.minimize = true;
+    }
+  },
 };

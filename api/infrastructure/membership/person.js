@@ -79,7 +79,7 @@ export default class Person {
       return {
         id: this.person.id,
         title: this.person.honorific_prefix || '',
-        name: this.person.name || '',
+        name: this.person.name,
         official_name: this.person.name.toString().split(/(\s).+\s/).join(''),
         state: this.person.state,
         area: mapit,
