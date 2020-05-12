@@ -53,14 +53,5 @@
     "vue-cli-plugin-bootstrap-vue": "^0.4.0",
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-template-compiler": "^2.6.11"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "npm run lint -- --fix",
-      "git add"
-    ]
   }
 }

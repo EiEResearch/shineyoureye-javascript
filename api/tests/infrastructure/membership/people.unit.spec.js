@@ -1,17 +1,10 @@
 // /* eslint-disable no-unused-expressions */
 import Sheets from 'api/infrastructure/services/sheets';
 import People from 'api/infrastructure/membership/people';
-import logger from 'api/logger';
 
 jest.mock('api/infrastructure/services/sheets');
-jest.mock('api/logger');
 
-const mockFn = jest.fn((error) => {
-  console.log(error);
-});
-logger(mockFn);
-
-describe('People::Membership', () => {
+describe('People::Membership - Sheet Service has distinct results', () => {
   beforeEach(() => {
     Sheets.get.mockResolvedValue({
       valueRanges: [
@@ -410,7 +403,7 @@ describe('People::Membership', () => {
 });
 
 
-describe('Name of the group', () => {
+describe('People::Membership - Sheet Service has grouping results', () => {
   beforeEach(() => {
     Sheets.get.mockResolvedValue({
       valueRanges: [
@@ -604,7 +597,7 @@ describe('Name of the group', () => {
   });
 });
 
-describe('Name of the group', () => {
+describe('People::Membership - Sheet Service is Empty', () => {
   beforeEach(() => {
     Sheets.get.mockResolvedValue({
       valueRange: [
@@ -617,53 +610,63 @@ describe('Name of the group', () => {
     });
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when all people is called', async () => {
     const people = await new People('senate').allPeople();
     expect(people).toEqual([]);
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when all people with valid area is called', async () => {
     const people = await new People('senate').allPeopleWithValidArea();
     expect(people).toEqual([]);
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when all people with valid image is called', async () => {
     const people = await new People('senate').allPeopleWithValidImage();
     expect(people).toEqual([]);
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when all people grouped by state is called ', async () => {
     const people = await new People('senate').allPeopleGroupedByState();
     expect(people).toEqual([]);
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when all people by state is called', async () => {
     const people = await new People('senate').allPeopleByState();
     expect(people).toEqual([]);
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when all people grouped by a mapit area is called', async () => {
     const people = await new People('senate').allPeopleGroupedByMapitArea();
     expect(people).toEqual([]);
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when all people by an empty mapit area is called ', async () => {
     const people = await new People('senate').allPeopleByMapitArea();
     expect(people).toEqual([]);
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when all people by a valid mapit area is called ', async () => {
+    const people = await new People('senate').allPeopleByMapitArea(20);
+    expect(people).toEqual([]);
+  });
+
+  test('call sheets service and return empty result when all people grouped by party is called', async () => {
     const people = await new People('senate').allPeopleGroupedByParty();
     expect(people).toEqual([]);
   });
 
-  test('should ', async () => {
+  test('call sheets service and return empty result when getting a single person with an empty slug', async () => {
     const people = await new People('senate').singlePersonBySlug();
+    expect(people).toEqual([]);
+  });
+
+  test('call sheets service and return empty result when getting a single person with a valid slug', async () => {
+    const people = await new People('senate').singlePersonBySlug('foo-bar');
     expect(people).toEqual([]);
   });
 });
 
-describe('Name of the group', () => {
+describe('People::Membership - Sheet Service returns error', () => {
   beforeEach(() => {
     Sheets.get.mockResolvedValue({
       valueRanges: [
@@ -686,9 +689,4 @@ describe('Name of the group', () => {
     expect(error).toBeInstanceOf(Error);
     expect(error.message).toBe("Cannot read property 'substring' of undefined");
   });
-
-  // test('should ', async () => {
-  //   const people = await new People('representatives').allPeopleWithValidArea();
-  //   expect(people).toThrow(Error);
-  // });
 });

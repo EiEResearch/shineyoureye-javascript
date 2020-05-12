@@ -30,29 +30,32 @@ export default class Person {
       Object.freeze(this.SIZE);
     }
 
+    get thumbnailImageUrl() {
+      return this.proxyImageVariant(this.SIZE[0]);
+    }
+
+    get mediumImageUrl() {
+      return this.proxyImageVariant(this.SIZE[1]);
+    }
+
+    get originalImageUrl() {
+      return this.proxyImageVariant(this.SIZE[2]);
+    }
 
     proxyImageVariant(size) {
-      try {
-        if (!this.person.image_url) {
-          return `${env.imageUrl}/${env.localImageUrl}/person-250x250.png`;
-        }
-
-        this.raiseUnlessImageSizeAvailable(size);
-        const proxyImageBaseUrl = `${env.imageUrl}/${this.legislature_slug}/${this.person.id}/`;
-        return `${proxyImageBaseUrl + this.ALLOWED_IMAGE_SIZES[size]}.jpeg`;
-      } catch (error) {
-        logger(error);
+      if (!this.person.image_url) {
+        return `${env.imageUrl}/${env.localImageUrl}/person-250x250.png`;
       }
+
+      this.raiseUnlessImageSizeAvailable(size);
+      const proxyImageBaseUrl = `${env.imageUrl}/${this.legislature_slug}/${this.person.id}/`;
+      return `${proxyImageBaseUrl + this.ALLOWED_IMAGE_SIZES[size]}.jpeg`;
     }
 
     raiseUnlessImageSizeAvailable(size) {
-      try {
-        const errorMessage = `Size ${size} is not known to be available`;
-        if (!this.ALLOWED_IMAGE_SIZES[size]) {
-          throw new Error(errorMessage);
-        }
-      } catch (error) {
-        logger(error);
+      const errorMessage = `Size ${size} is not known to be available`;
+      if (!this.ALLOWED_IMAGE_SIZES[size]) {
+        throw new Error(errorMessage);
       }
     }
 
@@ -80,14 +83,14 @@ export default class Person {
         id: this.person.id,
         title: this.person.honorific_prefix || '',
         name: this.person.name,
-        official_name: this.person.name.toString().split(/(\s).+\s/).join(''),
-        state: this.person.state,
+        official_name: (this.person.name || '').toString().split(/(\s).+\s/).join(''),
+        state: this.person.state || '',
         area: mapit,
         party: this.person.party || '',
         birth_date: this.person.birth_date || '',
         gender: this.person.gender || '',
-        slug: (this.person.identifier_shineyoureye) ? this.person.identifier_shineyoureye : getSlug(this.person.name),
-        url: (this.person.identifier_shineyoureye) ? this.baseurl + this.person.identifier_shineyoureye : this.baseurl + getSlug(this.person.name),
+        slug: (this.person.identifier_shineyoureye) ? this.person.identifier_shineyoureye : getSlug(this.person.name || ''),
+        url: (this.person.identifier_shineyoureye) ? this.baseurl + this.person.identifier_shineyoureye : this.baseurl + getSlug(this.person.name || ''),
         summary_doc: {
           title: summary.title || '',
           slug: summary.title || '',
@@ -123,7 +126,7 @@ export default class Person {
           facebook: {
             type: 'facebook',
             value: last(this.person.facebook_url, '/'),
-            note: first(this.person.facebook_url),
+            note: last(this.person.facebook_url),
           },
           twitter: {
             type: 'twitter',
@@ -134,15 +137,15 @@ export default class Person {
         // Section deals with a Person's image
         images: {
           thumbnail: {
-            url: this.proxyImageVariant(this.SIZE[0]),
+            url: this.thumbnailImageUrl,
           },
           medium: {
-            url: this.proxyImageVariant(this.SIZE[1]),
+            url: this.mediumImageUrl,
           },
           original: {
-            url: this.proxyImageVariant(this.SIZE[2]),
+            url: this.originalImageUrl,
           },
-          url: this.person.image_url,
+          url: this.person.image_url || '',
         },
         // Section deals with a Person's external links
         links: {

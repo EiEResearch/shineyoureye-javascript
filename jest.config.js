@@ -50,6 +50,7 @@ module.exports = {
     '!**/(*.config|.eslintrc).js',
     '!**/src/(main|router).js',
     '!**/public/js/*.js',
+    '!**/dist/js/*.js',
     '!**/src/**/_*.js',
   ],
   coverageReporters: ['lcov', 'text-summary'],
