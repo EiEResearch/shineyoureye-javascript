@@ -53,7 +53,7 @@
               <div class="row">
                 <div class="col-sm-4">
                   <p class="text-wrap small">
-                    Your {{ people.honorables.length }} State Assembly Member(s) represents you on the {{ people.governor[0].area.place.name }} State Assembly.
+                    Your {{ people.honorables.length }} State Assembly Member(s) represents you in the {{ people.governor[0].area.place.name }} State Assembly.
                     Areas covered include budget, culture, sport and tourism, health, planning, transport, and roads.
                   </p>
                 </div>
