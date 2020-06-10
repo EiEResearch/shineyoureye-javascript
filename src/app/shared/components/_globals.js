@@ -19,3 +19,4 @@ Vue.component('PageCommentsComponent', () => import('./PageComments.vue'));
 Vue.component('PageSharingComponent', () => import('./PageSharing.vue'));
 Vue.component('SearchPageComponent', () => import('./SearchPage.vue'));
 Vue.component('SearchLoaderComponent', () => import('./SearchLoader.vue'));
+Vue.component('PageAnalyticsComponent', () => import('./PageAnalytics.vue'));

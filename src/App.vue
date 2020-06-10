@@ -19,6 +19,7 @@
     <router-view v-else class="mb-4" />
     <keep-alive>
       <footer-component />
+      <page-analytics-component />
     </keep-alive>
   </div>
 </template>

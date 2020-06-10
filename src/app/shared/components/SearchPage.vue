@@ -73,6 +73,7 @@ export default {
   },
   data() {
     return {
+      environment: process.env.VUE_APP_ENV,
       searchQuery: '',
       isLoading: true,
       noResult: false,
@@ -133,15 +134,17 @@ export default {
           console.error(err);
         });
     } else {
-      (function () {
-        const cx = '009849292720701569670:dnm2ccnvkai';
-        const gcse = document.createElement('script');
-        gcse.type = 'text/javascript';
-        gcse.async = true;
-        gcse.src = `//cse.google.com/cse.js?cx=${cx}`;
-        const s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(gcse, s);
-      }());
+      if (this.environment === 'production') {
+        (function () {
+          const cx = '009849292720701569670:dnm2ccnvkai';
+          const gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = `//cse.google.com/cse.js?cx=${cx}`;
+          const s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        }());
+      }
       vm.isLoading = false;
     }
   },
