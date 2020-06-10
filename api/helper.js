@@ -1,10 +1,15 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable no-bitwise */
 /* eslint-disable no-mixed-operators */
 import crypto from 'crypto';
 import trunc from 'truncate-html';
 import { DateTime } from 'luxon';
 
+const path = require('path');
+require('dotenv').config({ path: (process.env.NODE_ENV === 'production') ? '../.env.production' : '../.env.development' });
+
 export const uuidv4 = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ crypto.pseudoRandomBytes(256)[0] & 15 >> c / 4).toString(16));
+
 export const truncate = (content, len) => {
   const length = len || 10;
 
@@ -16,6 +21,7 @@ export const truncate = (content, len) => {
     excludes: 'img',
   });
 };
+
 export const dateLocalization = (date, type) => {
   if (date && typeof date === 'object') {
     switch (type) {
@@ -81,4 +87,71 @@ export const paginate = (totalItems, curPage, pageSize) => {
   }
 
   return links;
+};
+
+// eslint-disable-next-line arrow-body-style
+export const getSlug = (text) => {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+    .replace(/[^\w\-]+/g, '-') // Replace all non-word chars with -
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+};
+
+export const findDuplicates = (arr) => {
+  const sortedArr = arr.slice().sort(); // You can define the comparing function here.
+  // JS by default uses a crappy string compare.
+  // (we use slice to clone the array so the
+  // original array won't be modified)
+  const results = [];
+  for (let i = 0; i < sortedArr.length - 1; i += 1) {
+    if (sortedArr[i + 1] === sortedArr[i]) {
+      results.push(sortedArr[i]);
+    }
+  }
+  return results;
+};
+
+export const env = {
+  localImageUrl: 'Static/assets/images',
+  localImageThumbnailUrl: 'Static/assets/images/thumbnails',
+  imageUrl: process.env.API_PROXY_IMAGE_URL,
+  contactEmail: process.env.API_CONTACT_EMAIL,
+  mapitUrl: process.env.API_MAPIT_URL,
+  pollingUnitUrl: process.env.API_POLLIN_UNIT_LOOKUP,
+  twitterUser: process.env.API_TWITTER_USER,
+  googleSheetKey: process.env.API_GSHEET_KEY,
+  googleSheetId: process.env.API_GSHEET_SHEETID,
+  honorablesSheet: process.env.API_GSHEET_HONORABLES_SHEET,
+  governorsSheet: process.env.API_GSHEET_GOVERNORS_SHEET,
+  representativesSheet: process.env.API_GSHEET_REPRESENTATIVES_SHEET,
+  senateSheet: process.env.API_GSHEET_SENATE_SHEET,
+  appUrl: process.env.VUE_API_URL,
+  mapit: path.resolve(path.join(__dirname, 'public/mapit')),
+  legislatureStartDate: process.env.VUE_APP_LEGISLATURE_START_DATE,
+  legislatureEndDate: process.env.VUE_APP_LEGISLATURE_END_DATE,
+  legislatureTenureTerm: process.env.VUE_APP_LEGISLATURE_TENURE,
+};
+
+export const first = (values, seperator = ';') => {
+  let a = '';
+  if (values) {
+    [a] = values.toString().split(seperator);
+  }
+
+  return a;
+};
+
+export const last = (values, seperator = ';') => {
+  let a = '';
+  if (values) {
+    [a] = values.toString().split(seperator).slice(-1);
+  }
+
+  return a;
 };

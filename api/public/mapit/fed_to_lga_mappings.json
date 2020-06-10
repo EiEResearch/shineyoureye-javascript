@@ -1,0 +1,3301 @@
+const FED = [
+    {
+        "id": "1025",
+        "state": "Abia",
+        "name": "Bende",
+        "lgs": [
+            "87"
+        ]
+    },
+    {
+        "id": "1225",
+        "state": "Abia",
+        "name": "Isialangwa North/South",
+        "lgs": [
+            "89",
+            "90"
+        ]
+    },
+    {
+        "id": "1110",
+        "state": "Abia",
+        "name": "Ukwa East/West",
+        "lgs": [
+            "96",
+            "97"
+        ]
+    },
+    {
+        "id": "1023",
+        "state": "Abia",
+        "name": "Isuikwuato/Umunneochi",
+        "lgs": [
+            "91",
+            "98"
+        ]
+    },
+    {
+        "id": "1109",
+        "state": "Abia",
+        "name": "Aba North/South",
+        "lgs": [
+            "84",
+            "85"
+        ]
+    },
+    {
+        "id": "1100",
+        "state": "Abia",
+        "name": "Ikwuano/Umuahia North/South",
+        "lgs": [
+            "88",
+            "99",
+            "100"
+        ]
+    },
+    {
+        "id": "1258",
+        "state": "Abia",
+        "name": "Obingwa/Ugwunagbo/Osisioma",
+        "lgs": [
+            "92",
+            "95",
+            "94"
+        ]
+    },
+    {
+        "id": "1191",
+        "state": "Abia",
+        "name": "Arochukwu/Ohafia",
+        "lgs": [
+            "86",
+            "93"
+        ]
+    },
+    {
+        "id": "1166",
+        "state": "Adamawa",
+        "name": "Yola North/Yola South/Girei",
+        "lgs": [
+            "120",
+            "121",
+            "104"
+        ]
+    },
+    {
+        "id": "1162",
+        "state": "Adamawa",
+        "name": "Jada/Ganye/Toungo/Mayo Belwa",
+        "lgs": [
+            "108",
+            "103",
+            "119",
+            "112"
+        ]
+    },
+    {
+        "id": "1271",
+        "state": "Adamawa",
+        "name": "Guyuk/Shelleng",
+        "lgs": [
+            "106",
+            "117"
+        ]
+    },
+    {
+        "id": "1190",
+        "state": "Adamawa",
+        "name": "Numan/Demsa/Lamurde",
+        "lgs": [
+            "116",
+            "101",
+            "109"
+        ]
+    },
+    {
+        "id": "1149",
+        "state": "Adamawa",
+        "name": "Mubi North/Mubi South/Maiha",
+        "lgs": [
+            "114",
+            "115",
+            "111"
+        ]
+    },
+    {
+        "id": "10091",
+        "state": "Adamawa",
+        "name": "Fufore/Song",
+        "lgs": [
+            "102",
+            "118"
+        ]
+    },
+    {
+        "id": "922",
+        "state": "Adamawa",
+        "name": "Gombi/Hong",
+        "lgs": [
+            "105",
+            "107"
+        ]
+    },
+    {
+        "id": "1095",
+        "state": "Adamawa",
+        "name": "Michika/Madagali",
+        "lgs": [
+            "113",
+            "110"
+        ]
+    },
+    {
+        "id": "1247",
+        "state": "Akwa Ibom",
+        "name": "Abak/Etim Ekpo/Ika",
+        "lgs": [
+            "122",
+            "127",
+            "132"
+        ]
+    },
+    {
+        "id": "1076",
+        "state": "Akwa Ibom",
+        "name": "Ikot Ekpene/Essien Udim/Obot Akara",
+        "lgs": [
+            "135",
+            "126",
+            "143"
+        ]
+    },
+    {
+        "id": "1059",
+        "state": "Akwa Ibom",
+        "name": "Oron/Mbo/Okobo/Udung Uko/Urue Offong/Oruko",
+        "lgs": [
+            "146",
+            "138",
+            "144",
+            "148",
+            "151"
+        ]
+    },
+    {
+        "id": "941",
+        "state": "Akwa Ibom",
+        "name": "Ikono/Ini",
+        "lgs": [
+            "133",
+            "136"
+        ]
+    },
+    {
+        "id": "1174",
+        "state": "Akwa Ibom",
+        "name": "Ikot Abasi/Mkpat Enin/Eastern Obolo",
+        "lgs": [
+            "134",
+            "139",
+            "123"
+        ]
+    },
+    {
+        "id": "968",
+        "state": "Akwa Ibom",
+        "name": "Itu/Ibiono Ibom",
+        "lgs": [
+            "137",
+            "131"
+        ]
+    },
+    {
+        "id": "1248",
+        "state": "Akwa Ibom",
+        "name": "Uyo/Uruan/Nsit Atai/Ibesikpo Asutan",
+        "lgs": [
+            "152",
+            "150",
+            "140",
+            "130"
+        ]
+    },
+    {
+        "id": "1238",
+        "state": "Akwa Ibom",
+        "name": "Etinan/Nsit Ibom/Nsit Ubium",
+        "lgs": [
+            "128",
+            "141",
+            "142"
+        ]
+    },
+    {
+        "id": "1208",
+        "state": "Akwa Ibom",
+        "name": "Eket/Esit Eket/Onna/Ibeno",
+        "lgs": [
+            "124",
+            "125",
+            "145",
+            "129"
+        ]
+    },
+    {
+        "id": "1249",
+        "state": "Akwa Ibom",
+        "name": "Ukanafun/Oruk Anam",
+        "lgs": [
+            "149",
+            "147"
+        ]
+    },
+    {
+        "id": "1099",
+        "state": "Anambra",
+        "name": "Anaocha/Njikoka/Dunukofia",
+        "lgs": [
+            "156",
+            "165",
+            "160"
+        ]
+    },
+    {
+        "id": "1228",
+        "state": "Anambra",
+        "name": "Anambra East/West",
+        "lgs": [
+            "154",
+            "155"
+        ]
+    },
+    {
+        "id": "1227",
+        "state": "Anambra",
+        "name": "Nnewi North/South/Ekwusigo",
+        "lgs": [
+            "166",
+            "167",
+            "161"
+        ]
+    },
+    {
+        "id": "1111",
+        "state": "Anambra",
+        "name": "Ogbaru",
+        "lgs": [
+            "168"
+        ]
+    },
+    {
+        "id": "1235",
+        "state": "Anambra",
+        "name": "Onitsha North/South",
+        "lgs": [
+            "169",
+            "170"
+        ]
+    },
+    {
+        "id": "1264",
+        "state": "Anambra",
+        "name": "Ihiala",
+        "lgs": [
+            "164"
+        ]
+    },
+    {
+        "id": "1224",
+        "state": "Anambra",
+        "name": "Idemili North/South",
+        "lgs": [
+            "162",
+            "163"
+        ]
+    },
+    {
+        "id": "1212",
+        "state": "Anambra",
+        "name": "Orumba North/South",
+        "lgs": [
+            "171",
+            "172"
+        ]
+    },
+    {
+        "id": "1233",
+        "state": "Anambra",
+        "name": "Awka North/South",
+        "lgs": [
+            "157",
+            "158"
+        ]
+    },
+    {
+        "id": "1200",
+        "state": "Anambra",
+        "name": "Aguata",
+        "lgs": [
+            "153"
+        ]
+    },
+    {
+        "id": "1226",
+        "state": "Anambra",
+        "name": "Oyi/Ayamelum",
+        "lgs": [
+            "173",
+            "159"
+        ]
+    },
+    {
+        "id": "1027",
+        "state": "Bauchi",
+        "name": "Ningi/Warji",
+        "lgs": [
+            "188",
+            "192"
+        ]
+    },
+    {
+        "id": "1182",
+        "state": "Bauchi",
+        "name": "Bauchi",
+        "lgs": [
+            "175"
+        ]
+    },
+    {
+        "id": "1152",
+        "state": "Bauchi",
+        "name": "Shira/Giade",
+        "lgs": [
+            "189",
+            "182"
+        ]
+    },
+    {
+        "id": "1117",
+        "state": "Bauchi",
+        "name": "Bogoro/Dass/Tafawa Balewa",
+        "lgs": [
+            "176",
+            "179",
+            "190"
+        ]
+    },
+    {
+        "id": "979",
+        "state": "Bauchi",
+        "name": "Gamawa",
+        "lgs": [
+            "180"
+        ]
+    },
+    {
+        "id": "1150",
+        "state": "Bauchi",
+        "name": "Misau/Dambam",
+        "lgs": [
+            "187",
+            "177"
+        ]
+    },
+    {
+        "id": "1102",
+        "state": "Bauchi",
+        "name": "Darazo/Ganjuwa",
+        "lgs": [
+            "178",
+            "181"
+        ]
+    },
+    {
+        "id": "974",
+        "state": "Bauchi",
+        "name": "Toro",
+        "lgs": [
+            "191"
+        ]
+    },
+    {
+        "id": "995",
+        "state": "Bauchi",
+        "name": "Alkaleri/Kirfi",
+        "lgs": [
+            "174",
+            "186"
+        ]
+    },
+    {
+        "id": "991",
+        "state": "Bauchi",
+        "name": "Zaki",
+        "lgs": [
+            "193"
+        ]
+    },
+    {
+        "id": "944",
+        "state": "Bauchi",
+        "name": "Jama’Are/Itas Gadau",
+        "lgs": [
+            "184",
+            "183"
+        ]
+    },
+    {
+        "id": "1195",
+        "state": "Bauchi",
+        "name": "Katagum",
+        "lgs": [
+            "185"
+        ]
+    },
+    {
+        "id": "1085",
+        "state": "Bayelsa",
+        "name": "Sagbama/Ekeremor",
+        "lgs": [
+            "199",
+            "195"
+        ]
+    },
+    {
+        "id": "1263",
+        "state": "Bayelsa",
+        "name": "Nembe/Brass",
+        "lgs": [
+            "197",
+            "194"
+        ]
+    },
+    {
+        "id": "1016",
+        "state": "Bayelsa",
+        "name": "Ogbia",
+        "lgs": [
+            "198"
+        ]
+    },
+    {
+        "id": "927",
+        "state": "Bayelsa",
+        "name": "Southern Ijaw",
+        "lgs": [
+            "200"
+        ]
+    },
+    {
+        "id": "1113",
+        "state": "Bayelsa",
+        "name": "Kolokuna/Opokuma/Yenagoa",
+        "lgs": [
+            "196",
+            "201"
+        ]
+    },
+    {
+        "id": "1250",
+        "state": "Benue",
+        "name": "Makurdi/Guma",
+        "lgs": [
+            "214",
+            "207"
+        ]
+    },
+    {
+        "id": "1196",
+        "state": "Benue",
+        "name": "Otukpo/Ohimini",
+        "lgs": [
+            "220",
+            "217"
+        ]
+    },
+    {
+        "id": "923",
+        "state": "Benue",
+        "name": "Ado/Ogbadigbo/Okpokwu",
+        "lgs": [
+            "202",
+            "216",
+            "219"
+        ]
+    },
+    {
+        "id": "1153",
+        "state": "Benue",
+        "name": "Apa/Agatu",
+        "lgs": [
+            "204",
+            "203"
+        ]
+    },
+    {
+        "id": "926",
+        "state": "Benue",
+        "name": "Konshisha/Vandeikya",
+        "lgs": [
+            "211",
+            "224"
+        ]
+    },
+    {
+        "id": "959",
+        "state": "Benue",
+        "name": "Gboko/Tarka",
+        "lgs": [
+            "206",
+            "221"
+        ]
+    },
+    {
+        "id": "1252",
+        "state": "Benue",
+        "name": "Buruku",
+        "lgs": [
+            "205"
+        ]
+    },
+    {
+        "id": "1229",
+        "state": "Benue",
+        "name": "Gwer East/Gwer West",
+        "lgs": [
+            "208",
+            "209"
+        ]
+    },
+    {
+        "id": "1253",
+        "state": "Benue",
+        "name": "Katsina Ala/Ukum/Logo",
+        "lgs": [
+            "210",
+            "222",
+            "213"
+        ]
+    },
+    {
+        "id": "1068",
+        "state": "Benue",
+        "name": "Oju/Obi",
+        "lgs": [
+            "218",
+            "1279"
+        ]
+    },
+    {
+        "id": "1214",
+        "state": "Benue",
+        "name": "Kwande/Ushongo",
+        "lgs": [
+            "212",
+            "223"
+        ]
+    },
+    {
+        "id": "963",
+        "state": "Borno",
+        "name": "Maiduguri (Metropolitan)",
+        "lgs": [
+            "245"
+        ]
+    },
+    {
+        "id": "1051",
+        "state": "Borno",
+        "name": "Damboa/Gwoza/Chibok",
+        "lgs": [
+            "231",
+            "235",
+            "230"
+        ]
+    },
+    {
+        "id": "1181",
+        "state": "Borno",
+        "name": "Biu/Kwaya Kusar/Shani/Bayo",
+        "lgs": [
+            "229",
+            "242",
+            "251",
+            "228"
+        ]
+    },
+    {
+        "id": "1131",
+        "state": "Borno",
+        "name": "Askira Uba/Hawul",
+        "lgs": [
+            "226",
+            "236"
+        ]
+    },
+    {
+        "id": "980",
+        "state": "Borno",
+        "name": "Dikwa/Mafa/Konduga",
+        "lgs": [
+            "232",
+            "243",
+            "240"
+        ]
+    },
+    {
+        "id": "945",
+        "state": "Borno",
+        "name": "Kukawa/Mobbar/Abadam/Guzamali",
+        "lgs": [
+            "241",
+            "247",
+            "225",
+            "234"
+        ]
+    },
+    {
+        "id": "994",
+        "state": "Borno",
+        "name": "Monguno/Marte/Nganzai",
+        "lgs": [
+            "248",
+            "246",
+            "250"
+        ]
+    },
+    {
+        "id": "933",
+        "state": "Borno",
+        "name": "Jere",
+        "lgs": [
+            "237"
+        ]
+    },
+    {
+        "id": "988",
+        "state": "Borno",
+        "name": "Kaga/Gubio/Magumeri",
+        "lgs": [
+            "238",
+            "233",
+            "244"
+        ]
+    },
+    {
+        "id": "1141",
+        "state": "Borno",
+        "name": "Bama/Ngala/Kala Balge",
+        "lgs": [
+            "227",
+            "249",
+            "239"
+        ]
+    },
+    {
+        "id": "1061",
+        "state": "Cross River",
+        "name": "Yala/Ogoja",
+        "lgs": [
+            "269",
+            "267"
+        ]
+    },
+    {
+        "id": "1024",
+        "state": "Cross River",
+        "name": "Calabar Municipal/Odukpani",
+        "lgs": [
+            "260",
+            "266"
+        ]
+    },
+    {
+        "id": "1239",
+        "state": "Cross River",
+        "name": "Akamkpa/Biase",
+        "lgs": [
+            "253",
+            "257"
+        ]
+    },
+    {
+        "id": "1256",
+        "state": "Cross River",
+        "name": "Yakurr/Abi",
+        "lgs": [
+            "268",
+            "252"
+        ]
+    },
+    {
+        "id": "1255",
+        "state": "Cross River",
+        "name": "Calabar South/Akpabuyo/Bakassi South",
+        "lgs": [
+            "259",
+            "254",
+            "255"
+        ]
+    },
+    {
+        "id": "1265",
+        "state": "Cross River",
+        "name": "Obanliku/Obudu/Bekwarra",
+        "lgs": [
+            "263",
+            "265",
+            "256"
+        ]
+    },
+    {
+        "id": "960",
+        "state": "Cross River",
+        "name": "Obubra/Etung",
+        "lgs": [
+            "264",
+            "261"
+        ]
+    },
+    {
+        "id": "1230",
+        "state": "Cross River",
+        "name": "Boki/Ikom",
+        "lgs": [
+            "258",
+            "262"
+        ]
+    },
+    {
+        "id": "1246",
+        "state": "Delta",
+        "name": "Ethiope East/Ethiope West",
+        "lgs": [
+            "275",
+            "274"
+        ]
+    },
+    {
+        "id": "1035",
+        "state": "Delta",
+        "name": "Okpe/Sapele/Uvwie",
+        "lgs": [
+            "282",
+            "286",
+            "291"
+        ]
+    },
+    {
+        "id": "1254",
+        "state": "Delta",
+        "name": "Burutu",
+        "lgs": [
+            "273"
+        ]
+    },
+    {
+        "id": "977",
+        "state": "Delta",
+        "name": "Isoko North/South",
+        "lgs": [
+            "278",
+            "279"
+        ]
+    },
+    {
+        "id": "1022",
+        "state": "Delta",
+        "name": "Aniocha North/Aniocha South/Oshimili North/Oshimili South",
+        "lgs": [
+            "270",
+            "271",
+            "283",
+            "284"
+        ]
+    },
+    {
+        "id": "1014",
+        "state": "Delta",
+        "name": "Bomadi/Patani",
+        "lgs": [
+            "272",
+            "285"
+        ]
+    },
+    {
+        "id": "1045",
+        "state": "Delta",
+        "name": "Ndokwa East/Ndokwa West/Ukwuani",
+        "lgs": [
+            "280",
+            "281",
+            "290"
+        ]
+    },
+    {
+        "id": "1031",
+        "state": "Delta",
+        "name": "Ughelli North/Ughelli South/Udu",
+        "lgs": [
+            "288",
+            "289",
+            "287"
+        ]
+    },
+    {
+        "id": "1240",
+        "state": "Delta",
+        "name": "Warri North/Warri South/Warri South West",
+        "lgs": [
+            "292",
+            "294",
+            "293"
+        ]
+    },
+    {
+        "id": "1028",
+        "state": "Delta",
+        "name": "Ika North East/Ika South",
+        "lgs": [
+            "276",
+            "277"
+        ]
+    },
+    {
+        "id": "1036",
+        "state": "Ebonyi",
+        "name": "Ezza South/Ikwo",
+        "lgs": [
+            "300",
+            "301"
+        ]
+    },
+    {
+        "id": "1052",
+        "state": "Ebonyi",
+        "name": "Ebonyi/Ohaukwu",
+        "lgs": [
+            "298",
+            "306"
+        ]
+    },
+    {
+        "id": "1050",
+        "state": "Ebonyi",
+        "name": "Ezza North/Ishielu",
+        "lgs": [
+            "299",
+            "302"
+        ]
+    },
+    {
+        "id": "1043",
+        "state": "Ebonyi",
+        "name": "Afikpo North/Afikpo South",
+        "lgs": [
+            "296",
+            "297"
+        ]
+    },
+    {
+        "id": "978",
+        "state": "Ebonyi",
+        "name": "Ohaozara/Onicha/Ivo",
+        "lgs": [
+            "305",
+            "307",
+            "303"
+        ]
+    },
+    {
+        "id": "1091",
+        "state": "Ebonyi",
+        "name": "Abakaliki/Izzi",
+        "lgs": [
+            "295",
+            "304"
+        ]
+    },
+    {
+        "id": "1069",
+        "state": "Edo",
+        "name": "Oriowo/Uhumwonde",
+        "lgs": [
+            "320",
+            "325"
+        ]
+    },
+    {
+        "id": "1026",
+        "state": "Edo",
+        "name": "Ovia South West/Ovia North East",
+        "lgs": [
+            "322",
+            "321"
+        ]
+    },
+    {
+        "id": "1148",
+        "state": "Edo",
+        "name": "Etsako East/West/Central",
+        "lgs": [
+            "315",
+            "316",
+            "314"
+        ]
+    },
+    {
+        "id": "1048",
+        "state": "Edo",
+        "name": "Esan Central/West/Igueben",
+        "lgs": [
+            "310",
+            "313",
+            "317"
+        ]
+    },
+    {
+        "id": "957",
+        "state": "Edo",
+        "name": "Egor/Ikpoba Okha",
+        "lgs": [
+            "309",
+            "318"
+        ]
+    },
+    {
+        "id": "1047",
+        "state": "Edo",
+        "name": "Owan West/East",
+        "lgs": [
+            "324",
+            "323"
+        ]
+    },
+    {
+        "id": "1058",
+        "state": "Edo",
+        "name": "Oredo",
+        "lgs": [
+            "319"
+        ]
+    },
+    {
+        "id": "1053",
+        "state": "Edo",
+        "name": "Akoko Edo",
+        "lgs": [
+            "308"
+        ]
+    },
+    {
+        "id": "1266",
+        "state": "Edo",
+        "name": "Esan North East/Esan South East",
+        "lgs": [
+            "311",
+            "312"
+        ]
+    },
+    {
+        "id": "1205",
+        "state": "Ekiti",
+        "name": "Emure/Gbonyin/Ekiti East",
+        "lgs": [
+            "331",
+            "332",
+            "328"
+        ]
+    },
+    {
+        "id": "1046",
+        "state": "Ekiti",
+        "name": "Ijero/Ekiti West/Efon",
+        "lgs": [
+            "334",
+            "330",
+            "327"
+        ]
+    },
+    {
+        "id": "1060",
+        "state": "Ekiti",
+        "name": "Ido/Osi/Moba/Ilejemeje",
+        "lgs": [
+            "333",
+            "340",
+            "337"
+        ]
+    },
+    {
+        "id": "1143",
+        "state": "Ekiti",
+        "name": "Ikole/Oye/North",
+        "lgs": [
+            "336",
+            "341"
+        ]
+    },
+    {
+        "id": "987",
+        "state": "Ekiti",
+        "name": "Ado Ekiti/Irepodun/Ifelodun",
+        "lgs": [
+            "326",
+            "338"
+        ]
+    },
+    {
+        "id": "1147",
+        "state": "Ekiti",
+        "name": "Ekiti South West/Ikere/Orun/Ise",
+        "lgs": [
+            "329",
+            "335",
+            "339"
+        ]
+    },
+    {
+        "id": "1192",
+        "state": "Enugu",
+        "name": "Nsukka/Igboeze South",
+        "lgs": [
+            "354",
+            "350"
+        ]
+    },
+    {
+        "id": "1030",
+        "state": "Enugu",
+        "name": "Enugu North/South",
+        "lgs": [
+            "345",
+            "346"
+        ]
+    },
+    {
+        "id": "972",
+        "state": "Enugu",
+        "name": "Enugu East/Isi Uzo",
+        "lgs": [
+            "344",
+            "351"
+        ]
+    },
+    {
+        "id": "1033",
+        "state": "Enugu",
+        "name": "Ezeagu/Udi",
+        "lgs": [
+            "347",
+            "357"
+        ]
+    },
+    {
+        "id": "1049",
+        "state": "Enugu",
+        "name": "Nkanu East/Nkanu West",
+        "lgs": [
+            "352",
+            "353"
+        ]
+    },
+    {
+        "id": "1086",
+        "state": "Enugu",
+        "name": "Igbo Etiti/Uzo Uwani",
+        "lgs": [
+            "348",
+            "358"
+        ]
+    },
+    {
+        "id": "1101",
+        "state": "Enugu",
+        "name": "Udenu/Igboeze North",
+        "lgs": [
+            "356",
+            "349"
+        ]
+    },
+    {
+        "id": "1096",
+        "state": "Enugu",
+        "name": "Aninri/Awgu/Oji River",
+        "lgs": [
+            "342",
+            "343",
+            "355"
+        ]
+    },
+    {
+        "id": "949",
+        "state": "Federal Capital Territory",
+        "name": "Kuje/Abaji/Gwagwalada/Kwali",
+        "lgs": [
+            "363",
+            "359",
+            "362",
+            "364"
+        ]
+    },
+    {
+        "id": "1125",
+        "state": "Federal Capital Territory",
+        "name": "Abuja Municipal/Bwari",
+        "lgs": [
+            "360",
+            "361"
+        ]
+    },
+    {
+        "id": "1103",
+        "state": "Gombe",
+        "name": "Dukku/Nafada",
+        "lgs": [
+            "368",
+            "373"
+        ]
+    },
+    {
+        "id": "970",
+        "state": "Gombe",
+        "name": "Gombe/Kwami/Funakaye",
+        "lgs": [
+            "370",
+            "372",
+            "369"
+        ]
+    },
+    {
+        "id": "1108",
+        "state": "Gombe",
+        "name": "Akko",
+        "lgs": [
+            "365"
+        ]
+    },
+    {
+        "id": "1218",
+        "state": "Gombe",
+        "name": "Kaltungo/Shongom",
+        "lgs": [
+            "371",
+            "374"
+        ]
+    },
+    {
+        "id": "1122",
+        "state": "Gombe",
+        "name": "Balanga/Billiri",
+        "lgs": [
+            "366",
+            "367"
+        ]
+    },
+    {
+        "id": "1079",
+        "state": "Gombe",
+        "name": "Yamaltu/Deba",
+        "lgs": [
+            "375"
+        ]
+    },
+    {
+        "id": "956",
+        "state": "Imo",
+        "name": "Orlu/Oru East/Orsu",
+        "lgs": [
+            "395",
+            "397",
+            "396"
+        ]
+    },
+    {
+        "id": "1234",
+        "state": "Imo",
+        "name": "Aboh Mbaise/Ngor Okpala",
+        "lgs": [
+            "376",
+            "387"
+        ]
+    },
+    {
+        "id": "1057",
+        "state": "Imo",
+        "name": "Ahiazu Mbaise/Ezinihitte",
+        "lgs": [
+            "377",
+            "379"
+        ]
+    },
+    {
+        "id": "1215",
+        "state": "Imo",
+        "name": "Ikeduru/Mbaitoli",
+        "lgs": [
+            "383",
+            "386"
+        ]
+    },
+    {
+        "id": "1257",
+        "state": "Imo",
+        "name": "Owerri Municipal/Owerri North/Owerri West",
+        "lgs": [
+            "399",
+            "400",
+            "401"
+        ]
+    },
+    {
+        "id": "943",
+        "state": "Imo",
+        "name": "Oguta/Ohaji Egbema/Oru West",
+        "lgs": [
+            "392",
+            "393",
+            "398"
+        ]
+    },
+    {
+        "id": "1231",
+        "state": "Imo",
+        "name": "Ehimembano/Ihitte Uboma/Obowo",
+        "lgs": [
+            "378",
+            "382",
+            "391"
+        ]
+    },
+    {
+        "id": "985",
+        "state": "Imo",
+        "name": "Isiala Mbano/Okigwe/Onuimo",
+        "lgs": [
+            "384",
+            "394",
+            "402"
+        ]
+    },
+    {
+        "id": "1245",
+        "state": "Imo",
+        "name": "Ideato North/Ideato South",
+        "lgs": [
+            "381",
+            "380"
+        ]
+    },
+    {
+        "id": "1232",
+        "state": "Imo",
+        "name": "Isu/Njaba/Nkwerre/Nwangele",
+        "lgs": [
+            "385",
+            "388",
+            "389",
+            "390"
+        ]
+    },
+    {
+        "id": "1123",
+        "state": "Jigawa",
+        "name": "Kaugama/Mallam Madori",
+        "lgs": [
+            "418",
+            "423"
+        ]
+    },
+    {
+        "id": "1112",
+        "state": "Jigawa",
+        "name": "Garki/Babura",
+        "lgs": [
+            "410",
+            "404"
+        ]
+    },
+    {
+        "id": "1064",
+        "state": "Jigawa",
+        "name": "Taura/Ringim",
+        "lgs": [
+            "428",
+            "425"
+        ]
+    },
+    {
+        "id": "1062",
+        "state": "Jigawa",
+        "name": "Buji/Birnin Kudu",
+        "lgs": [
+            "407",
+            "406"
+        ]
+    },
+    {
+        "id": "1151",
+        "state": "Jigawa",
+        "name": "Birniwa/Guri/Kirikasamma",
+        "lgs": [
+            "405",
+            "412",
+            "420"
+        ]
+    },
+    {
+        "id": "1121",
+        "state": "Jigawa",
+        "name": "Gwaram",
+        "lgs": [
+            "413"
+        ]
+    },
+    {
+        "id": "1094",
+        "state": "Jigawa",
+        "name": "Dutse/Kiyawa",
+        "lgs": [
+            "408",
+            "421"
+        ]
+    },
+    {
+        "id": "1207",
+        "state": "Jigawa",
+        "name": "Kazaure/Roni/Gwiwa/Yankwashi",
+        "lgs": [
+            "419",
+            "426",
+            "414",
+            "429"
+        ]
+    },
+    {
+        "id": "935",
+        "state": "Jigawa",
+        "name": "Gumel/Maigatari/Sule Tankarkar/Gagarawa",
+        "lgs": [
+            "411",
+            "422",
+            "427",
+            "409"
+        ]
+    },
+    {
+        "id": "1013",
+        "state": "Jigawa",
+        "name": "Miga/Jahun",
+        "lgs": [
+            "424",
+            "416"
+        ]
+    },
+    {
+        "id": "928",
+        "state": "Jigawa",
+        "name": "Hadeja/Kafin Hausa/Auyo",
+        "lgs": [
+            "415",
+            "417",
+            "403"
+        ]
+    },
+    {
+        "id": "932",
+        "state": "Kaduna",
+        "name": "Igabi",
+        "lgs": [
+            "433"
+        ]
+    },
+    {
+        "id": "1082",
+        "state": "Kaduna",
+        "name": "Kauru",
+        "lgs": [
+            "443"
+        ]
+    },
+    {
+        "id": "954",
+        "state": "Kaduna",
+        "name": "Kachia/Kagarko",
+        "lgs": [
+            "437",
+            "440"
+        ]
+    },
+    {
+        "id": "1269",
+        "state": "Kaduna",
+        "name": "Sabon Gari",
+        "lgs": [
+            "448"
+        ]
+    },
+    {
+        "id": "1274",
+        "state": "Kaduna",
+        "name": "Kaura",
+        "lgs": [
+            "442"
+        ]
+    },
+    {
+        "id": "1223",
+        "state": "Kaduna",
+        "name": "Kaduna South",
+        "lgs": [
+            "439"
+        ]
+    },
+    {
+        "id": "1120",
+        "state": "Kaduna",
+        "name": "Ikara/Kubau",
+        "lgs": [
+            "434",
+            "444"
+        ]
+    },
+    {
+        "id": "934",
+        "state": "Kaduna",
+        "name": "Soba",
+        "lgs": [
+            "450"
+        ]
+    },
+    {
+        "id": "936",
+        "state": "Kaduna",
+        "name": "Lere",
+        "lgs": [
+            "446"
+        ]
+    },
+    {
+        "id": "1272",
+        "state": "Kaduna",
+        "name": "Zangon Kataf/Jaba",
+        "lgs": [
+            "451",
+            "435"
+        ]
+    },
+    {
+        "id": "947",
+        "state": "Kaduna",
+        "name": "Makarfi/Kudan",
+        "lgs": [
+            "447",
+            "445"
+        ]
+    },
+    {
+        "id": "1077",
+        "state": "Kaduna",
+        "name": "Sanga/Jema’A",
+        "lgs": [
+            "449",
+            "436"
+        ]
+    },
+    {
+        "id": "1209",
+        "state": "Kaduna",
+        "name": "Kaduna North",
+        "lgs": [
+            "438"
+        ]
+    },
+    {
+        "id": "993",
+        "state": "Kaduna",
+        "name": "Birnin Gwari/Giwa",
+        "lgs": [
+            "430",
+            "432"
+        ]
+    },
+    {
+        "id": "1128",
+        "state": "Kaduna",
+        "name": "Zaria",
+        "lgs": [
+            "452"
+        ]
+    },
+    {
+        "id": "1118",
+        "state": "Kaduna",
+        "name": "Chikun/Kajuru",
+        "lgs": [
+            "431",
+            "441"
+        ]
+    },
+    {
+        "id": "1107",
+        "state": "Kano",
+        "name": "Albasu/Gaya/Ajingi",
+        "lgs": [
+            "454",
+            "468",
+            "453"
+        ]
+    },
+    {
+        "id": "1138",
+        "state": "Kano",
+        "name": "Bebeji/Kiru",
+        "lgs": [
+            "456",
+            "476"
+        ]
+    },
+    {
+        "id": "1176",
+        "state": "Kano",
+        "name": "Tudun Wada/Doguwa",
+        "lgs": [
+            "493",
+            "463"
+        ]
+    },
+    {
+        "id": "1188",
+        "state": "Kano",
+        "name": "Fagge",
+        "lgs": [
+            "464"
+        ]
+    },
+    {
+        "id": "1183",
+        "state": "Kano",
+        "name": "Dala",
+        "lgs": [
+            "459"
+        ]
+    },
+    {
+        "id": "1204",
+        "state": "Kano",
+        "name": "Dambatta/Makoda",
+        "lgs": [
+            "460",
+            "481"
+        ]
+    },
+    {
+        "id": "976",
+        "state": "Kano",
+        "name": "Bichi",
+        "lgs": [
+            "457"
+        ]
+    },
+    {
+        "id": "1004",
+        "state": "Kano",
+        "name": "Kura/Madobi/Garun Mallam",
+        "lgs": [
+            "479",
+            "480",
+            "467"
+        ]
+    },
+    {
+        "id": "1017",
+        "state": "Kano",
+        "name": "Tarauni",
+        "lgs": [
+            "490"
+        ]
+    },
+    {
+        "id": "1160",
+        "state": "Kano",
+        "name": "Karaye/Rogo",
+        "lgs": [
+            "474",
+            "486"
+        ]
+    },
+    {
+        "id": "920",
+        "state": "Kano",
+        "name": "Kano Municipal",
+        "lgs": [
+            "473"
+        ]
+    },
+    {
+        "id": "1074",
+        "state": "Kano",
+        "name": "Rano/Bunkure/Kibiya",
+        "lgs": [
+            "484",
+            "458",
+            "475"
+        ]
+    },
+    {
+        "id": "1003",
+        "state": "Kano",
+        "name": "Gwale",
+        "lgs": [
+            "470"
+        ]
+    },
+    {
+        "id": "1202",
+        "state": "Kano",
+        "name": "Minjibir/Ungogo",
+        "lgs": [
+            "482",
+            "494"
+        ]
+    },
+    {
+        "id": "1006",
+        "state": "Kano",
+        "name": "Kumbotso",
+        "lgs": [
+            "477"
+        ]
+    },
+    {
+        "id": "989",
+        "state": "Kano",
+        "name": "Wudil/Garko",
+        "lgs": [
+            "496",
+            "466"
+        ]
+    },
+    {
+        "id": "1018",
+        "state": "Kano",
+        "name": "Gwarzo/Kabo",
+        "lgs": [
+            "471",
+            "472"
+        ]
+    },
+    {
+        "id": "1012",
+        "state": "Kano",
+        "name": "Dawakin Kudu/Warawa",
+        "lgs": [
+            "461",
+            "495"
+        ]
+    },
+    {
+        "id": "1011",
+        "state": "Kano",
+        "name": "Gezawa/Gabasawa",
+        "lgs": [
+            "469",
+            "465"
+        ]
+    },
+    {
+        "id": "1020",
+        "state": "Kano",
+        "name": "Nassarawa",
+        "lgs": [
+            "483"
+        ]
+    },
+    {
+        "id": "1140",
+        "state": "Kano",
+        "name": "Tsanyawa/Kunchi",
+        "lgs": [
+            "492",
+            "478"
+        ]
+    },
+    {
+        "id": "1089",
+        "state": "Kano",
+        "name": "Sumaila/Takai",
+        "lgs": [
+            "488",
+            "489"
+        ]
+    },
+    {
+        "id": "1093",
+        "state": "Kano",
+        "name": "Dawakin Tofa/Tofa/Rimin Gado",
+        "lgs": [
+            "462",
+            "491",
+            "485"
+        ]
+    },
+    {
+        "id": "1261",
+        "state": "Kano",
+        "name": "Bagwai/Shanono",
+        "lgs": [
+            "455",
+            "487"
+        ]
+    },
+    {
+        "id": "1161",
+        "state": "Katsina",
+        "name": "Ingawa/Kankia/Kusada",
+        "lgs": [
+            "511",
+            "516",
+            "519"
+        ]
+    },
+    {
+        "id": "1267",
+        "state": "Katsina",
+        "name": "Batsari/Safana/Danmusa",
+        "lgs": [
+            "499",
+            "528",
+            "505"
+        ]
+    },
+    {
+        "id": "1241",
+        "state": "Katsina",
+        "name": "Musawa/Matazu",
+        "lgs": [
+            "525",
+            "524"
+        ]
+    },
+    {
+        "id": "946",
+        "state": "Katsina",
+        "name": "Mani/Bindawa",
+        "lgs": [
+            "522",
+            "501"
+        ]
+    },
+    {
+        "id": "1098",
+        "state": "Katsina",
+        "name": "Bakori/Danja",
+        "lgs": [
+            "497",
+            "504"
+        ]
+    },
+    {
+        "id": "1072",
+        "state": "Katsina",
+        "name": "Dutsin Ma/Kurfi",
+        "lgs": [
+            "508",
+            "518"
+        ]
+    },
+    {
+        "id": "930",
+        "state": "Katsina",
+        "name": "Malumfashi/Kafur",
+        "lgs": [
+            "521",
+            "513"
+        ]
+    },
+    {
+        "id": "1066",
+        "state": "Katsina",
+        "name": "Daura/Sandamu/Mai’Adua",
+        "lgs": [
+            "506",
+            "529",
+            "520"
+        ]
+    },
+    {
+        "id": "918",
+        "state": "Katsina",
+        "name": "Batagarawa/Rimi/Charanchi",
+        "lgs": [
+            "498",
+            "526",
+            "502"
+        ]
+    },
+    {
+        "id": "1073",
+        "state": "Katsina",
+        "name": "Mashi/Dutsi",
+        "lgs": [
+            "523",
+            "507"
+        ]
+    },
+    {
+        "id": "983",
+        "state": "Katsina",
+        "name": "Dandume/Funtua",
+        "lgs": [
+            "503",
+            "510"
+        ]
+    },
+    {
+        "id": "1127",
+        "state": "Katsina",
+        "name": "Faskari/Kankara/Sabuwa",
+        "lgs": [
+            "509",
+            "515",
+            "527"
+        ]
+    },
+    {
+        "id": "1019",
+        "state": "Katsina",
+        "name": "Zango/Baure",
+        "lgs": [
+            "530",
+            "500"
+        ]
+    },
+    {
+        "id": "1067",
+        "state": "Katsina",
+        "name": "Jibia/Kaita",
+        "lgs": [
+            "512",
+            "514"
+        ]
+    },
+    {
+        "id": "1078",
+        "state": "Katsina",
+        "name": "Katsina Central",
+        "lgs": [
+            "517"
+        ]
+    },
+    {
+        "id": "931",
+        "state": "Kebbi",
+        "name": "Arewa/Dandi",
+        "lgs": [
+            "532",
+            "538"
+        ]
+    },
+    {
+        "id": "1270",
+        "state": "Kebbi",
+        "name": "Argungu/Augie",
+        "lgs": [
+            "533",
+            "534"
+        ]
+    },
+    {
+        "id": "1210",
+        "state": "Kebbi",
+        "name": "Bagudo/Suru",
+        "lgs": [
+            "535",
+            "549"
+        ]
+    },
+    {
+        "id": "1185",
+        "state": "Kebbi",
+        "name": "Koko Besse/Maiyama",
+        "lgs": [
+            "544",
+            "545"
+        ]
+    },
+    {
+        "id": "1105",
+        "state": "Kebbi",
+        "name": "Aliero/Gwandu/Jega",
+        "lgs": [
+            "531",
+            "541",
+            "542"
+        ]
+    },
+    {
+        "id": "964",
+        "state": "Kebbi",
+        "name": "Bunza/Birnin Kebbi/Kalgo",
+        "lgs": [
+            "537",
+            "536",
+            "543"
+        ]
+    },
+    {
+        "id": "1133",
+        "state": "Kebbi",
+        "name": "Fakai/Sakaba/Wasagu/Danko/Zuru",
+        "lgs": [
+            "540",
+            "547",
+            "539",
+            "551"
+        ]
+    },
+    {
+        "id": "1276",
+        "state": "Kebbi",
+        "name": "Ngaski/Shanga/Yauri",
+        "lgs": [
+            "546",
+            "548",
+            "550"
+        ]
+    },
+    {
+        "id": "1097",
+        "state": "Kogi",
+        "name": "Dekina/Bassa",
+        "lgs": [
+            "41",
+            "1278"
+        ]
+    },
+    {
+        "id": "990",
+        "state": "Kogi",
+        "name": "Ankpa/Omala/Olamaboro",
+        "lgs": [
+            "39",
+            "55",
+            "54"
+        ]
+    },
+    {
+        "id": "1139",
+        "state": "Kogi",
+        "name": "Adavi/Okehi",
+        "lgs": [
+            "552",
+            "52"
+        ]
+    },
+    {
+        "id": "952",
+        "state": "Kogi",
+        "name": "Idah/Igalamela Odolu/Ibaji/Ofu",
+        "lgs": [
+            "43",
+            "44",
+            "42",
+            "50"
+        ]
+    },
+    {
+        "id": "1063",
+        "state": "Kogi",
+        "name": "Ajaokuta",
+        "lgs": [
+            "553"
+        ]
+    },
+    {
+        "id": "1104",
+        "state": "Kogi",
+        "name": "Lokoja/Kogi",
+        "lgs": [
+            "48",
+            "47"
+        ]
+    },
+    {
+        "id": "1090",
+        "state": "Kogi",
+        "name": "Yagba East/West/Mopamuro",
+        "lgs": [
+            "56",
+            "57",
+            "49"
+        ]
+    },
+    {
+        "id": "1165",
+        "state": "Kogi",
+        "name": "Okene/Ogori Magongo",
+        "lgs": [
+            "53",
+            "51"
+        ]
+    },
+    {
+        "id": "1198",
+        "state": "Kogi",
+        "name": "Kabba/Bunu/Ijumu",
+        "lgs": [
+            "46",
+            "45"
+        ]
+    },
+    {
+        "id": "1177",
+        "state": "Kwara",
+        "name": "Ilorin East/Ilorin South",
+        "lgs": [
+            "555",
+            "556"
+        ]
+    },
+    {
+        "id": "984",
+        "state": "Kwara",
+        "name": "Ilorin West/Asa",
+        "lgs": [
+            "557",
+            "58"
+        ]
+    },
+    {
+        "id": "1180",
+        "state": "Kwara",
+        "name": "Patigi/Edu/Moro",
+        "lgs": [
+            "565",
+            "60",
+            "561"
+        ]
+    },
+    {
+        "id": "997",
+        "state": "Kwara",
+        "name": "Baruten/Kaiama",
+        "lgs": [
+            "59",
+            "560"
+        ]
+    },
+    {
+        "id": "1167",
+        "state": "Kwara",
+        "name": "Ekiti/Irepodun/Isin/Oke Ero",
+        "lgs": [
+            "61",
+            "1280",
+            "559",
+            "563"
+        ]
+    },
+    {
+        "id": "1055",
+        "state": "Kwara",
+        "name": "Ifelodun/Offa/Oyun",
+        "lgs": [
+            "1277",
+            "562",
+            "564"
+        ]
+    },
+    {
+        "id": "1070",
+        "state": "Lagos",
+        "name": "Agege",
+        "lgs": [
+            "566"
+        ]
+    },
+    {
+        "id": "1116",
+        "state": "Lagos",
+        "name": "Lagos Island II",
+        "lgs": [
+            "579"
+        ]
+    },
+    {
+        "id": "1126",
+        "state": "Lagos",
+        "name": "Mushin I",
+        "lgs": [
+            "581"
+        ]
+    },
+    {
+        "id": "1142",
+        "state": "Lagos",
+        "name": "Ikorodu",
+        "lgs": [
+            "577"
+        ]
+    },
+    {
+        "id": "1054",
+        "state": "Lagos",
+        "name": "Badagry",
+        "lgs": [
+            "571"
+        ]
+    },
+    {
+        "id": "1130",
+        "state": "Lagos",
+        "name": "Ibeju Lekki",
+        "lgs": [
+            "574"
+        ]
+    },
+    {
+        "id": "919",
+        "state": "Lagos",
+        "name": "Mushin II",
+        "lgs": [
+            "581"
+        ]
+    },
+    {
+        "id": "999",
+        "state": "Lagos",
+        "name": "Oshodi/Isolo I",
+        "lgs": [
+            "583"
+        ]
+    },
+    {
+        "id": "958",
+        "state": "Lagos",
+        "name": "Apapa",
+        "lgs": [
+            "570"
+        ]
+    },
+    {
+        "id": "1038",
+        "state": "Lagos",
+        "name": "Lagos Island I",
+        "lgs": [
+            "579"
+        ]
+    },
+    {
+        "id": "1262",
+        "state": "Lagos",
+        "name": "Surulere I",
+        "lgs": [
+            "1281"
+        ]
+    },
+    {
+        "id": "1275",
+        "state": "Lagos",
+        "name": "Oshodi/Isolo II",
+        "lgs": [
+            "583"
+        ]
+    },
+    {
+        "id": "1259",
+        "state": "Lagos",
+        "name": "Ikeja",
+        "lgs": [
+            "576"
+        ]
+    },
+    {
+        "id": "10092",
+        "state": "Lagos",
+        "name": "Lagos Mainland",
+        "lgs": [
+            "580"
+        ]
+    },
+    {
+        "id": "1092",
+        "state": "Lagos",
+        "name": "Ajeromi/Ifelodun",
+        "lgs": [
+            "567"
+        ]
+    },
+    {
+        "id": "1199",
+        "state": "Lagos",
+        "name": "Shomolu",
+        "lgs": [
+            "584"
+        ]
+    },
+    {
+        "id": "925",
+        "state": "Lagos",
+        "name": "Eti Osa",
+        "lgs": [
+            "573"
+        ]
+    },
+    {
+        "id": "1040",
+        "state": "Lagos",
+        "name": "Amuwo Odofin",
+        "lgs": [
+            "569"
+        ]
+    },
+    {
+        "id": "1084",
+        "state": "Lagos",
+        "name": "Alimosho",
+        "lgs": [
+            "568"
+        ]
+    },
+    {
+        "id": "1115",
+        "state": "Lagos",
+        "name": "Kosofe",
+        "lgs": [
+            "578"
+        ]
+    },
+    {
+        "id": "1034",
+        "state": "Lagos",
+        "name": "Ifako Ijaiye",
+        "lgs": [
+            "575"
+        ]
+    },
+    {
+        "id": "1184",
+        "state": "Lagos",
+        "name": "Surulere II",
+        "lgs": [
+            "1281"
+        ]
+    },
+    {
+        "id": "1087",
+        "state": "Lagos",
+        "name": "Ojo",
+        "lgs": [
+            "582"
+        ]
+    },
+    {
+        "id": "1029",
+        "state": "Lagos",
+        "name": "Epe",
+        "lgs": [
+            "572"
+        ]
+    },
+    {
+        "id": "1242",
+        "state": "Nasarawa",
+        "name": "Akwanga/Wamba/Nasarawa Eggon",
+        "lgs": [
+            "586",
+            "597",
+            "595"
+        ]
+    },
+    {
+        "id": "1009",
+        "state": "Nasarawa",
+        "name": "Nasarawa/Toto",
+        "lgs": [
+            "594",
+            "596"
+        ]
+    },
+    {
+        "id": "971",
+        "state": "Nasarawa",
+        "name": "Lafia/Obi",
+        "lgs": [
+            "593",
+            "215"
+        ]
+    },
+    {
+        "id": "992",
+        "state": "Nasarawa",
+        "name": "Awe/Doma/Keana",
+        "lgs": [
+            "587",
+            "588",
+            "590"
+        ]
+    },
+    {
+        "id": "951",
+        "state": "Nasarawa",
+        "name": "Keffi/Karu/Kokona",
+        "lgs": [
+            "591",
+            "589",
+            "592"
+        ]
+    },
+    {
+        "id": "1132",
+        "state": "Niger",
+        "name": "Wushishi/Mashegu/Kontagora/Mariga",
+        "lgs": [
+            "622",
+            "613",
+            "608",
+            "612"
+        ]
+    },
+    {
+        "id": "1164",
+        "state": "Niger",
+        "name": "Suleja/Tafa/Gurara",
+        "lgs": [
+            "620",
+            "621",
+            "606"
+        ]
+    },
+    {
+        "id": "1065",
+        "state": "Niger",
+        "name": "Booso/Paikoro",
+        "lgs": [
+            "602",
+            "616"
+        ]
+    },
+    {
+        "id": "1124",
+        "state": "Niger",
+        "name": "Agwara/Borgu",
+        "lgs": [
+            "599",
+            "601"
+        ]
+    },
+    {
+        "id": "1129",
+        "state": "Niger",
+        "name": "Agaie/Lapai",
+        "lgs": [
+            "598",
+            "609"
+        ]
+    },
+    {
+        "id": "1137",
+        "state": "Niger",
+        "name": "Gbako/Bida/Katcha",
+        "lgs": [
+            "605",
+            "600",
+            "607"
+        ]
+    },
+    {
+        "id": "1194",
+        "state": "Niger",
+        "name": "Rijau/Magama",
+        "lgs": [
+            "618",
+            "611"
+        ]
+    },
+    {
+        "id": "996",
+        "state": "Niger",
+        "name": "Chanchaga",
+        "lgs": [
+            "603"
+        ]
+    },
+    {
+        "id": "1135",
+        "state": "Niger",
+        "name": "Shiroro/Rafi/Munya",
+        "lgs": [
+            "619",
+            "617",
+            "615"
+        ]
+    },
+    {
+        "id": "939",
+        "state": "Niger",
+        "name": "Mokwa/Lavun/Edati",
+        "lgs": [
+            "614",
+            "610",
+            "604"
+        ]
+    },
+    {
+        "id": "1144",
+        "state": "Ogun",
+        "name": "Ijebu East/Ijebu North/Ogun Waterside",
+        "lgs": [
+            "631",
+            "632",
+            "640"
+        ]
+    },
+    {
+        "id": "1154",
+        "state": "Ogun",
+        "name": "Ifo/Ewekoro",
+        "lgs": [
+            "629",
+            "628"
+        ]
+    },
+    {
+        "id": "1203",
+        "state": "Ogun",
+        "name": "Ado Odo/Ota",
+        "lgs": [
+            "625"
+        ]
+    },
+    {
+        "id": "1157",
+        "state": "Ogun",
+        "name": "Egbado North/Imeko Afon",
+        "lgs": [
+            "626",
+            "635"
+        ]
+    },
+    {
+        "id": "1170",
+        "state": "Ogun",
+        "name": "Egbado South/Ipokia",
+        "lgs": [
+            "627",
+            "636"
+        ]
+    },
+    {
+        "id": "966",
+        "state": "Ogun",
+        "name": "Ijebu Ode/Odogbolu/Ijebu North East",
+        "lgs": [
+            "633",
+            "639",
+            "630"
+        ]
+    },
+    {
+        "id": "1071",
+        "state": "Ogun",
+        "name": "Abeokuta South",
+        "lgs": [
+            "623"
+        ]
+    },
+    {
+        "id": "1041",
+        "state": "Ogun",
+        "name": "Odeda/Obafemi Owode/Abeokuta North",
+        "lgs": [
+            "638",
+            "637",
+            "624"
+        ]
+    },
+    {
+        "id": "1222",
+        "state": "Ogun",
+        "name": "Ikenne/Shagamu/Remo North",
+        "lgs": [
+            "634",
+            "63",
+            "62"
+        ]
+    },
+    {
+        "id": "1244",
+        "state": "Ondo",
+        "name": "Akoko South East/Akoko South West",
+        "lgs": [
+            "65",
+            "66"
+        ]
+    },
+    {
+        "id": "1044",
+        "state": "Ondo",
+        "name": "Owo/Ose",
+        "lgs": [
+            "81",
+            "80"
+        ]
+    },
+    {
+        "id": "1155",
+        "state": "Ondo",
+        "name": "Ileoluji Okeigbo/Odigbo",
+        "lgs": [
+            "74",
+            "76"
+        ]
+    },
+    {
+        "id": "1173",
+        "state": "Ondo",
+        "name": "Okitipupa/Irele",
+        "lgs": [
+            "77",
+            "75"
+        ]
+    },
+    {
+        "id": "1268",
+        "state": "Ondo",
+        "name": "Akoko North East/Akoko North West",
+        "lgs": [
+            "64",
+            "67"
+        ]
+    },
+    {
+        "id": "940",
+        "state": "Ondo",
+        "name": "Akure North/Akure South",
+        "lgs": [
+            "68",
+            "69"
+        ]
+    },
+    {
+        "id": "1171",
+        "state": "Ondo",
+        "name": "Ondo West/Ondo East",
+        "lgs": [
+            "79",
+            "78"
+        ]
+    },
+    {
+        "id": "1000",
+        "state": "Ondo",
+        "name": "Idanre/Ifedore",
+        "lgs": [
+            "71",
+            "72"
+        ]
+    },
+    {
+        "id": "1056",
+        "state": "Ondo",
+        "name": "Ilaje/Ese Odo",
+        "lgs": [
+            "73",
+            "70"
+        ]
+    },
+    {
+        "id": "1158",
+        "state": "Osun",
+        "name": "Odo Otin/Ifelodun/Boripe",
+        "lgs": [
+            "661",
+            "554",
+            "644"
+        ]
+    },
+    {
+        "id": "981",
+        "state": "Osun",
+        "name": "Ife Central/Ife East/Ife North/Ife South",
+        "lgs": [
+            "652",
+            "649",
+            "650",
+            "651"
+        ]
+    },
+    {
+        "id": "1172",
+        "state": "Osun",
+        "name": "Ayedire/Iwo/Ola Oluwa",
+        "lgs": [
+            "642",
+            "659",
+            "662"
+        ]
+    },
+    {
+        "id": "961",
+        "state": "Osun",
+        "name": "Boluwaduro/Ifedayo/Ila",
+        "lgs": [
+            "643",
+            "653",
+            "654"
+        ]
+    },
+    {
+        "id": "1260",
+        "state": "Osun",
+        "name": "Atakunmosa East/West/Ilesha East/West",
+        "lgs": [
+            "82",
+            "83",
+            "655",
+            "656"
+        ]
+    },
+    {
+        "id": "1021",
+        "state": "Osun",
+        "name": "Obokun/Oriade",
+        "lgs": [
+            "660",
+            "664"
+        ]
+    },
+    {
+        "id": "1119",
+        "state": "Osun",
+        "name": "Irepodun/Olorunda/Osogbo/Orolu",
+        "lgs": [
+            "558",
+            "663",
+            "666",
+            "665"
+        ]
+    },
+    {
+        "id": "1168",
+        "state": "Osun",
+        "name": "Ede North/Ede South/Egbedore/Ejigbo",
+        "lgs": [
+            "645",
+            "646",
+            "647",
+            "648"
+        ]
+    },
+    {
+        "id": "1197",
+        "state": "Osun",
+        "name": "Ayedaade/Irewole/Isokan",
+        "lgs": [
+            "641",
+            "657",
+            "658"
+        ]
+    },
+    {
+        "id": "1146",
+        "state": "Oyo",
+        "name": "Ibadan North East/Ibadan South East",
+        "lgs": [
+            "672",
+            "675"
+        ]
+    },
+    {
+        "id": "1005",
+        "state": "Oyo",
+        "name": "Ogbomosho North/Ogbomoso South/Orire",
+        "lgs": [
+            "687",
+            "688",
+            "694"
+        ]
+    },
+    {
+        "id": "1007",
+        "state": "Oyo",
+        "name": "Ibarapa Central/Ibarapa North",
+        "lgs": [
+            "677",
+            "679"
+        ]
+    },
+    {
+        "id": "1002",
+        "state": "Oyo",
+        "name": "Afijio/Atiba/Oyo East/Oyo West",
+        "lgs": [
+            "667",
+            "669",
+            "695",
+            "696"
+        ]
+    },
+    {
+        "id": "1039",
+        "state": "Oyo",
+        "name": "Egbeda/Ona Ara",
+        "lgs": [
+            "671",
+            "692"
+        ]
+    },
+    {
+        "id": "1008",
+        "state": "Oyo",
+        "name": "Akinyele/Lagelu",
+        "lgs": [
+            "668",
+            "686"
+        ]
+    },
+    {
+        "id": "1169",
+        "state": "Oyo",
+        "name": "Ibadan North",
+        "lgs": [
+            "674"
+        ]
+    },
+    {
+        "id": "1159",
+        "state": "Oyo",
+        "name": "Irepo/Orelope/Olorunsogo",
+        "lgs": [
+            "681",
+            "693",
+            "690"
+        ]
+    },
+    {
+        "id": "965",
+        "state": "Oyo",
+        "name": "Saki East/Saki West/Atisbo",
+        "lgs": [
+            "697",
+            "698",
+            "670"
+        ]
+    },
+    {
+        "id": "1042",
+        "state": "Oyo",
+        "name": "Ogo Oluwa/Surulere",
+        "lgs": [
+            "689",
+            "585"
+        ]
+    },
+    {
+        "id": "1037",
+        "state": "Oyo",
+        "name": "Iseyin/Itesiwaju/Kajola/Iwajowa",
+        "lgs": [
+            "682",
+            "683",
+            "685",
+            "684"
+        ]
+    },
+    {
+        "id": "1145",
+        "state": "Oyo",
+        "name": "Ibadan South West/Ibadan North West",
+        "lgs": [
+            "676",
+            "673"
+        ]
+    },
+    {
+        "id": "929",
+        "state": "Oyo",
+        "name": "Oluyole",
+        "lgs": [
+            "691"
+        ]
+    },
+    {
+        "id": "1156",
+        "state": "Oyo",
+        "name": "Ibarapa East/Ido",
+        "lgs": [
+            "678",
+            "680"
+        ]
+    },
+    {
+        "id": "1163",
+        "state": "Plateau",
+        "name": "Wase",
+        "lgs": [
+            "714"
+        ]
+    },
+    {
+        "id": "1213",
+        "state": "Plateau",
+        "name": "Langtang North/Langtang South",
+        "lgs": [
+            "706",
+            "707"
+        ]
+    },
+    {
+        "id": "1219",
+        "state": "Plateau",
+        "name": "Jos South/Jos East",
+        "lgs": [
+            "703",
+            "701"
+        ]
+    },
+    {
+        "id": "942",
+        "state": "Plateau",
+        "name": "Shendam/Mikang/Qua'An Pan",
+        "lgs": [
+            "713",
+            "709",
+            "711"
+        ]
+    },
+    {
+        "id": "1088",
+        "state": "Plateau",
+        "name": "Jos North/Bassa",
+        "lgs": [
+            "702",
+            "40"
+        ]
+    },
+    {
+        "id": "1081",
+        "state": "Plateau",
+        "name": "Barkin Ladi/Riyom",
+        "lgs": [
+            "699",
+            "712"
+        ]
+    },
+    {
+        "id": "1186",
+        "state": "Plateau",
+        "name": "Mangu/Bokkos",
+        "lgs": [
+            "708",
+            "700"
+        ]
+    },
+    {
+        "id": "1251",
+        "state": "Plateau",
+        "name": "Pankshin/Kanam/Kanke",
+        "lgs": [
+            "710",
+            "704",
+            "705"
+        ]
+    },
+    {
+        "id": "1236",
+        "state": "Rivers",
+        "name": "Andoni/Opobo/Nkoro",
+        "lgs": [
+            "719",
+            "734"
+        ]
+    },
+    {
+        "id": "973",
+        "state": "Rivers",
+        "name": "Obio/Akpor",
+        "lgs": [
+            "729"
+        ]
+    },
+    {
+        "id": "1220",
+        "state": "Rivers",
+        "name": "Port Harcourt II",
+        "lgs": [
+            "736"
+        ]
+    },
+    {
+        "id": "1206",
+        "state": "Rivers",
+        "name": "Tai/Eleme/Oyigbo",
+        "lgs": [
+            "737",
+            "723",
+            "735"
+        ]
+    },
+    {
+        "id": "1083",
+        "state": "Rivers",
+        "name": "Bonny/Degema",
+        "lgs": [
+            "721",
+            "722"
+        ]
+    },
+    {
+        "id": "986",
+        "state": "Rivers",
+        "name": "Khana/Gokana",
+        "lgs": [
+            "728",
+            "726"
+        ]
+    },
+    {
+        "id": "1189",
+        "state": "Rivers",
+        "name": "Ikwerre/Emohua",
+        "lgs": [
+            "727",
+            "724"
+        ]
+    },
+    {
+        "id": "1032",
+        "state": "Rivers",
+        "name": "Etche/Omuma",
+        "lgs": [
+            "725",
+            "733"
+        ]
+    },
+    {
+        "id": "1221",
+        "state": "Rivers",
+        "name": "Okrika/Ogu Bolo",
+        "lgs": [
+            "732",
+            "731"
+        ]
+    },
+    {
+        "id": "1243",
+        "state": "Rivers",
+        "name": "Akuku Toru/Asari Toru",
+        "lgs": [
+            "718",
+            "720"
+        ]
+    },
+    {
+        "id": "967",
+        "state": "Rivers",
+        "name": "Port Harcourt I",
+        "lgs": [
+            "736"
+        ]
+    },
+    {
+        "id": "1193",
+        "state": "Rivers",
+        "name": "Ahoada West/Ogba/Egbema/Ndoni",
+        "lgs": [
+            "717",
+            "730"
+        ]
+    },
+    {
+        "id": "1216",
+        "state": "Rivers",
+        "name": "Abua Odual/Ahoada East",
+        "lgs": [
+            "715",
+            "716"
+        ]
+    },
+    {
+        "id": "1106",
+        "state": "Sokoto",
+        "name": "Sokoto North/South",
+        "lgs": [
+            "753",
+            "754"
+        ]
+    },
+    {
+        "id": "1179",
+        "state": "Sokoto",
+        "name": "Dange/Shuni/Bodinga/Tureta",
+        "lgs": [
+            "740",
+            "739",
+            "757"
+        ]
+    },
+    {
+        "id": "1134",
+        "state": "Sokoto",
+        "name": "Kware/Wamakko",
+        "lgs": [
+            "748",
+            "758"
+        ]
+    },
+    {
+        "id": "962",
+        "state": "Sokoto",
+        "name": "Wurno/Rabbah",
+        "lgs": [
+            "759",
+            "749"
+        ]
+    },
+    {
+        "id": "1136",
+        "state": "Sokoto",
+        "name": "Ilella/Gwadabawa",
+        "lgs": [
+            "745",
+            "744"
+        ]
+    },
+    {
+        "id": "1114",
+        "state": "Sokoto",
+        "name": "Tambuwal Kebbe",
+        "lgs": [
+            "755",
+            "747"
+        ]
+    },
+    {
+        "id": "1015",
+        "state": "Sokoto",
+        "name": "Binji/Silame",
+        "lgs": [
+            "738",
+            "752"
+        ]
+    },
+    {
+        "id": "1080",
+        "state": "Sokoto",
+        "name": "Isa/Sabon Birni",
+        "lgs": [
+            "746",
+            "750"
+        ]
+    },
+    {
+        "id": "1010",
+        "state": "Sokoto",
+        "name": "Gada/Goronyo",
+        "lgs": [
+            "741",
+            "742"
+        ]
+    },
+    {
+        "id": "1187",
+        "state": "Sokoto",
+        "name": "Yabo/Shagari",
+        "lgs": [
+            "760",
+            "751"
+        ]
+    },
+    {
+        "id": "948",
+        "state": "Sokoto",
+        "name": "Tangaza/Gudu",
+        "lgs": [
+            "756",
+            "743"
+        ]
+    },
+    {
+        "id": "982",
+        "state": "Taraba",
+        "name": "Jalingo/Yorro/Zing",
+        "lgs": [
+            "767",
+            "775",
+            "776"
+        ]
+    },
+    {
+        "id": "955",
+        "state": "Taraba",
+        "name": "Ardo Kola/Lau/Karim/Lamido",
+        "lgs": [
+            "761",
+            "770",
+            "768"
+        ]
+    },
+    {
+        "id": "938",
+        "state": "Taraba",
+        "name": "Gashaka/Kurmi/Sardauna",
+        "lgs": [
+            "764",
+            "769",
+            "771"
+        ]
+    },
+    {
+        "id": "921",
+        "state": "Taraba",
+        "name": "Bali/Gassol",
+        "lgs": [
+            "762",
+            "765"
+        ]
+    },
+    {
+        "id": "1175",
+        "state": "Taraba",
+        "name": "Donga/Ussa/Takum/Special Area",
+        "lgs": [
+            "763",
+            "773",
+            "772"
+        ]
+    },
+    {
+        "id": "950",
+        "state": "Taraba",
+        "name": "Wukari/Ibi",
+        "lgs": [
+            "774",
+            "766"
+        ]
+    },
+    {
+        "id": "953",
+        "state": "Yobe",
+        "name": "Fika/Fune",
+        "lgs": [
+            "781",
+            "782"
+        ]
+    },
+    {
+        "id": "1178",
+        "state": "Yobe",
+        "name": "Nangere/Potiskum",
+        "lgs": [
+            "789",
+            "791"
+        ]
+    },
+    {
+        "id": "969",
+        "state": "Yobe",
+        "name": "Gulani/Gujba/Damaturu/Tarmuwa",
+        "lgs": [
+            "785",
+            "784",
+            "780",
+            "792"
+        ]
+    },
+    {
+        "id": "1273",
+        "state": "Yobe",
+        "name": "Bursari/Geidam/Yunusari",
+        "lgs": [
+            "779",
+            "783",
+            "793"
+        ]
+    },
+    {
+        "id": "1201",
+        "state": "Yobe",
+        "name": "Machina/Nguru/Karasuwa/Yusufari",
+        "lgs": [
+            "788",
+            "790",
+            "787",
+            "794"
+        ]
+    },
+    {
+        "id": "924",
+        "state": "Yobe",
+        "name": "Bade/Jakusko",
+        "lgs": [
+            "778",
+            "786"
+        ]
+    },
+    {
+        "id": "1211",
+        "state": "Zamfara",
+        "name": "Maradun/Bakura",
+        "lgs": [
+            "803",
+            "796"
+        ]
+    },
+    {
+        "id": "1217",
+        "state": "Zamfara",
+        "name": "Shinkafi/Zurmi",
+        "lgs": [
+            "805",
+            "808"
+        ]
+    },
+    {
+        "id": "937",
+        "state": "Zamfara",
+        "name": "Tsafe/Gusau",
+        "lgs": [
+            "807",
+            "801"
+        ]
+    },
+    {
+        "id": "975",
+        "state": "Zamfara",
+        "name": "Anka/Talata/Mafara",
+        "lgs": [
+            "795",
+            "806"
+        ]
+    },
+    {
+        "id": "1075",
+        "state": "Zamfara",
+        "name": "Maru/Bungudu",
+        "lgs": [
+            "804",
+            "799"
+        ]
+    },
+    {
+        "id": "1001",
+        "state": "Zamfara",
+        "name": "Gummi/Bukkuyum",
+        "lgs": [
+            "800",
+            "798"
+        ]
+    },
+    {
+        "id": "1237",
+        "state": "Zamfara",
+        "name": "Kaura Namoda/Birnin Magaji",
+        "lgs": [
+            "802",
+            "797"
+        ]
+    }
+]

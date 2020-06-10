@@ -1,0 +1,231 @@
+.gsc-results-wrapper-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+  .gs-result .gs-title,
+.gs-result .gs-title * {
+  color: #0000cc;
+  text-decoration: underline;
+}
+
+.gs-result .gs-title,
+.gs-result .gs-title * {
+    font-size: 16px;
+}
+
+.gs-result .gs-snippet {
+  font-size: 14px;
+}
+.gsc-results {
+  padding-bottom: 2px;
+  width : 99%;
+}
+
+.gsc-result {
+  margin-bottom: 10px;
+}
+
+.gsc-result .gs-title {
+  height: 1.4em;
+  overflow: hidden;
+}
+
+.gs-bidi-start-align {
+  text-align: left;
+}
+.gs-result a.gs-visibleUrl,
+.gs-result .gs-visibleUrl {
+  color: #008000;
+  text-decoration: none;
+  font-size: 13px;
+}
+.gsc-result-info {
+  text-align: left;
+  color: #676767;
+  font-size: 14px;
+  margin: 10px 0 10px 0;
+}
+.gs-no-results-result .gs-snippet,
+.gs-error-result .gs-snippet {
+  padding : 5px;
+  margin : 5px 5px 5px 0px;
+  border : 1px solid rgb(255,204,51);
+  background-color : rgb(255,244,194);
+}
+.gsc-webResult:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.gsc-webResult {
+  zoom: 1;  /* IE-specific hack to get the layout clearing right. */
+}
+
+/* Wrapper for a result. */
+.gsc-webResult .gsc-result {
+  margin: 0;
+  padding: .5em 0;
+  border-bottom: 1px solid #ebebeb;
+}
+.gcsc-find-more-on-google-query {
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.gcsc-find-more-on-google {
+  display: inline-block;
+  padding-top: 2px;
+  color: #0000CC;
+  font-size: 13px;
+}
+
+.gcsc-find-more-on-google-magnifier {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.gcsc-find-more-on-google-text {
+  vertical-align: middle;
+}
+
+.gcsc-find-more-on-google-query {
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.gcsc-find-more-on-google-branding {
+  display: inline-block;
+}
+
+
+.heading-side-lines {
+  position:relative;
+  width:100%;
+  margin-bottom:20px;
+  text-align:center
+ }
+
+ .heading-side-lines::before {
+  content:"";
+  position:absolute;
+  height:2px;
+  background-color:#c8c8c8;
+  right:0;
+  left:0;
+  bottom:.8em
+ }
+ @media screen and (min-width:700px) {
+  .heading-side-lines::before {
+   bottom:1em
+  }
+  .heading-side-lines::before .content-grid-row {
+   right:1.554%;
+   left:1.554%
+  }
+ }
+ @media screen and (min-width:1100px) {
+  .heading-side-lines::before {
+   right:-30px;
+   left:-30px
+  }
+  .content-row .heading-side-lines::before {
+   right:-45px;
+   left:-45px
+  }
+ }
+ .heading-side-lines .heading {
+  position:relative;
+  display:inline-block;
+  margin-top:0;
+  padding-right:45px;
+  padding-left:45px;
+  background-color:#fff
+ }
+ @media screen and (min-width:700px) {
+  .heading-side-lines .heading {
+   font-size:36px;
+   font-weight:400
+  }
+ }
+ @media screen and (max-width:699px) {
+  .heading-side-lines .heading {
+   font-size:24px;
+   font-weight:600
+  }
+ }
+ @media screen and (max-width:499px) {
+  .heading-side-lines .heading {
+   font-size:18px
+  }
+ }
+
+.carousel-wrapper {
+  position:relative;
+  overflow:hidden;
+  margin-bottom: 30px;
+ }
+ @media screen and (min-width:700px) {
+  .heading-side-lines,
+  .carousel-wrapper {
+   margin-bottom:30px;
+  }
+ }
+ @media screen and (max-width:499px) {
+  .heading-side-lines,
+  .carousel-wrapper {
+   margin-top:20px;
+   margin-bottom:20px
+  }
+ }
+/* 
+ .carousel ul {
+  position:relative;
+  margin:0;
+  padding:0
+ }
+
+ .carousel li {
+  position:relative;
+  float:left;
+  width:250px;
+  margin:0 20px 20px 0;
+  list-style:none;
+  transition:width .5s ease-in-out,height .5s ease-in-out
+ }
+
+ .carousel-image-archive .carousel li {
+  display:inline-block;
+  float:none;
+  width:auto;
+  margin-right:6px
+ }
+ .carousel li img.img-portrait {
+  position:relative;
+  z-index:1;
+  width:250px;
+  max-width:1000px;
+  height:auto;
+  cursor:pointer;
+  transition:margin .5s ease-in-out,width .5s ease-in-out,height .5s ease-in-out;
+  outline:none
+ }
+ [data-carousel-wrapper="portrait"] .carousel li img.img-portrait {
+  width:250px;
+  height:auto;
+ }
+ .carousel-image-archive .carousel li img.img-portrait {
+  width:auto
+ } */

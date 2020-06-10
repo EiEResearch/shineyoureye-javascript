@@ -1,6 +1,6 @@
-import httpClient from '@/plugins/api.client';
+import httpClient from '@/plugins/http.client';
 
-class ApiClient {
+class ApiService {
   constructor(baseUrl = '/api') {
     this.client = httpClient(baseUrl);
   }
@@ -48,4 +48,4 @@ class ApiClient {
   }
 }
 
-export default new ApiClient();
+export default ApiService;

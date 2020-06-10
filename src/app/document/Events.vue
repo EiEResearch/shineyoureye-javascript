@@ -11,7 +11,7 @@
               <div class="col-md-6" v-for="(item, index) in events.active" :key="index">
                 <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                   <div class="col p-4 d-flex flex-column position-static">
-                    <p class="d-inline-block mb-2 text-primary">{{ item.eventDate }}</p>
+                    <p class="d-inline-block mb-2 text-primary">{{ item.event_date }}</p>
                     <h3 class="mb-0">{{ item.title }}</h3>
                     <!-- <div class="mb-1 text-muted"> {{ item.date }}</div> -->
                     <p class="card-text mb-auto">{{ item.excerpt }}</p>
@@ -19,18 +19,23 @@
                   </div>
                 </div>
               </div>
-            </div>            <h3 class="pb-4 mb-4 font-italic border-bottom" v-if="events.inActive && events.inActive.length">
+            </div>
+            <h3 class="pb-4 mb-4 font-italic border-bottom" v-if="events.inActive && events.inActive.length">
               Older Events
             </h3>
             <div class="row mb-2">
               <div class="col-md-6" v-for="(item, index) in events.inActive" :key="index">
                 <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                   <div class="col p-4 d-flex flex-column position-static">
-                    <p class="d-inline-block mb-2 text-primary">{{ item.eventDate }}</p>
+                    <p class="d-inline-block mb-2 text-primary">{{ item.event_date }}</p>
                     <h3 class="mb-0">{{ item.title }}</h3>
                     <!-- <div class="mb-1 text-muted"> {{ item.date }}</div> -->
                     <p class="card-text mb-auto">{{ item.excerpt }}</p>
-                    <a :href="item.url" class="stretched-link">Go to Event</a>
+                    <a :href="item.url" class="stretched-link">
+                      <img src="/images/icons/arrow-right.svg" alt=""
+                           width="30"
+                           height="20" title="Go to Event"
+                      >Go to Event</a>
                   </div>
                 </div>
               </div>
@@ -60,13 +65,16 @@ export default {
   },
   created() {
   },
+  beforeRouteUpdate(to, from, next) {
+    this.$options.beforeRouteEnter(to, from, next);
+  },
   beforeRouteEnter: async (to, from, next) => {
     try {
       const { data } = await new DocumentFactory('events').all({ page: to.query.page, limit: to.query.limit, sort: to.query.sort }).then(res => res.data);
       next((vue) => {
         const vm = vue;
-        vm.events.active = data.posts.filter(item => item.isActive === true);
-        vm.events.inActive = data.posts.filter(item => item.isActive === false);
+        vm.events.active = data.posts.filter(item => item.is_active === true);
+        vm.events.inActive = data.posts.filter(item => item.is_active === false);
         vm.pagination = data.pagination;
       });
     } catch (error) {
@@ -75,6 +83,11 @@ export default {
         vm.$logger(error);
       });
     }
+  },
+  metaInfo() {
+    return {
+      title: this.title,
+    };
   },
   methods: {
   },

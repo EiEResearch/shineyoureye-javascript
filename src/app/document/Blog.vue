@@ -1,14 +1,13 @@
 <template>
-  <div class="about">
+  <div>
     <!-- Page Header -->
     <header class="masthead">
       <div class="overlay" />
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
+          <div class="col-lg-8 col-md-10 mx-auto d-flex">
+            <div class="post-heading">
               <h1>{{ title }}</h1>
-              <!-- <span class="subheading">{{ subHeading }}</span> -->
             </div>
           </div>
         </div>
@@ -58,7 +57,7 @@ export default {
   name: 'Blog',
   data() {
     return {
-      title: '@SYE Blog',
+      title: 'Blog Posts',
       url: '/blog?page=',
       posts: [],
       pagination: {},
@@ -66,12 +65,15 @@ export default {
   },
   created() {
   },
+  beforeRouteUpdate(to, from, next) {
+    this.$options.beforeRouteEnter(to, from, next);
+  },
   beforeRouteEnter: async (to, from, next) => {
     try {
       const { data } = await new DocumentFactory('posts').all({ page: to.query.page, limit: to.query.limit, sort: to.query.sort }).then(res => res.data);
       next((vue) => {
         const vm = vue;
-        vm.posts = data.posts;
+        vm.posts = Object.freeze(data.posts);
         vm.pagination = data.pagination;
       });
     } catch (error) {
@@ -80,6 +82,11 @@ export default {
         vm.$logger(error);
       });
     }
+  },
+  metaInfo() {
+    return {
+      title: this.title,
+    };
   },
   methods: {
   },

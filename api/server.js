@@ -4,12 +4,13 @@ import config from 'api/configure';
 import env from 'home/env';
 
 const app = express();
-const PORT = 3000;
+const PORT = (process.env.NODE_ENV === 'production') ? 3000 : 50080;
 
 // API
 config(app);
 
 // UI
+app.use(express.static('public'));
 if (process.env.NODE_ENV === 'production') {
   const staticConf = { maxAge: '1y', etag: false };
   app.use(express.static(env.dist, staticConf));
@@ -18,7 +19,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(`${env.dist}/index.html`);
   });
 }
-
 
 // GO
 app.listen(PORT, () => {

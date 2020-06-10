@@ -33,9 +33,19 @@ module.exports = {
   devServer: {
     proxy: {
       '/api/*': {
-        target: 'http://localhost:3000',
+        target: process.env.VUE_API_URL,
         secure: false,
       },
     },
+  },
+  configureWebpack: (config) => {
+    if (process.env.NODE_ENV === 'production') {
+      // mutate config for production...
+      config.optimization.splitChunks = Object.assign(config.optimization.splitChunks, {
+        minSize: 60000,
+        chunks: 'all',
+      });
+      config.optimization.minimize = true;
+    }
   },
 };

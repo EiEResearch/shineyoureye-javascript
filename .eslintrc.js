@@ -8,9 +8,9 @@ module.exports = {
     '@vue/airbnb',
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-undef': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-undef': 'off',
     'max-len': [2, 180],
     'import/no-unresolved': 0,
     'import/no-extraneous-dependencies': 0,
@@ -22,6 +22,7 @@ module.exports = {
     }],
     'linebreak-style': [2, 'unix'],
     'vue/singleline-html-element-content-newline': 'off',
+    'consistent-return': 'off',
     'no-underscore-dangle': [2, { allowAfterThis: true }],
     'vue/max-attributes-per-line': [2,
       {
@@ -39,6 +40,8 @@ module.exports = {
   overrides: [
     {
       files: [
+        'public/**/*.{j,t}s?(x)',
+        'dist/**/*.{j,t}s?(x)',
         '**/__tests__/*.{j,t}s?(x)',
       ],
       env: {

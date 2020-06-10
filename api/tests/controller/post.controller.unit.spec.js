@@ -48,7 +48,7 @@ describe('PostController', () => {
   });
 
   test('should find a post with a null eventDate ', () => {
-    expect(finder.data.post.eventDate).toBeNull();
+    expect(finder.data.post.event_date).toBeNull();
   });
 
   test('should find a post with a not featured status', () => {
@@ -57,10 +57,18 @@ describe('PostController', () => {
 });
 
 describe('when it fails to find a post', () => {
-  req.params.slug = 'budget-tracking-and-citizens-engagement';
-  const finder = (PostController.find(req, res));
-  test('should raise an error', () => {
-    expect(finder.error.code).toBe(404);
+  test('should raise an error when slug is invalid', () => {
+    req.params.slug = 'budget-tracking-and-citizens-engagement';
+    const finder = (PostController.find(req, res));
+    expect(finder.error.code).toBe(400);
+    expect(finder.error.message).toEqual(`No post matched ${req.params.slug}`);
+    expect(finder.data).not.toBeDefined();
+  });
+
+  test('should raise an error when slug is undefined', () => {
+    req.params.slug = undefined;
+    const finder = (PostController.find(req, res));
+    expect(finder.error.code).toBe(400);
     expect(finder.error.message).toEqual(`No post matched ${req.params.slug}`);
     expect(finder.data).not.toBeDefined();
   });
@@ -127,6 +135,22 @@ describe('when query parameters are appended to the url', () => {
   });
 });
 
+describe('post methods should log error correctly', () => {
+  test('should log error to the log when all() is called without parameters', () => {
+    console.log = jest.fn();
+    PostController.all(req.err, res);
+    expect(console.log.mock.calls[0][0]).toBe('Error');
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'limit' of undefined");
+  });
+
+  test('should log error to the log when find() is called', () => {
+    console.log = jest.fn();
+    PostController.find(req.err, res);
+    expect(console.log.mock.calls[0][0]).toBe('Error');
+    expect(console.log.mock.calls[0][1]).toBe("Cannot read property 'slug' of undefined");
+  });
+});
+
 describe('post object definition', () => {
   test('should return a predefined post object', () => {
     req.query = { limit: '', page: '', sort: '' };
@@ -138,7 +162,7 @@ describe('post object definition', () => {
       slug: expect.any(String),
       published: expect.any(Boolean),
       featured: expect.any(Boolean),
-      eventDate: expect.any(Object),
+      event_date: expect.any(Object),
       date: expect.any(String),
       url: expect.any(String),
       excerpt: expect.any(String),

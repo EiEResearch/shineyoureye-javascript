@@ -1,0 +1,66 @@
+.bd-footer {
+	font-size: .875rem;
+	text-align: center;
+	background-color: $site-header-background-color;
+    clear: both;
+    margin-top:auto; 
+	width: 100%;
+
+	a {
+		font-weight: 500;
+		color: mix($site-footer-background-color, $site-footer-text-color, 80%);
+		
+        &:focus,
+        &.focus,
+        &:hover,
+        &:active,
+        &.active {
+			color: $teal;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+	a[href^="mailto:"] {
+		&:before {
+			@include high-dpi-background-image('../../public/images/email-icon');
+			margin-right: 0.3em;
+		}
+	}
+	a[href*="twitter.com"] {
+		&:before {
+			@include high-dpi-background-image('../../public/images/twitter-icon');
+			margin-right: 0.3em;
+		}
+	}
+	a[href^="mailto:"],
+	a[href*="twitter.com"] {
+		&:before{
+            display: inline-block;
+            content: "";
+            margin-right: 0.5em;
+            vertical-align: -0.2em;
+            width: 20px;
+            height: 16px;
+            background-color: transparent;
+            background-size: 20px 16px;
+		}
+	}
+}
+
+.bd-footer-links {
+	padding-left: 0;
+	margin-bottom: 1rem;
+	li {
+		display: inline-block
+	}
+	li+li {
+		margin-left: 1rem
+	}
+}
+
+// @include media-breakpoint-up(sm) {
+// 	.bd-footer {
+// 		text-align: left
+// 	}
+// }
