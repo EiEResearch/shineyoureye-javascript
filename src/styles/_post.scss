@@ -50,6 +50,7 @@
 .article-post{
   table {
     @extend .table, .table-striped, .table-responsive;
+    @extend .w-100, .d-block, .d-md-table;
     thead {
       @extend .thead-light;
     }

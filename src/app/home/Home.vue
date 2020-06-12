@@ -38,7 +38,7 @@
                       <div>
                         <div class="heading-side-lines">
                           <h2 class="heading">
-                            Your Government Representatives
+                            Your Elected Representatives
                           </h2>
                         </div>
                         <div class="carousel-wrapper clearfix">

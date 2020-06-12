@@ -8,9 +8,9 @@
           <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto d-flex">
               <div class="post-heading">
-                <h1>{{ personData.profile.name }}</h1>
+                <h1>{{ (personData.profile.title) ? personData.profile.title + ' ' : '' }}{{ personData.profile.name }}</h1>
                 <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
-                <span class="meta">{{ personData.position }} at {{ personData.legislative_period }}</span>
+                <span class="meta" v-if="personData.position"> {{ getFormattedHeaderMeta() }} </span>
                 <!-- <span class="meta">{{ personData.position }}</span> -->
               </div>
             </div>
@@ -32,22 +32,14 @@
                   />
                 </div>
                 <div class="col-sm col-md col-lg px-md-2 pr-md-4 order-1">
-                  <h3 class="py-4">{{ (profile.title) ? profile.title+ ' ' : '' }}{{ profile.official_name }}</h3>
+                  <!-- <h3 class="py-4">{{ (profile.title) ? profile.title+ ' ' : '' }}{{ profile.official_name }}</h3> -->
                   <div>
                     <p class="lead">
                       {{ profile.official_name }} is a Nigerian politician at the <b>{{ personData.organization }}</b> level.
-                      {{ profile.official_name }} from {{ profile.state }} State currently serves as
-                      the <b>{{ personData.position }}</b> representing the
-                      <mark><a :href="profile.area.url">{{ (profile.address.district.value) ? `${profile.address.district.value}` : profile.area.place.name }}</a></mark>
-                      district at the <b>{{ personData.legislative_period }}</b>.
-                    </p>
-                    <p v-if="profile.party" class="lead">
-                      {{ profile.official_name }} is a member of the
-                      <b>{{ profile.party || '' }}</b>.
+                      <span v-html="getFormattedProfileSnippet(profile)" />
                     </p>
                     <p class="lead" v-if="profile.identifiers.official_position.value">
-                      {{ profile.official_name }} currently holds the position as the <b>{{ (profile.identifiers.official_position.value) }}</b>
-                      of the {{ personData.organization }}.
+                      {{ profile.official_name }} is the <b>{{ (profile.identifiers.official_position.value) }}</b>.
                     </p>
                   </div>
                 </div>
@@ -56,12 +48,16 @@
                 <h4 class="mb-3">Personal Data</h4>
                 <div class="px-2">
                   <div class="row mb-2" v-if="profile.birth_date">
-                    <div class="col-md-3"><strong>Born</strong></div>
+                    <div class="col-md-3"><strong>Date of birth</strong></div>
                     <div class="col-md-9">{{ profile.birth_date }}</div>
                   </div>
                   <div class="row mb-2" v-if="profile.state">
-                    <div class="col-md-3"><strong>Place of origin</strong></div>
+                    <div class="col-md-3"><strong>State</strong></div>
                     <div class="col-md-9">{{ profile.state }}</div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.party">
+                    <div class="col-md-3"><strong>Party</strong></div>
+                    <div class="col-md-9">{{ profile.party }}</div>
                   </div>
                   <div class="row mb-2" v-if="profile.title">
                     <div class="col-md-3"><strong>Title</strong></div>
@@ -83,6 +79,14 @@
                     <div class="col-md-3"><strong>Phone</strong></div>
                     <div class="col-md-9">{{ profile.contact.phone.value }}</div>
                   </div>
+                  <div class="row mb-2" v-if="profile.contact.facebook.value">
+                    <div class="col-md-3"><strong>Facebook</strong></div>
+                    <div class="col-md-9 text-truncate"><a :href="profile.contact.facebook.note" target="_blank">{{ profile.contact.facebook.value }}</a></div>
+                  </div>
+                  <div class="row mb-2" v-if="profile.contact.twitter.value">
+                    <div class="col-md-3"><strong>Twitter</strong></div>
+                    <div class="col-md-9 text-truncate"><a :href="profile.contact.twitter.note" target="_blank">{{ profile.contact.twitter.value }}</a></div>
+                  </div>
                   <div class="row mb-2" v-if="profile.links.website.url">
                     <div class="col-md-3"><strong>Webpage</strong></div>
                     <div class="col-md-9"><a :href="profile.links.website.note" target="_blank">{{ profile.links.website.url }}</a></div>
@@ -90,20 +94,6 @@
                   <div class="row mb-2" v-if="profile.links.wikipedia.url">
                     <div class="col-md-3"><strong>Wikipedia</strong></div>
                     <div class="col-md-9 text-truncate"><a :href="profile.links.wikipedia.note" target="_blank">{{ profile.links.wikipedia.url }}</a></div>
-                  </div>
-                  <div class="row mb-2" v-if="profile.contact.facebook.value || profile.contact.twitter.value">
-                    <div class="col-md-3"><strong>Social Media</strong></div>
-                    <div class="col-md-9">
-                      <a v-if="profile.contact.facebook.value"
-                         :href="profile.contact.facebook.note"
-                         target="_blank"
-                      >{{ (profile.contact.facebook.value) ? 'Facebook' : '' }}</a>
-                      <span v-if="profile.contact.facebook.value">&nbsp;|&nbsp;</span>
-                      <a v-if="profile.contact.twitter.value"
-                         :href="profile.contact.twitter.note"
-                         target="_blank"
-                      >{{ (profile.contact.twitter.value) ? 'Twitter' : '' }}</a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -142,6 +132,20 @@ export default {
       profileImage: {
         blank: true, width: 250, height: 250, blankColor: '#bbb', class: 'm1',
       },
+      attributes: {
+        headerMeta: {
+          'State Representative': 'Representative at State House of Assembly',
+          'Federal Representative': 'Federal Representative of %legislative_period',
+          Senator: 'Senator of %legislative_period',
+          Governor: 'Governor at Executive',
+        },
+        profile: {
+          'State Representative': '%name currently serves as the <b>State Representatives</b> representing %area constituency at the %legislative_period.',
+          'Federal Representative': '%name currently serves as the <b>Federal Representative</b> representing %area constituency in the %legislative_period.',
+          Senator: '%name currently serves as the <b>Senator</b> representing %area district in the %legislative_period.',
+          Governor: '',
+        },
+      },
     };
   },
   metaInfo() {
@@ -159,6 +163,37 @@ export default {
         end_date: (this.person[0] || {}).end_date || process.env.VUE_APP_LEGISLATURE_END_DATE,
         profile: (this.profile) || {},
       };
+    },
+  },
+  methods: {
+    getFormattedDistrict(profile) {
+      try {
+        return (profile && profile.address.district.value) ? profile.address.district.value : profile.area.place.name;
+      } catch (error) {
+        this.$logger(error);
+      }
+    },
+    getFormattedProfileSnippet(profile) {
+      try {
+        const prf = this.attributes.profile[this.personData.position];
+
+        if (!prf && !prf.trim().length) return '';
+        return prf.replace(/%name/g, profile.official_name)
+          .replace(/%legislative_period/g, `<b>${this.personData.legislative_period}</b>`)
+          .replace(/%area/g, `<mark><a href="${profile.area.url}">${this.getFormattedDistrict(profile)}</a></mark>`);
+      } catch (error) {
+        this.$logger(error);
+      }
+    },
+    getFormattedHeaderMeta() {
+      try {
+        const attr = this.attributes.headerMeta[this.personData.position];
+
+        if (!attr) return '';
+        return attr.replace(/%legislative_period/g, `${this.personData.legislative_period}`);
+      } catch (error) {
+        this.$logger(error);
+      }
     },
   },
   beforeRouteUpdate(to, from, next) {
