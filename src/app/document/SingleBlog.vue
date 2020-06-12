@@ -26,7 +26,7 @@
             <div :class="(post.type !== 'image') ? 'col-lg-8 col-md-10' : 'col-lg-11 col-md-12 image-post'"
                  class="mx-auto d-flex article-post justify-content-center"
             >
-              <div id="single-blog" class="table-responsive" v-html="post.body" />
+              <div id="single-blog" class="table table-responsive" v-html="post.body" />
             </div>
             <div class="col-lg-8 col-md-10 mx-auto">
               <hr>

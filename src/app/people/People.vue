@@ -27,12 +27,14 @@
               <div>
                 <ul style="list-style-type:none;">
                   <li v-for="(party, index) in person.persons" :key="index" class="mb-2">
-                    <img src="/images/icons/people-fill.svg" alt=""
-                         width="20"
-                         height="20"
-                    >
-                    <span class="pl-2">{{ party[0] && party[0].length ? party[0] : 'Nonpartisanism' }},</span>
-                    <span class="pull-right">{{ party[1].length }} seat(s)</span>
+                    <div v-if="party[0] && party[0].length">
+                      <img src="/images/icons/people-fill.svg" alt=""
+                           width="20"
+                           height="20"
+                      >
+                      <span class="pl-2">{{ party[0] }},</span>
+                      <span class="pull-right">{{ party[1].length }} seat(s)</span>
+                    </div>
                   </li>
                 </ul>
               </div>

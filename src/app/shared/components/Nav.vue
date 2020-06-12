@@ -15,8 +15,8 @@
           <b-dropdown-item href="/info/inec-nationwide-continuous-voter-registration-exercise">Voting Information</b-dropdown-item>
         </b-nav-item-dropdown>
 
-        <b-nav-item-dropdown text="Government Officials">
-          <b-dropdown-item href="/info/government-officials">Government Officials</b-dropdown-item>
+        <b-nav-item-dropdown text="Elected Officials">
+          <b-dropdown-item href="/info/elected-officials">Elected Officials</b-dropdown-item>
           <b-dropdown-item href="/position/executive-governors">Governors</b-dropdown-item>
           <b-dropdown-item href="/position/senators">Senators</b-dropdown-item>
           <b-dropdown-item href="/position/federal-representatives">Federal Representatives</b-dropdown-item>
