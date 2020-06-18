@@ -15,7 +15,7 @@
                   is an SMS and web platform that facilitates engagement with National Assembly members and other elected officials.
                 </h1>
                 <a class="align-items-left py-md-3"
-                   href="/about"
+                   href="/info/about"
                 >Click here for more information about ShineYourEye
                   <img src="/images/icons/arrow-right.svg" alt=""
                        width="30"
