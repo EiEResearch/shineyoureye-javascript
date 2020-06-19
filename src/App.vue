@@ -1,5 +1,7 @@
 <template>
-  <div id="page-container">
+  <div id="page-container" :class="(
+    $store.state.route.toLowerCase() === '') ? 'page--homepage' : ''"
+  >
     <keep-alive>
       <nav-component />
     </keep-alive>
