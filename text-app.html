@@ -1,28 +1,30 @@
-<!DOCTYPE html>
+<html lang="en">
 
-<div id="text-1">
-    <h3>Type your text below:</h3>
-    <label>
-        <input type="text" v-model="letters"/>
-    </label>
-    <h1>{{letters}}</h1></div>
 
-<!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+<div id="container">
+    <label for="userText"></label><input id="userText" type="text">
+    <button id="btn" type="button">Submit</button>
+
+</div>
 
 <script>
-    Vue.filter('titlecase', function (value) {
-        if (!value) return ''
-        value = value.toString()
-        return value.charAt(0).toUpperCase() + value.slice(1)
-    })
 
-    new Vue({
-        el: '#text-1',
-        data: {
-            letters: ""
+    let strap = document.getElementById("userText").value;
+
+    function myFunction(strap){
+        strap = strap.toLowerCase().split(' ');
+        for (var i = 0; i < strap.length; i++){
+            strap[i] = strap[i].charAt(0).toUpperCase() + strap[i].slice(1);
         }
-    })
+        return strap.join(' ');
 
+    }
 
+    let catfish = document.createElement('div');
+    document.body.appendChild( catfish );
+
+    console.log(strap);
 </script>
+</body>
+</html>
