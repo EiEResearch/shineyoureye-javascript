@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="myImg" src="src/assets/logo.png" width="200" height="200">
+
+<p>Click the button to change the height and width of the image to 500px.</p>
+
+<button onclick="myFunction1()">Try it</button>
+
+<p>Click the button to change the height and width of the image to 150px.</p>
+
+<button onclick="myFunction2()">Try it</button>
+<script>
+    function myFunction1() {
+        document.getElementById("myImg").height = "500";
+        document.getElementById("myImg").width = "500";
+    }
+
+    function myFunction2() {
+        document.getElementById("myImg").height = "150";
+        document.getElementById("myImg").width = "150";
+    }
+</script>
+
+</body>
+</html>
