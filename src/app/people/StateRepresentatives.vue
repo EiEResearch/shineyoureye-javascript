@@ -153,7 +153,7 @@ export default {
       mainProps: {
         blank: true, width: 70, height: 70, blankColor: '#bbb', class: 'm1',
       },
-      honorablesState: ['Anambra', 'Ekiti', 'Enugu', 'Kano', 'Kogi', 'Kwara', 'Lagos', 'Ondo'],
+      honorablesState: ['Anambra', 'Ekiti', 'Enugu', 'Kano', 'Kogi', 'Kwara', 'Lagos', 'Ondo', 'Ogun'],
     };
   },
   computed: {
