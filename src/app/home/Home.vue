@@ -12,7 +12,7 @@
               <div class="col-md d-flex flex-column">
                 <h1 class="align-items-center">
                   <strong>Shine Your Eye</strong>
-                  is an SMS and web platform that facilitates engagement with National Assembly members and other elected officials.
+                  is a platform that helps citizens find the elected officials that represent them at all tiers of government and connect with them.
                 </h1>
                 <a class="align-items-left py-md-3"
                    href="/info/about"
