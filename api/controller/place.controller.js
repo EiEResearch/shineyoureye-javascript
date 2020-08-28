@@ -32,7 +32,7 @@ class PlaceController {
 
       if (!people) return obj;
       keys.map((item) => {
-        const a = people.find(i => i.position === legislature.position).persons.filter(el => el.area.place.id === item);
+        const a = people.find((i) => i.position === legislature.position).persons.filter((el) => el.area.place.id === item);
         a.forEach((element) => {
           if (a) obj.push(element);
         });

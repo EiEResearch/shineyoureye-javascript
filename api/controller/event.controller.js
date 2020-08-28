@@ -43,9 +43,9 @@ class EventController extends DocumentController {
 
       // handle event status filtering here
       if (status === 'future') {
-        postsAll = [...postsAll.filter(post => compareDateTime(JSON.stringify(post).eventDate) === true)];
+        postsAll = [...postsAll.filter((post) => compareDateTime(JSON.stringify(post).eventDate) === true)];
       } else if (status === 'past') {
-        postsAll = [...postsAll.filter(post => compareDateTime(JSON.stringify(post).eventDate) === false)];
+        postsAll = [...postsAll.filter((post) => compareDateTime(JSON.stringify(post).eventDate) === false)];
       }
 
       if (postsAll.length < 1) {
