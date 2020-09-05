@@ -14,8 +14,6 @@ export default class Person {
     SIZE = ['thumbnail', 'medium', 'original'];
 
     TWITTER_URL = 'https://twitter.com/';
-	
-	INSTAGRAM_URL = 'https://instagram.com/';
 
     ALLOWED_IMAGE_SIZES = {
       thumbnail: '100x100',
@@ -134,11 +132,6 @@ export default class Person {
             type: 'twitter',
             value: (this.person.twitter) ? `@${first(this.person.twitter)}` : '',
             note: (this.person.twitter) ? this.TWITTER_URL + first(this.person.twitter) : '',
-          },
-		  instagram: {
-            type: 'instagram',
-            value: (this.person.instagram) ? `@${last(this.person.instagram)}` : '',
-            note: (this.person.instagram) ? this.INSTAGRAM_URL + last(this.person.instagram) : '',
           },
         },
         // Section deals with a Person's image
