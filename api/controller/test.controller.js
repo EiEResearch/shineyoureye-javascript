@@ -26,4 +26,5 @@ class TestController {
   }
 }
 
+
 export default new TestController();

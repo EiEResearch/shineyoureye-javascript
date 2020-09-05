@@ -92,7 +92,7 @@ class PostController extends DocumentController {
         post.body = finder.findSingle.body;
         post.type = postType(post.excerpt);
 
-        const postIndex = postsAll.findIndex((x) => x.title === post.title);
+        const postIndex = postsAll.findIndex(x => x.title === post.title);
 
         if (postIndex >= 0) {
           post.next = {
