@@ -17,6 +17,7 @@ const personData = {
   birth_date: '1964-10-18',
   other_names: 'Okezie Ikpeazu',
   twitter: 'GovernorIkpeazu',
+  instagram: 'okezie-ikpeazu',
   facebook_url: 'https://www.facebook.com/OyoStateGovernment;http://www.facebook.com/AbiolaAjimobi',
   wikipedia_url: undefined,
   website_url: 'http://ekitistate.gov.ng/',
@@ -81,6 +82,14 @@ describe('Membership::Person', () => {
     test('should have a twitter url', () => {
       expect(person.contact.twitter.note).toEqual(expect.stringContaining('https://twitter.com/GovernorIkpeazu'));
     });
+
+    test('has an instagram display', () => {
+      expect(person.contact.instagram.value).toEqual(expect.stringContaining('okezie-ikpeazu'));
+    });
+
+    test('should have an instagram url', () => {
+      expect(person.contact.instagram.note).toEqual(expect.stringContaining('https://instagram.com/okezie-ikpeazu'));
+    });    
 
     test('has a facebook display', () => {
       expect(person.contact.facebook.value).toEqual(expect.stringContaining('AbiolaAjimobi'));
@@ -177,6 +186,14 @@ describe('Membership::Person', () => {
     test('should return nil for url if not twitter', () => {
       expect(person.contact.twitter.note).toEqual('');
     });
+
+    test('should return nil for display if not instagram', () => {
+      expect(person.contact.instagram.value).toEqual('');
+    });
+
+    test('should return nil for url if not instagram', () => {
+      expect(person.contact.instagram.note).toEqual('');
+    });    
 
     test('should return nil for display if not facebook', () => {
       expect(person.contact.facebook.value).toEqual('');

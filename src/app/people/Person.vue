@@ -87,13 +87,17 @@
                     <div class="col-md-3"><strong>Twitter</strong></div>
                     <div class="col-md-9 text-truncate"><a :href="profile.contact.twitter.note" target="_blank">{{ profile.contact.twitter.value }}</a></div>
                   </div>
+                  <div class="row mb-2" v-if="profile.contact.instagram.value">
+                    <div class="col-md-3"><strong>Instagram</strong></div>
+                    <div class="col-md-9 text-truncate"><a :href="profile.contact.instagram.note" target="_blank">{{ profile.contact.instagram.value }}</a></div>
+                  </div>
                   <div class="row mb-2" v-if="profile.links.website.url">
                     <div class="col-md-3"><strong>Webpage</strong></div>
-                    <div class="col-md-9"><a :href="profile.links.website.note" target="_blank">{{ profile.links.website.url }}</a></div>
+                    <div class="col-md-9"><a :href="profile.links.website.url" target="_blank">{{ profile.links.website.url }}</a></div>
                   </div>
                   <div class="row mb-2" v-if="profile.links.wikipedia.url">
                     <div class="col-md-3"><strong>Wikipedia</strong></div>
-                    <div class="col-md-9 text-truncate"><a :href="profile.links.wikipedia.note" target="_blank">{{ profile.links.wikipedia.url }}</a></div>
+                    <div class="col-md-9 text-truncate"><a :href="profile.links.wikipedia.url" target="_blank">{{ profile.links.wikipedia.url }}</a></div>
                   </div>
                 </div>
               </div>
