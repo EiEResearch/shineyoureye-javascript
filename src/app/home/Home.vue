@@ -52,7 +52,9 @@
                                 >
                                 <div class="mx-auto d-block">
                                   <h3>
-                                    {{ item.persons[randomIntFromInterval(0,10)].official_name }}
+                                    <a :href="item.persons[randomIntFromInterval(0,10)].url">
+                                      {{ item.persons[randomIntFromInterval(0,10)].official_name }}
+                                    </a>
                                   </h3>
                                   <p v-if="item.persons[randomIntFromInterval(0,10)].area && item.persons[randomIntFromInterval(0,10)].area.place">
                                     <img src="/images/icons/people.svg" alt=""
