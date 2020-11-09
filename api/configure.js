@@ -4,7 +4,7 @@ import routes from 'api/routes';
 import logger from 'api/logger';
 
 // CORS Configuration
-const whitelist = ['https://shineyoureye.org', 'http://shineyoureye.org'];
+const whitelist = ['https://www.shineyoureye.org', 'http://www.shineyoureye.org'];
 const corsOptions = {
   methods: ['GET', 'OPTIONS', 'POST', 'HEAD'],
   preflightContinue: false,
