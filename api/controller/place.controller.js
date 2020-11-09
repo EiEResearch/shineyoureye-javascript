@@ -52,6 +52,7 @@ class PlaceController {
         place: {},
         people: {
           honorables: '',
+          localgovernment: '',
           representatives: '',
           senate: '',
           governor: '',
@@ -83,6 +84,8 @@ class PlaceController {
             const honLegislature = new Legislature('honorables').toJSON();
             data.people.honorables = self.findPeopleByAreaId(politicians, places[key], honLegislature);
 
+            const lgLegislature = new Legislature('localgovernment').toJSON();
+            data.people.localgovernment = self.findPeopleByAreaId(politicians, place[key], lgLegislature);
             break;
         }
 

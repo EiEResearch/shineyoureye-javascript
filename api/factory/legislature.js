@@ -3,7 +3,7 @@ import { env } from 'api/helper';
 
 export default class Legislature {
   constructor(slug) {
-    switch (slug) {
+    switch ((slug || '').toLowerCase()) {
       case 'senator':
       case 'senators':
       case 'senate':
@@ -17,6 +17,9 @@ export default class Legislature {
       case 'honorables':
       case 'honorable':
         return this.honorables();
+      case 'localgovernment':
+      case 'localgovernments':
+        return this.localGovernment();
       default:
         return this;
     }
@@ -54,6 +57,13 @@ export default class Legislature {
     this.term = 'State Legislature';
   }
 
+  localGovernment() {
+    this.slug = 'LocalGovernment';
+    this.name = 'Local Government';
+    this.position = 'Local Government';
+    this.term = 'Local Government Council';
+  }
+  
   toJSON() {
     return {
       slug: this.slug || '',

@@ -131,6 +131,7 @@ export const env = {
   governorsSheet: process.env.API_GSHEET_GOVERNORS_SHEET,
   representativesSheet: process.env.API_GSHEET_REPRESENTATIVES_SHEET,
   senateSheet: process.env.API_GSHEET_SENATE_SHEET,
+  localGovernmentSheet: process.env.API_GSHEET_LG_SHEET,
   appUrl: process.env.VUE_API_URL,
   mapit: path.resolve(path.join(__dirname, 'public/mapit')),
   legislatureStartDate: process.env.VUE_APP_LEGISLATURE_START_DATE,

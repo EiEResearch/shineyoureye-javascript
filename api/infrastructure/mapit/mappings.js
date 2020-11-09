@@ -108,8 +108,10 @@ export default class Mappings {
         case 'senators':
         case 'senate':
           return sen;
+        case 'localgovernment':
+        case 'localgovernments':
         case 'honorables':
-        case 'honorable':
+        case 'honorable': 
           return lga;
         default:
           return {
@@ -128,6 +130,8 @@ export default class Mappings {
         case 'senators':
         case 'senate':
           return sta;
+        case 'localgovernment':
+        case 'localgovernments':
         case 'honorables':
         case 'honorable':
           return sen;
