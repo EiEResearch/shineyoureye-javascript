@@ -20,6 +20,9 @@ export default class Legislature {
       case 'localgovernment':
       case 'localgovernments':
         return this.localGovernment();
+      case 'local-government':
+      case 'local-governments':
+        return this.localGovernment();
       default:
         return this;
     }
@@ -63,7 +66,7 @@ export default class Legislature {
     this.position = 'Local Government';
     this.term = 'Local Government Council';
   }
-  
+
   toJSON() {
     return {
       slug: this.slug || '',

@@ -7,7 +7,7 @@ import logger from 'api/logger';
 class PeopleController {
   constructor() {
     this.GLOBAL_LEGISLATURE = 'all';
-    this.LEGISLATIVE_CLASS = ['localgovernment', 'honorables', 'representatives', 'senate', 'governors'];
+    this.LEGISLATIVE_CLASS = ['localgovernment', 'local-government', 'honorables', 'representatives', 'senate', 'governors'];
   }
 
   async getSingleLegislatureByState(req, res) {

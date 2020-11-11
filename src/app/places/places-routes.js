@@ -23,6 +23,12 @@ export default [
     component: () => import('@/app/places/Places.vue'),
   },
   {
+    path: '/places/local-government',
+    name: 'local-government',
+    meta: { position: 'localgovernment', type: 'Local Government' },
+    component: () => import('@/app/places/Places.vue'),
+  },
+  {
     path: '/places/state-constituency',
     name: 'state-constituency',
     meta: { position: 'honorables', type: 'State Constituency' },

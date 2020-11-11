@@ -33,6 +33,8 @@ class Sheets {
         return env.governorsSheet;
       case 'localgovernment':
       case 'localgovernments':
+      case 'local-government':
+      case 'local-governments':
         return env.localGovernmentSheet;
       case 'honorables':
       case 'honorable':
