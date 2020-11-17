@@ -25,6 +25,12 @@ export default [
     component: () => import('@/app/people/People.vue'),
   },
   {
+    path: '/position/local-government',
+    name: 'localgovernment',
+    meta: { position: 'localgovernment' },
+    component: () => import('@/app/people/People.vue'),
+  },
+  {
     path: '/position/state-representatives',
     name: 'honorables',
     meta: { position: 'honorables' },

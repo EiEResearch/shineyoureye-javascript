@@ -31,11 +31,16 @@ class Sheets {
       case 'governor':
       case 'governors':
         return env.governorsSheet;
+      case 'localgovernment':
+      case 'localgovernments':
+      case 'local-government':
+      case 'local-governments':
+        return env.localGovernmentSheet;
       case 'honorables':
       case 'honorable':
         return env.honorablesSheet;
       case 'all':
-        return [env.governorsSheet, env.senateSheet, env.representativesSheet, env.honorablesSheet];
+        return [env.governorsSheet, env.senateSheet, env.representativesSheet, env.honorablesSheet, env.localGovernmentSheet];
       default:
         return [];
     }
