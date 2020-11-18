@@ -43,29 +43,31 @@
                         </div>
                         <div class="carousel-wrapper clearfix">
                           <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" v-for="(item,key) in people" :key="key">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(item,key) in people" :key="key">
                               <div class="text-center homepage__reps__rep">
-                                <img :src="item.persons[randomIntFromInterval(0,10)].images.original.url"
+                                <img :src="item.persons[randomIntFromInterval(0,9)].images.original.url"
                                      class="img-fluid mx-auto d-block img-portrait thumbnail"
-                                     :alt="item.persons[randomIntFromInterval(0,10)].official_name"
+                                     :alt="item.persons[randomIntFromInterval(0,9)].official_name"
                                      data-carousel-image=""
                                 >
                                 <div class="mx-auto d-block">
                                   <h3>
-                                    {{ item.persons[randomIntFromInterval(0,10)].official_name }}
+                                    <a :href="item.persons[randomIntFromInterval(0,9)].url">
+                                      {{ item.persons[randomIntFromInterval(0,9)].official_name }}
+                                    </a>
                                   </h3>
-                                  <p v-if="item.persons[randomIntFromInterval(0,10)].area && item.persons[randomIntFromInterval(0,10)].area.place">
+                                  <p v-if="item.persons[randomIntFromInterval(0,9)].area && item.persons[randomIntFromInterval(0,9)].area.place">
                                     <img src="/images/icons/people.svg" alt=""
                                          width="30"
                                          height="20" title="See all Blog Posts"
                                     >
-                                    {{ item.persons[randomIntFromInterval(0,10)].party }},
-                                    {{ (item.persons[randomIntFromInterval(0,10)].address.district.value)
-                                      ? `${item.persons[randomIntFromInterval(0,10)].address.district.value}`
+                                    {{ item.persons[randomIntFromInterval(0,9)].party }},
+                                    {{ (item.persons[randomIntFromInterval(0,9)].address.district.value)
+                                      ? `${item.persons[randomIntFromInterval(0,9)].address.district.value}`
                                       : '' }}
-                                    {{ (item.persons[randomIntFromInterval(0,10)].address.district.value)
-                                      ? `- ${item.persons[randomIntFromInterval(0,10)].area.place.name} LGA`
-                                      : item.persons[randomIntFromInterval(0,10)].area.place.name }}
+                                    {{ (item.persons[randomIntFromInterval(0,9)].address.district.value)
+                                      ? `- ${item.persons[randomIntFromInterval(0,9)].area.place.name} LGA`
+                                      : item.persons[randomIntFromInterval(0,9)].area.place.name }}
                                   </p>
 
                                   <img src="/images/icons/arrow-right.svg" alt=""
