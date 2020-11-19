@@ -7,13 +7,14 @@ import logger from 'api/logger';
 class PeopleController {
   constructor() {
     this.GLOBAL_LEGISLATURE = 'all';
+    this.LEGISLATIVE_CLASS = ['localgovernment', 'local-government', 'honorables', 'representatives', 'senate', 'governors'];
   }
 
   async getSingleLegislatureByState(req, res) {
     try {
       const { state, legislature } = req.params;
 
-      if (!isIn(String(legislature).toLowerCase(), ['honorables', 'representatives', 'senate', 'governors'])) {
+      if (!isIn(String(legislature).toLowerCase(), this.LEGISLATIVE_CLASS)) {
         req.err.error.message = 'Sorry, no content matched your legislature type.';
         req.err.error.code = 400;
         req.err.error.details = req.query;
@@ -72,7 +73,7 @@ class PeopleController {
     try {
       const { code, legislature } = req.params;
 
-      if (!isIn(String(legislature).toLowerCase(), ['honorables', 'representatives', 'senate', 'governors'])) {
+      if (!isIn(String(legislature).toLowerCase(), this.LEGISLATIVE_CLASS)) {
         req.err.error.message = 'Sorry, no content matched your legislature type.';
         req.err.error.code = 400;
         req.err.error.details = req.query;
@@ -131,7 +132,7 @@ class PeopleController {
     try {
       const { legislature } = req.params;
 
-      if (!isIn(String(legislature).toLowerCase(), ['honorables', 'representatives', 'senate', 'governors'])) {
+      if (!isIn(String(legislature).toLowerCase(), this.LEGISLATIVE_CLASS)) {
         req.err.error.message = 'Sorry, no content matched your legislature type.';
         req.err.error.code = 400;
         req.err.error.details = req.query;
@@ -193,7 +194,7 @@ class PeopleController {
     try {
       const legislature = (req.path || '').replace(/\//g, '');
 
-      if (!isIn(String(legislature).toLowerCase(), ['honorables', 'representatives', 'senate', 'governors'])) {
+      if (!isIn(String(legislature).toLowerCase(), this.LEGISLATIVE_CLASS)) {
         req.err.error.message = 'Sorry, no content matched your legislature type.';
         req.err.error.code = 400;
         req.err.error.details = req.query;

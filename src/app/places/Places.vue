@@ -23,6 +23,7 @@
               <b-nav-item :active="addActiveClass('states')" href="/places/state">States</b-nav-item>
               <b-nav-item :active="addActiveClass('senatorial-district')" href="/places/senatorial-district">Senatorial District</b-nav-item>
               <b-nav-item :active="addActiveClass('federal-constituency')" href="/places/federal-constituency">Federal Constituencies</b-nav-item>
+              <b-nav-item :active="addActiveClass('local-government')" href="/places/local-government">Local Government</b-nav-item>
               <b-nav-item :active="addActiveClass('state-constituency')" href="/places/state-constituency">State Constituencies</b-nav-item>
             </b-nav>
             <hr>

@@ -30,6 +30,9 @@ router.get('/:legislature/areas', (req, res) => PeopleController.getSingleLegisl
 router.get('/:legislature/areas/:code', (req, res) => PeopleController.getSingleLegislatureByMapitArea(req, res));
 router.get('/:legislature/parties', (req, res) => PeopleController.getSingleLegislatureByParty(req, res));
 
+
+router.get('/localgovernment', (req, res) => PeopleController.getSingleLegislatures(req, res));
+// router.get('/localgovernment/:slug', (req, res) => PeopleController.all(req, res));
 router.get('/honorables', (req, res) => PeopleController.getSingleLegislatures(req, res));
 // router.get('/honorables/:slug', (req, res) => PeopleController.all(req, res));
 

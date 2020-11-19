@@ -9,7 +9,7 @@
             <div class="post-heading">
               <h1>{{ positionData.organization }}</h1>
               <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
-              <span class="meta" v-if="!['governors'].includes(name)">{{ positionData.legislative_period }},
+              <span class="meta" v-if="!['governors', 'localgovernment'].includes(name)">{{ positionData.legislative_period }},
                 Tenure:  {{ positionData.start_date }} -to- {{ positionData.end_date }}</span>
             </div>
           </div>
@@ -33,7 +33,7 @@
                            height="20"
                       >
                       <span class="pl-2">{{ party[0] }},</span>
-                      <span class="pull-right">{{ party[1].length }} seat(s)</span>
+                      <span class="pull-right"> {{ party[1].length }} seat(s)</span>
                     </div>
                   </li>
                 </ul>
