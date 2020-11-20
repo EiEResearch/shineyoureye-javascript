@@ -203,6 +203,8 @@ export default {
           return 'federal-representatives';
         case 'state representative':
           return 'state-representatives';
+        case 'local government':
+          return 'local-government';
       }
     },
   },
