@@ -33,7 +33,7 @@
                            height="20"
                       >
                       <span class="pl-2">{{ party[0] }},</span>
-                      <span class="pull-right">{{ party[1].length }} seat(s)</span>
+                      <span class="pull-right"> {{ party[1].length }} seat(s)</span>
                     </div>
                   </li>
                 </ul>

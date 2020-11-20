@@ -48,6 +48,35 @@
                 </div>
               </div>
             </div>
+            <div class="your-local-government mb-4" v-if="people.localgovernment && people.localgovernment.length">
+              <h5 class="pb-3 mb-2 border-bottom">Your Local Government Council Chairmen</h5>
+              <div class="row">
+                <div class="col-sm-4">
+                  <p class="text-wrap small">
+                    Your local government council chairman is responsible for delivering a broad range
+                    of services in relation to roads; traffic; economic and community development; environment, recreation and amenity services
+                    and maintaining the register of electors.
+                  </p>
+                </div>
+                <div class="col-sm-8">
+                  <div class="mb-2" v-for="(person, index) in people.localgovernment" :key="'localgovernment_' + index">
+                    <div class="media">
+                      <b-img-lazy v-bind="mainProps" :src="person.images.thumbnail.url"
+                                  class="align-self-start mr-3"
+                                  thumbnail fluid
+                      />
+                      <div class="media-body text-truncate">
+                        <a :href="person.url">{{ person.name }}</a>
+                        <span class="d-block text-wrap" v-if="person.area && person.area.place">
+                          {{ (person.party) ? person.party + ' - ': '' }}
+                          {{ (person.address.district.value) ? `${person.address.district.value}` : '' }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="your-honorables mb-4" v-if="people.honorables && people.honorables.length">
               <h5 class="pb-3 mb-2 border-bottom">Your State Assembly Members</h5>
               <div class="row">
