@@ -20,8 +20,8 @@
           <b-dropdown-item href="/position/executive-governors">Governors</b-dropdown-item>
           <b-dropdown-item href="/position/senators">Senators</b-dropdown-item>
           <b-dropdown-item href="/position/federal-representatives">Federal Representatives</b-dropdown-item>
-          <b-dropdown-item href="/position/local-government">Local Government</b-dropdown-item>
           <b-dropdown-item href="/position/state-representatives">State Representatives</b-dropdown-item>
+          <b-dropdown-item href="/position/local-government">Local Government</b-dropdown-item>
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown text="Places">
@@ -29,8 +29,8 @@
           <b-dropdown-item href="/places/state">States</b-dropdown-item>
           <b-dropdown-item href="/places/senatorial-district">Senatorial Districts</b-dropdown-item>
           <b-dropdown-item href="/places/federal-constituency">Federal Constituencies</b-dropdown-item>
-          <b-dropdown-item href="/places/local-government">Local Government</b-dropdown-item>
           <b-dropdown-item href="/places/state-constituency">State Constituencies</b-dropdown-item>
+          <b-dropdown-item href="/places/local-government">Local Government</b-dropdown-item>
         </b-nav-item-dropdown>
 
         <b-nav-item href="/events">Events</b-nav-item>
