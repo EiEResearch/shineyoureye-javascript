@@ -85,7 +85,7 @@ class PlaceController {
             data.people.honorables = self.findPeopleByAreaId(politicians, places[key], honLegislature);
 
             const lgLegislature = new Legislature('localgovernment').toJSON();
-            data.people.localgovernment = self.findPeopleByAreaId(politicians, place[key], lgLegislature);
+            data.people.localgovernment = self.findPeopleByAreaId(politicians, places[key], lgLegislature);
             break;
         }
 
