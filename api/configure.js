@@ -4,9 +4,9 @@ import routes from 'api/routes';
 import logger from 'api/logger';
 
 // CORS Configuration
-const whitelist = ['http://example1.com', 'http://example2.com'];
+const whitelist = ['https://www.shineyoureye.org', 'http://www.shineyoureye.org'];
 const corsOptions = {
-  methods: ['GET', 'OPTIONS'],
+  methods: ['GET', 'OPTIONS', 'POST', 'HEAD'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
   origin: (origin, callback) => {

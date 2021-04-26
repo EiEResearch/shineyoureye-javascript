@@ -29,8 +29,8 @@
           <b-dropdown-item href="/places/state">States</b-dropdown-item>
           <b-dropdown-item href="/places/senatorial-district">Senatorial Districts</b-dropdown-item>
           <b-dropdown-item href="/places/federal-constituency">Federal Constituencies</b-dropdown-item>
-          <b-dropdown-item href="/places/local-government">Local Government</b-dropdown-item>
           <b-dropdown-item href="/places/state-constituency">State Constituencies</b-dropdown-item>
+          <b-dropdown-item href="/places/local-government">Local Government</b-dropdown-item>
         </b-nav-item-dropdown>
 
         <b-nav-item href="/events">Events</b-nav-item>
