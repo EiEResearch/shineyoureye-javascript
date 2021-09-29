@@ -15,8 +15,7 @@
         <li><a href="/contact">Contact</a></li>
       </ul>
       <p>
-        Copyright ©{{ new Date().getFullYear() }}. Shine your Eye is an initiative of <a href="https://eie.ng/">Enough is Enough Nigeria (EiENigeria)</a>
-        with support from <a href="https://www.placng.org/">Policy and Legal Advocacy Center</a>.
+        Copyright ©{{ new Date().getFullYear() }}. Shine your Eye is an initiative of <a href="https://eie.ng/">Enough is Enough Nigeria (EiENigeria)</a>.
       </p>
     </div>
   </footer>
