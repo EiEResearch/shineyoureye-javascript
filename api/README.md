@@ -27,7 +27,7 @@ This is a REST based JSON web service.
 **Production**
 | Method |  |
 |--|--|
-| Base URL | http://shineyoureye.org/api/{procedure}  |
+| Base URL | https://shineyoureye.org/api/{procedure}  |
 
 
 ##### 2.1. Authentication
@@ -48,9 +48,23 @@ Available Endpoints
 |--|--|--|
 |GET | /posts | sort, limit, page |
 |GET | /posts/{slug} | |
-|GET | /events | sort, limit, page |
+|GET | /events | sort, limit, page, status |
 |GET | /events/{slug} | |
 |GET | /info/{slug} | |
+|GET | /people | |
+|GET | /people/states | |
+|GET | /people/states/{state} | |
+|GET | /people/areas | |
+|GET | /people/areas/{code} | |
+|GET | /people/parties | |
+|GET | /people/politicians/{slug} | |
+|GET | /people/{legislature} | |
+|GET | /people/{legislature}/states | |
+|GET | /people/{legislature}/states/{state} | |
+|GET | /people/{legislature}/areas | |
+|GET | /people/{legislature}/areas/{code} | |
+|GET | /people/{legislature}/parties | |
+|GET | /people/images | |
 
 ##### 3.1   posts
 Retrieves a paginated list of blog posts
@@ -479,6 +493,33 @@ Sample error response
         }
     }
 ```
+
+
+##### 3.6   people
+Retrieves all politicians data across all legislatures
+
+**Details**
+| Method | URL |
+|--|--|
+| GET | /people|
+
+
+##### 3.7   people/states
+Retrieves all politicians data grouped by state across all legislatures
+
+**Details**
+| Method | URL |
+|--|--|
+| GET | /people/states|
+
+
+##### 3.8   people/states/{state}
+Retrieves filtered politicians data by a single state across all legislatures
+
+**Details**
+| Method | URL |
+|--|--|
+| GET | /people/states|
 
 #### 4. Change Log
 2019-10-04

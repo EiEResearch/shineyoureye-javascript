@@ -52,8 +52,10 @@
                                 >
                                 <div class="mx-auto d-block">
                                   <h3>
+                                    
                                     <a :href="item.persons[randomIntFromInterval(0,9)].url">
                                       {{ item.persons[randomIntFromInterval(0,9)].official_name }}
+                                      
                                     </a>
                                   </h3>
                                   <p v-if="item.persons[randomIntFromInterval(0,9)].area && item.persons[randomIntFromInterval(0,9)].area.place">
@@ -169,14 +171,14 @@
 </template>
 
 <script>
-import DocumentFactory from '@/app/shared/factory/document.factory';
-import PeopleService from '@/app/shared/services/people.service';
+import DocumentFactory from "@/app/shared/factory/document.factory";
+import PeopleService from "@/app/shared/services/people.service";
 
 export default {
-  name: 'Home',
+  name: "Home",
   data() {
     return {
-      name: 'Landing Page Is Still Under Construction',
+      name: "Landing Page Is Still Under Construction",
       posts: [],
       people: [],
       twitterUser: process.env.VUE_APP_TWITTER_USER,
@@ -185,7 +187,8 @@ export default {
     };
   },
   methods: {
-    randomIntFromInterval(min, max) { // min and max included
+    randomIntFromInterval(min, max) {
+      // min and max included
       if (this.random === 0) {
         this.random = Math.floor(Math.random() * (max - min + 1) + min);
       }
@@ -194,17 +197,15 @@ export default {
     },
     getSlug(text) {
       // eslint-disable-next-line default-case
-      switch ((text || '').toLowerCase()) {
-        case 'governor':
-          return 'executive-governors';
-        case 'senator':
-          return 'senators';
-        case 'federal representative':
-          return 'federal-representatives';
-        case 'state representative':
-          return 'state-representatives';
-        case 'local government':
-          return 'local-government';
+      switch ((text || "").toLowerCase()) {
+        case "governor":
+          return "executive-governors";
+        case "senator":
+          return "senators";
+        case "federal representative":
+          return "federal-representatives";
+        case "state representative":
+          return "state-representatives";
       }
     },
   },
@@ -221,8 +222,10 @@ export default {
   beforeRouteEnter: async (to, from, next) => {
     try {
       const [blog, reps] = await Promise.all([
-        new DocumentFactory('posts').all().then(res => res.data),
-        new PeopleService().findPeopleWithValidImage({ size: 20 }).then(res => res.data),
+        new DocumentFactory("posts").all().then((res) => res.data),
+        new PeopleService()
+          .findPeopleWithValidImage({ size: 20 })
+          .then((res) => res.data),
       ]);
 
       next((vue) => {
@@ -233,22 +236,23 @@ export default {
         next();
       });
     } catch (error) {
-      next({ name: 'error', params: [to.path], replace: true });
+      next({ name: "error", params: [to.path], replace: true });
     }
   },
   mounted() {
     // eslint-disable-next-line func-names
     (function (d, s, id) {
-      let js; const
-        fjs = d.getElementsByTagName(s)[0];
+      let js;
+      const fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       // eslint-disable-next-line prefer-const
-      js = d.createElement(s); js.id = id;
+      js = d.createElement(s);
+      js.id = id;
       js.async = true;
-      js.src = '//platform.twitter.com/widgets.js';
-      js.crossorigin = 'anonymous';
+      js.src = "//platform.twitter.com/widgets.js";
+      js.crossorigin = "anonymous";
       fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'twitter-widget'));
+    })(document, "script", "twitter-widget");
   },
 };
 </script>
