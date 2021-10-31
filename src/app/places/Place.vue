@@ -267,9 +267,13 @@ export default {
       map.fitBounds(geoJSONLayer.getBounds());
     },
     initMap() {
-      const map = L.map(this.map.id).setView(this.cordinate, this.map.initialZoom);
-      L.tileLayer(this.map.tile, this.map.options).addTo(map);
-      this.initMarkers(map, this.geojson);
+      const container = document.getElementById(this.map.id)
+      if(container) {
+          // code to render map here...
+          const map = L.map(this.map.id).setView(this.cordinate, this.map.initialZoom);
+          L.tileLayer(this.map.tile, this.map.options).addTo(map);
+          this.initMarkers(map, this.geojson);
+      }
     },
     groupBy(obj) {
       const res = Object.assign({}, obj);
