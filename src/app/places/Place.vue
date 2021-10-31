@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="content shadow p-3 mb-2 bg-white rounded">
-            <div id="map-canvas" class="mb-3" />
+            <div id="map-canvas" class="mb-3" ref="map-element" />
             <div class="your-governor mb-4" v-if="people.governor && people.governor.length">
               <h5 class="pb-3 mb-2 border-bottom">Your Governor</h5>
               <div class="row">
@@ -186,6 +186,7 @@ export default {
       },
       map: {
         id: 'map-canvas',
+        ref: 'map-element',
         tile: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
         initialZoom: 6,
         options: {
@@ -267,10 +268,9 @@ export default {
       map.fitBounds(geoJSONLayer.getBounds());
     },
     initMap() {
-      const container = document.getElementById(this.map.id)
-      if(container) {
+      if(this.$refs[this.map.ref]) {
           // code to render map here...
-          const map = L.map(this.map.id).setView(this.cordinate, this.map.initialZoom);
+          const map = L.map(this.$refs[this.map.ref]).setView(this.cordinate, this.map.initialZoom);
           L.tileLayer(this.map.tile, this.map.options).addTo(map);
           this.initMarkers(map, this.geojson);
       }
