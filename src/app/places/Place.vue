@@ -255,25 +255,27 @@ export default {
         vm.people = Object.freeze(vm.groupBy(result.people));
         vm.cordinate = Object.freeze([geometry.data.data.centre_lat, geometry.data.data.centre_lon]);
         vm.geojson = Object.freeze({ ...geojson.data.data });
-        vm.initMap();
+        // vm.initMap();
         next();
       });
     } catch (error) {
       next({ name: 'error', params: [to.path], replace: true });
     }
   },
+  mounted: function () {
+    this.$nextTick(function () {
+      // Code that will run only after the
+      // entire view has been rendered
+      
+      const map = L.map(this.map.id).setView(this.cordinate, this.map.initialZoom);
+      L.tileLayer(this.map.tile, this.map.options).addTo(map);
+      this.initMarkers(map, this.geojson);
+    })
+  }
   methods: {
     initMarkers(map, geoJSONFeature) {
       const geoJSONLayer = L.geoJSON(geoJSONFeature, { style: this.map.style }).addTo(map);
       map.fitBounds(geoJSONLayer.getBounds());
-    },
-    initMap() {
-      if(this.$refs[this.map.ref]) {
-          // code to render map here...
-          const map = L.map(this.$refs[this.map.ref]).setView(this.cordinate, this.map.initialZoom);
-          L.tileLayer(this.map.tile, this.map.options).addTo(map);
-          this.initMarkers(map, this.geojson);
-      }
     },
     groupBy(obj) {
       const res = Object.assign({}, obj);
