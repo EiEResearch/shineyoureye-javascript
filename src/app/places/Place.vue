@@ -271,7 +271,7 @@ export default {
       L.tileLayer(this.map.tile, this.map.options).addTo(map);
       this.initMarkers(map, this.geojson);
     })
-  }
+  },
   methods: {
     initMarkers(map, geoJSONFeature) {
       const geoJSONLayer = L.geoJSON(geoJSONFeature, { style: this.map.style }).addTo(map);
