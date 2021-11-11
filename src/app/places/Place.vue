@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="your-local-government mb-4" v-if="people.localgovernment && people.localgovernment.length">
-              <h5 class="pb-3 mb-2 border-bottom">Your Local Government Council Chairmen</h5>
+              <h5 class="pb-3 mb-2 border-bottom">Your Local Government Council Chairman</h5>
               <div class="row">
                 <div class="col-sm-4">
                   <p class="text-wrap small">
