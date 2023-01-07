@@ -33,4 +33,9 @@ export default [
     name: 'contact',
     component: () => import('@/app/document/Contact.vue'),
   },
+  {
+    path: '/ootc',
+    name: 'ootc',
+    component: () => import('@/app/document/OOTC.vue'),
+  },
 ];
