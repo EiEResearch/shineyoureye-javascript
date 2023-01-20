@@ -12,7 +12,7 @@
 
         <b-nav-item-dropdown text="Elections">
           <b-dropdown-item href="/info/elections">Elections</b-dropdown-item>
-          <b-dropdown-item href="/info/inec-nationwide-continuous-voter-registration-exercise">Voting Information</b-dropdown-item>
+          <b-dropdown-item href="/info/voting-information">Voting Information</b-dropdown-item>
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown text="Elected Officials">
