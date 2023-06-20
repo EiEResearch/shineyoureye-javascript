@@ -23,6 +23,11 @@
                   >
                 </a>
               </div>
+              <div class='row my-3'>
+                <h4 class='align-items-center'>
+                  We are currently in the process of updating our website with the profiles and contact details of the newly elected and appointed government officials. <br />
+                  If you have any urgent inquiries or require immediate assistance, please do not hesitate to contact our customer support team at <strong>syeinfo@eienigeria.org</strong>. We are here to help.
+              </div>
             </div>
           </div>
         </div>
