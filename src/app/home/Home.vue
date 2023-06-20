@@ -27,7 +27,7 @@
                 <p class='align-items-center'>
                   We are currently in the process of updating our website with the profiles and contact details of the newly elected and appointed government officials. 
                   If you have any urgent inquiries or require immediate assistance, please do not hesitate to 
-                  contact our customer support team at <strong>syeinfo@eienigeria.org</strong>. We are here to help.
+                  contact our customer support team at <strong><a href='mailto:syeinfo@eiengieria.org'>syeinfo@eienigeria.org</a></strong>. We are here to help.
                 </p>
               </div>
             </div>
