@@ -48,10 +48,7 @@ The Express framework handles the web services that exposes Politicians data, pl
 2. Then install the necessary dependencies, you would type:
 ```npm install```
 
-3. If installation is successful, you would pull in the prose content:
-```npm run prose```
-
-4. You can proceed to start the express project:
+3. You can proceed to start the express project:
 ```npm run start```
 
 ### Setting up Vue.js
@@ -60,7 +57,10 @@ The Express framework handles the web services that exposes Politicians data, pl
 
 2. Configure the proper properties in the .env.development file.
 
-3. If installation is successful, you would start the Vue.js project:
+3. If installation is successful, you would pull in the prose content:
+```npm run prose```
+
+4. If installation is successful, you would start the Vue.js project:
 ```npm run serve```
 
 and go to <http://localhost:8080/>
