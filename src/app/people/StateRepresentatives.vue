@@ -155,7 +155,7 @@ export default {
       },
       honorablesState: ['Anambra', 'Ekiti', 'Enugu', 'Kano', 'Kogi', 'Kwara', 'Lagos', 'Ondo', 'Ogun', 
                         'Oyo', 'Osun', 'Imo', 'Edo', 'Benue', 'Jigawa', 'Kaduna', 'Zamfara', 'Bayelsa',
-                        'Ebonyi', 'Abia', 'Adamawa'],
+                        'Ebonyi', 'Abia', 'Adamawa', 'Akwa Ibom', 'Sokoto'],
     };
   },
   computed: {
