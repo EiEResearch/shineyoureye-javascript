@@ -262,15 +262,16 @@ export default {
       next({ name: 'error', params: [to.path], replace: true });
     }
   },
-  mounted: function () {
+  /* eslint func-names: ["error", "never"] */
+  mounted() {
     this.$nextTick(function () {
       // Code that will run only after the
       // entire view has been rendered
-      
+
       const map = L.map(this.map.id).setView(this.cordinate, this.map.initialZoom);
       L.tileLayer(this.map.tile, this.map.options).addTo(map);
       this.initMarkers(map, this.geojson);
-    })
+    });
   },
   methods: {
     initMarkers(map, geoJSONFeature) {
