@@ -7,6 +7,8 @@ import Skeleton from 'vue-loading-skeleton';
 
 import Logger from '@/plugins/logger.plugin';
 import '@/styles/_bootstrap.scss';
+import errorImage from '@/plugins/errorImage';
+
 
 if (process.env.NODE_ENV === 'production') {
   Raven
@@ -15,6 +17,7 @@ if (process.env.NODE_ENV === 'production') {
     .install();
 }
 
+Vue.directive('error-image', errorImage);
 Vue.use(Skeleton);
 Vue.use(NavPlugin);
 Vue.use(NavbarPlugin);

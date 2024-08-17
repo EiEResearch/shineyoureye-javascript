@@ -36,8 +36,13 @@ export default class People {
           for (let val = 1; val < values.length; val += 1) {
             const element = values[val];
             const identifier = values[0];
+
+            if (element[0] === undefined) {
+              continue;
+            }
+
             const person = {
-              [identifier[0]]: element[0],
+              'id': element[0],
               [identifier[1]]: element[1],
               [identifier[2]]: element[2],
               [identifier[3]]: element[3],

@@ -53,7 +53,7 @@
                             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(item,key) in people" :key="key">
                               <div class="text-center homepage__reps__rep">
                                 <img :src="item.persons[randomIntFromInterval(0,9)].images.original.url"
-                                     class="img-fluid mx-auto d-block img-portrait thumbnail"
+                                     v-error-image class="img-fluid mx-auto d-block img-portrait thumbnail"
                                      :alt="item.persons[randomIntFromInterval(0,9)].official_name"
                                      data-carousel-image=""
                                 >
