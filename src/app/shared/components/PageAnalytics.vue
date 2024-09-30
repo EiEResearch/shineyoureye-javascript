@@ -17,8 +17,8 @@ export default {
         (i[r].q = i[r].q || []).push(arguments);
       }, i[r].l = 1 * new Date(); a = s.createElement(o),
       m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
-    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga'));
-    ga('create', 'UA-660910-14', 'auto');
+    }(window, document, 'script', 'https://www.googletagmanager.com/gtag/js', 'ga'));
+    ga('create', 'G-Y05YMPDSTZ', 'auto');
     ga('send', 'pageview');
     }
   },
