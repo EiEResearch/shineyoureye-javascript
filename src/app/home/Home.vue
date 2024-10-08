@@ -155,7 +155,7 @@
                     </figcaption>
                   </figure>
                 </div>
-                /*
+                <!--
                 <div>
                   <figure class="d-block">
                     <div class="d-flex align-items-center">
@@ -168,7 +168,7 @@
                     </div>
                   </figure>
                 </div> 
-                */
+                -->
               </div>
             </div>
           </div>
@@ -215,7 +215,7 @@ export default {
         case 'state representative':
           return 'state-representatives';
           case 'local government':
-          return 'local-governments';
+          return 'local-government';
       }
     },
   },
