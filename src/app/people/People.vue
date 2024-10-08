@@ -49,7 +49,8 @@
             <div v-for="(item, index) in principalOfficers" :key="index + '_principalOfficers'" class="col-md-12">
               <div class="shadow-sm p-2 mb-2 bg-white rounded" v-for="(person) in item" :key="person.id">
                 <div class="media">
-                  <b-img-lazy v-bind="mainProps" :src="person.images.thumbnail.url"
+                  <b-img-lazy v-bind="mainProps" v-error-image
+                              :src="person.images.thumbnail.url"
                               class="align-self-start mr-3"
                               thumbnail fluid
                   />
@@ -99,7 +100,8 @@
                         <div class="card-body no-border">
                           <div class="shadow-sm p-2 mb-2 bg-white rounded" v-for="(person) in state[1]" :key="person.id">
                             <div class="media">
-                              <b-img-lazy v-bind="mainProps" :src="person.images.thumbnail.url"
+                              <b-img-lazy v-bind="mainProps" v-error-image
+                                          :src="person.images.thumbnail.url"
                                           class="align-self-start mr-3"
                                           thumbnail fluid
                               />

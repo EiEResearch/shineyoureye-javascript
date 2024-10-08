@@ -25,7 +25,8 @@
             <div class="col-lg-8 col-md-10 mx-auto">
               <div class="d-flex flex-wrap align-content-start p-3" style="background-color: #ece8e5;">
                 <div class="col-xs-3 order-0">
-                  <b-img-lazy v-bind="profileImage" :src="profile.images.original.url"
+                  <b-img-lazy v-bind="profileImage" v-error-image
+                              :src="profile.images.original.url"
                               :alt="person.name"
                               class="align-self-start mr-4"
                               rounded fluid

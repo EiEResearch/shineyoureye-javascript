@@ -19,24 +19,38 @@ export default class MarkdownParser {
   // private methods and properties
   // reserved for internal manipulation
 
-  PROSE_BASE_URL_REGEXP = /(?<=\({{site\.baseurl}}).+?(?=\))/;
+  PROSE_BASE_URL_REGEXP = /(?<=\({{site\.baseurl}}).+?(?=\))/g;
 
-  HTML_BASE_URL_REGEXP = /(?:){{site\.baseurl}}(?:$|\W)/;
+  HTML_BASE_URL_REGEXP = /(?:){{site\.baseurl}}(?:$|\W)/g;
 
-  PROSE_MATCH_BASE_URL_REGEXP = /\(({{site\.baseurl}}.*?)\)/;
+  PROSE_MATCH_BASE_URL_REGEXP = /\(({{site\.baseurl}}.*?)\)/g;
 
   sanitizeLinks(content) {
     let raw = (content) || '';
 
     if (raw.match(this.PROSE_BASE_URL_REGEXP)) {
-      const uri = raw.match(this.PROSE_BASE_URL_REGEXP)[0];
+      const matches = raw.match(this.PROSE_BASE_URL_REGEXP);
 
-      const encodedUri = (decodeURI(encodeURI(uri)) === uri) ? encodeURI(decodeURI(uri)).replace('%25', '%') : encodeURI(uri);
-
-      raw = raw.replace(raw.match(this.PROSE_MATCH_BASE_URL_REGEXP)[0], `(${encodedUri})`);
+      matches.forEach((uri) => {
+        const encodedUri = (decodeURI(encodeURI(uri)) === uri) ? encodeURI(decodeURI(uri)).replace('%25', '%') : encodeURI(uri);
+        raw = raw.replace(raw.match(this.PROSE_MATCH_BASE_URL_REGEXP)[0], `(${encodedUri})`);
+      });
     } else if (raw.match(this.HTML_BASE_URL_REGEXP)) {
-      raw = raw.replace(raw.match(this.HTML_BASE_URL_REGEXP)[0], '/');
+      const matches = raw.match(this.HTML_BASE_URL_REGEXP);
+      matches.forEach(() => {
+        raw = raw.replace(raw.match(this.HTML_BASE_URL_REGEXP)[0], '/');
+      });
     }
+
+    // if (raw.match(this.PROSE_BASE_URL_REGEXP)) {
+    //   const uri = raw.match(this.PROSE_BASE_URL_REGEXP)[0];
+
+    //   const encodedUri = (decodeURI(encodeURI(uri)) === uri) ? encodeURI(decodeURI(uri)).replace('%25', '%') : encodeURI(uri);
+
+    //   raw = raw.replace(raw.match(this.PROSE_MATCH_BASE_URL_REGEXP)[0], `(${encodedUri})`);
+    // } else if (raw.match(this.HTML_BASE_URL_REGEXP)) {
+    //   raw = raw.replace(raw.match(this.HTML_BASE_URL_REGEXP)[0], '/');
+    // }
 
     return raw;
   }

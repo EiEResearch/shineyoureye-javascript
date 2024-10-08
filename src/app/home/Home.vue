@@ -23,6 +23,13 @@
                   >
                 </a>
               </div>
+              <div class="col-md d-flex flex-column">
+                <p class="align-items-center">
+                  We are currently in the process of updating our website with the profiles and contact details of the newly elected and appointed government officials.
+                  If you have any urgent inquiries or require immediate assistance, please do not hesitate to
+                  contact our customer support team at <strong><a href="mailto:syeinfo@eiengieria.org">syeinfo@eienigeria.org</a></strong>. We are here to help.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -46,16 +53,15 @@
                             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(item,key) in people" :key="key">
                               <div class="text-center homepage__reps__rep">
                                 <img :src="item.persons[randomIntFromInterval(0,9)].images.original.url"
-                                     class="img-fluid mx-auto d-block img-portrait thumbnail"
+                                     v-error-image class="img-fluid mx-auto d-block img-portrait thumbnail"
                                      :alt="item.persons[randomIntFromInterval(0,9)].official_name"
                                      data-carousel-image=""
                                 >
                                 <div class="mx-auto d-block">
                                   <h3>
-                                    
                                     <a :href="item.persons[randomIntFromInterval(0,9)].url">
                                       {{ item.persons[randomIntFromInterval(0,9)].official_name }}
-                                      
+
                                     </a>
                                   </h3>
                                   <p v-if="item.persons[randomIntFromInterval(0,9)].area && item.persons[randomIntFromInterval(0,9)].area.place">
@@ -149,6 +155,7 @@
                     </figcaption>
                   </figure>
                 </div>
+                /*
                 <div>
                   <figure class="d-block">
                     <div class="d-flex align-items-center">
@@ -160,7 +167,8 @@
                       </blockquote>
                     </div>
                   </figure>
-                </div>
+                </div> 
+                */
               </div>
             </div>
           </div>
@@ -171,14 +179,14 @@
 </template>
 
 <script>
-import DocumentFactory from "@/app/shared/factory/document.factory";
-import PeopleService from "@/app/shared/services/people.service";
+import DocumentFactory from '@/app/shared/factory/document.factory';
+import PeopleService from '@/app/shared/services/people.service';
 
 export default {
-  name: "Home",
+  name: 'Home',
   data() {
     return {
-      name: "Landing Page Is Still Under Construction",
+      name: 'Landing Page Is Still Under Construction',
       posts: [],
       people: [],
       twitterUser: process.env.VUE_APP_TWITTER_USER,
@@ -197,15 +205,17 @@ export default {
     },
     getSlug(text) {
       // eslint-disable-next-line default-case
-      switch ((text || "").toLowerCase()) {
-        case "governor":
-          return "executive-governors";
-        case "senator":
-          return "senators";
-        case "federal representative":
-          return "federal-representatives";
-        case "state representative":
-          return "state-representatives";
+      switch ((text || '').toLowerCase()) {
+        case 'governor':
+          return 'executive-governors';
+        case 'senator':
+          return 'senators';
+        case 'federal representative':
+          return 'federal-representatives';
+        case 'state representative':
+          return 'state-representatives';
+          case 'local government':
+          return 'local-governments';
       }
     },
   },
@@ -222,10 +232,10 @@ export default {
   beforeRouteEnter: async (to, from, next) => {
     try {
       const [blog, reps] = await Promise.all([
-        new DocumentFactory("posts").all().then((res) => res.data),
+        new DocumentFactory('posts').all().then(res => res.data),
         new PeopleService()
           .findPeopleWithValidImage({ size: 20 })
-          .then((res) => res.data),
+          .then(res => res.data),
       ]);
 
       next((vue) => {
@@ -236,7 +246,7 @@ export default {
         next();
       });
     } catch (error) {
-      next({ name: "error", params: [to.path], replace: true });
+      next({ name: 'error', params: [to.path], replace: true });
     }
   },
   mounted() {
@@ -249,10 +259,10 @@ export default {
       js = d.createElement(s);
       js.id = id;
       js.async = true;
-      js.src = "//platform.twitter.com/widgets.js";
-      js.crossorigin = "anonymous";
+      js.src = '//platform.twitter.com/widgets.js';
+      js.crossorigin = 'anonymous';
       fjs.parentNode.insertBefore(js, fjs);
-    })(document, "script", "twitter-widget");
+    }(document, 'script', 'twitter-widget'));
   },
 };
 </script>

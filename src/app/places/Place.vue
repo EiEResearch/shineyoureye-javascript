@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="your-local-government mb-4" v-if="people.localgovernment && people.localgovernment.length">
-              <h5 class="pb-3 mb-2 border-bottom">Your Local Government Council Chairmen</h5>
+              <h5 class="pb-3 mb-2 border-bottom">Your Local Government Council Chairman</h5>
               <div class="row">
                 <div class="col-sm-4">
                   <p class="text-wrap small">
@@ -262,15 +262,16 @@ export default {
       next({ name: 'error', params: [to.path], replace: true });
     }
   },
-  mounted: function () {
+  /* eslint func-names: ["error", "never"] */
+  mounted() {
     this.$nextTick(function () {
       // Code that will run only after the
       // entire view has been rendered
-      
+
       const map = L.map(this.map.id).setView(this.cordinate, this.map.initialZoom);
       L.tileLayer(this.map.tile, this.map.options).addTo(map);
       this.initMarkers(map, this.geojson);
-    })
+    });
   },
   methods: {
     initMarkers(map, geoJSONFeature) {
