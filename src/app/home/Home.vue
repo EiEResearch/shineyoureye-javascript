@@ -23,7 +23,7 @@
                   >
                 </a>
               </div>
-              <div class="row my-3">
+              <div class="col-md d-flex flex-column">
                 <p class="align-items-center">
                   We are currently in the process of updating our website with the profiles and contact details of the newly elected and appointed government officials.
                   If you have any urgent inquiries or require immediate assistance, please do not hesitate to
