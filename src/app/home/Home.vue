@@ -24,7 +24,6 @@
                 </a>
               </div>
               </div>
-            <div>
               <div>
                 <p class="align-items-center">
                   We are currently in the process of updating our website with the profiles and contact details of the newly elected and appointed government officials.
@@ -32,9 +31,7 @@
                   contact our customer support team at <strong><a href="mailto:syeinfo@eiengieria.org">syeinfo@eienigeria.org</a></strong>. We are here to help.
                 </p>
               </div>
-            </div>
-            </div>
-          </div>
+              </div>
         </div>
       </section>
       <section>
