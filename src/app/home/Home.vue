@@ -114,7 +114,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md">
-                    <div v-for="(item,index) in posts.slice(0,6)" :key="index">
+                    <div v-for="(item,index) in posts.slice(0,3)" :key="index">
                       <div class="post-preview">
                         <a :href="item.url">
                           <h3 class="post-title-alt">
