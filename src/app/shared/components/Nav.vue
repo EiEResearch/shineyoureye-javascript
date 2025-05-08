@@ -33,8 +33,6 @@
           <b-dropdown-item href="/places/local-government">Local Government</b-dropdown-item>
         </b-nav-item-dropdown>
 
-        <b-nav-item href="/events">Events</b-nav-item>
-
         <b-nav-item href="/blog">Blog</b-nav-item>
 
         <b-nav-item href="/info/about">About</b-nav-item>
