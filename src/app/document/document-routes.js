@@ -12,11 +12,14 @@ export default [
     name: 'single-blog',
     component: () => import('@/app/document/SingleBlog.vue'),
   },
+  /*
   {
     path: '/events',
     name: 'events',
     component: () => import('@/app/document/Events.vue'),
   },
+
+  */
   {
     path: '/events/:slug',
     name: 'single-event',
