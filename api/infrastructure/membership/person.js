@@ -132,7 +132,7 @@ export default class Person {
           */
           facebook: {
             type: 'facebook',
-            value: (this.person.facebook) ? '${first(this.person.facebook)}' : '',
+            value: (this.person.facebook) ? `${first(this.person.facebook)}` : '',
             note: (this.person.facebook) ? this.FACEBOOK_URL + first(this.person.facebook) : '',          
           },
           twitter: {
