@@ -15,7 +15,7 @@ export default class Person {
 
     TWITTER_URL = 'https://twitter.com/';
     INSTAGRAM_URL = 'https://instagram.com/';
-    FACEBOOK_URL = 'https://facebook.com/';
+    // FACEBOOK_URL = 'https://facebook.com/';
 
     ALLOWED_IMAGE_SIZES = {
       thumbnail: '100x100',
@@ -125,15 +125,16 @@ export default class Person {
             value: first(this.person.email),
             note: (this.person.email) ? `mailto:${this.person.email}` : '',
           },
-          /*facebook: {
+          facebook: {
             type: 'facebook',
             value: last(this.person.facebook_url, '/'),
             note: last(this.person.facebook_url),
-          */
+          /*
           facebook: {
             type: 'facebook',
             value: (this.person.facebook) ? `${first(this.person.facebook)}` : '',
-            note: (this.person.facebook) ? this.FACEBOOK_URL + first(this.person.facebook) : '',          
+            note: (this.person.facebook) ? this.FACEBOOK_URL + first(this.person.facebook) : '',  
+          */
           },
           twitter: {
             type: 'twitter',
