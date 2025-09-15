@@ -11,7 +11,7 @@
         <li><a href="/info/about">About</a></li>
         <li><a href="/info/democracy-resources">Democratic Resources</a></li>
         <li><a href="/info/elections">Elections</a></li>
-        <li><a href="/events">Events</a></li>
+        <!--<li><a href="/events">Events</a></li> -->
         <li><a href="/contact">Contact</a></li>
       </ul>
       <p>
