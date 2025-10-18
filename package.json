@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "prose": "node bin/prepare-data.js",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "NODE_ENV=development && vue-cli-service serve",
+    "build": "NODE_ENV=production && vue-cli-service build",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
     "test": "vue-cli-service test:unit",

@@ -23,15 +23,15 @@
                   >
                 </a>
               </div>
-              </div>
-              <div>
-                <p class="align-items-center">
-                  We are currently in the process of updating our website with the profiles and contact details of the newly elected and appointed government officials.
-                  If you have any urgent inquiries or require immediate assistance, please do not hesitate to
-                  contact our customer support team at <strong><a href="mailto:syeinfo@eiengieria.org">syeinfo@eienigeria.org</a></strong>. We are here to help.
-                </p>
-              </div>
-              </div>
+            </div>
+            <div>
+              <p class="align-items-center">
+                We are currently in the process of updating our website with the profiles and contact details of the newly elected and appointed government officials.
+                If you have any urgent inquiries or require immediate assistance, please do not hesitate to
+                contact our customer support team at <strong><a href="mailto:syeinfo@eiengieria.org">syeinfo@eienigeria.org</a></strong>. We are here to help.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
       <section>
@@ -167,7 +167,7 @@
                       </blockquote>
                     </div>
                   </figure>
-                </div> 
+                </div>
                 -->
               </div>
             </div>
@@ -214,7 +214,7 @@ export default {
           return 'federal-representatives';
         case 'state representative':
           return 'state-representatives';
-          case 'local government':
+        case 'local government':
           return 'local-government';
       }
     },

@@ -2,7 +2,8 @@
   <div id="analytics" />
 </template>
 
-/* <script>
+/*
+<script>
 /* eslint-disable */
 export default {
     data(){

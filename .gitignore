@@ -27,3 +27,7 @@ yarn-error.log*
 *.sln
 *.sw?
 *.keep
+
+# Docker files
+.config
+.npm
