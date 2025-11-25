@@ -74,7 +74,7 @@
                   </div>
                   <div class="row mb-2" v-if="profile.contact.email.value">
                     <div class="col-md-3"><strong>E-Mail</strong></div>
-                    <div class="col-md-9">{{ profile.contact.email.value }}</div>
+                    <div class="col-md-9"><a :href="'mailto:' + profile.contact.email.value" target="_blank">{{ profile.contact.email.value }}</div>
                   </div>
                   <div class="row mb-2" v-if="profile.contact.phone.value">
                     <div class="col-md-3"><strong>Phone</strong></div>
@@ -94,7 +94,7 @@
                   </div>
                   <div class="row mb-2" v-if="profile.links.website.url">
                     <div class="col-md-3"><strong>Webpage</strong></div>
-                    <div class="col-md-9"><a :href="'mailto:' + profile.contact.email.value" target="_blank">{{ profile.contact.email.value }}</a></div>
+                    <div class="col-md-9"><a :href="profile.contact.webpage.value" target="_blank">{{ profile.contact.webpage.value }}</a></div>
                   </div>
                   <div class="row mb-2" v-if="profile.links.wikipedia.url">
                     <div class="col-md-3"><strong>Wikipedia</strong></div>
