@@ -45,11 +45,21 @@
                           />
                           <div class="media-body text-wrap">
                             <h5 class="d-block"><a :href="place.area.url">{{ (place.address.district.value) ? `${place.address.district.value}` : place.area.place.name }}</a></h5>
-                            <span class="d-block" v-if="place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()">
+                            <span
+                              class="d-block"
+                              v-if="place.area.place && place.area.state_place
+                                && place.area.place.type_name && place.area.state_place.type_name
+                                && place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()"
+                            >
                               Parent place: {{ (place.address.district.value) ? place.area.parent_place.name : place.area.state_place.name }}
                             </span>
                             <span class="d-block">{{ areaType }}</span>
-                            <span class="d-block" v-if="place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()">
+                            <span
+                              class="d-block"
+                              v-if="place.area.place && place.area.state_place
+                                && place.area.place.type_name && place.area.state_place.type_name
+                                && place.area.place.type_name.toLowerCase() !== place.area.state_place.type_name.toLowerCase()"
+                            >
                               {{ item.organization }} {{ new Date(item.start_date).getFullYear() }}-{{ new Date(item.end_date).getFullYear() }}
                             </span>
                           </div>
