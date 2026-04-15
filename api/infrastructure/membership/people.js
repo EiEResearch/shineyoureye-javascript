@@ -87,7 +87,7 @@ export default class People {
 
         if (Array.isArray(data) && data.length < 1) return res;
         res = data.map((val) => {
-          const filter = val.persons.filter(item => item.area && item.state);
+          const filter = val.persons.filter(item => item.area && item.area.place && item.state);
           val.persons = filter;
           return val;
         });
