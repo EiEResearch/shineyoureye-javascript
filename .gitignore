@@ -31,3 +31,6 @@ yarn-error.log*
 # Docker files
 .config
 .npm
+Dockerfile.api.dev
+Dockerfile.frontend.dev
+docker-compose.yml
