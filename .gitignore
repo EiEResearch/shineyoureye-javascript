@@ -6,6 +6,8 @@ prose
 /public/media_root
 /public
 /api/node_modules
+/api/package-docker.json
+package-docker.json
 
 # local env files
 .env.local
@@ -34,3 +36,4 @@ yarn-error.log*
 Dockerfile.api.dev
 Dockerfile.frontend.dev
 docker-compose.yml
+
